@@ -1,0 +1,4 @@
+---
+NODEJS_VERSION: "10"
+ansible_distribution_release: "bionic"
+webserver_port: "1648"

@@ -1,0 +1,28 @@
+---
+- name: Install the gpg key for nodejs LTS
+  apt_key:
+    url: "https://deb.nodesource.com/gpgkey/nodesource.gpg.key"
+
+- name: Install nodejs LTS repos
+  apt_repository:
+    repo: "deb https://deb.nodesource.com/node_{{ NODEJS_VERSION }}.x {{ ansible_distribution_release }} main"
+
+- name: Install packages
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - nodejs
+      - mysql-server
+      - nginx
+
+- name: Remove default nginx
+  file:
+    state: absent
+    path: /etc/nginx/sites-enabled/default
+
+- name: Setup nginx conf
+  template:
+    src: nginx.conf.template
+    dest: /etc/nginx/sites-enabled/webserver.conf
+  notify: Restart nginx
