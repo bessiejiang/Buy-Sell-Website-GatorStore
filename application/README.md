@@ -8,7 +8,9 @@ You are free to organize the contents of the folder as you see fit. But remember
 
 ## Please use the rest of the README.md to store important information for your team's application.
 
-# Development tools
+# Development workflow
+
+## 1. Install the tools
 
 Tools being used for development
 
@@ -20,7 +22,7 @@ Tools being used for development
 
 - [Ansible](https://www.ansible.com/)
 
-  Used to install the server tools like websever and database.
+  Used to install the server software like Node.js and MySQL
 
   - [Download here for macOS + linux](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-the-control-node)
   - [Instructions for Windows](https://www.how2shout.com/how-to/how-to-install-ansible-on-windows-10.html)
@@ -29,51 +31,72 @@ Once the tools are installed:
 
 ```
 cd application
-vagrant up # this will take a while the first time
-npm run dev # this will open a shell to the virtual machine
+
+# download and create the virtual machine
+# it will take a while the first time
+vagrant up
+
+# open a shell to the virtual machine
+npm run dev
 ```
 
-Now you should have a prompt that looks like
+Now you should have a prompt that looks like:
 
 ```
 vagrant@vagrant:/vagrant$
 ```
 
-You can install the Node.js dependencies
+You should now install the Node.js dependencies:
 
 ```
 npm install
 ```
 
-After that, you should be ready to start development!
+After that, you should be ready to start the server!
 
-# Running the server
+**When you are done, you should suspend the VM to save laptop battery: `vagrant suspend`**
+
+## 2. Run the local server
 
 If you haven't already, start the VM and get a remote shell:
-
-**When you are done you should also suspend the VM to save laptop battery: `vagrant suspend`**
 
 ```
 vagrant up
 npm run dev
 ```
 
-Now, to start the server and have it automatically restart when changes are made:
+Now start the server and have it automatically restart when changes are made:
 
 ```
 npm run watch
 ```
 
+_Note: if the server doesn't auto restart, type `rs` and press Enter to restart it_
+
 Open up [http://localhost:1648](http://localhost:1648) to see the local server.
 
-_Work on stuff 🎉!_
+Woohoo, now you can work on stuff 🎉!
 
-## Auto format source code
+**When you are done, you should suspend the VM to save laptop battery: `vagrant suspend`**
 
-Before you commit, run these first to format the files in the `src/` folder and keep a consistent style:
+## 3. Auto format source code
+
+In an effort to keep code style the same, there is an auto formatter that should be run before commits, or at least before Pull Requests.
+
+It's called [Prettier](https://prettier.io/) and can format JavaScript, CSS, and HTML.
 
 ```
-npm run check # will print any files that need to be formatted
+# print files that aren't formatted
+npm run check
 
-npm run fix # will try to auto format the files
+# try to auto format the files
+npm run fix
+```
+
+# Deploying to production server
+
+To deploy ansible (ie. software packages) changes:
+
+```
+ansible-playbook -i provision/webserver.ini provision/ansible.yml
 ```
