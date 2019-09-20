@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 
 # when code is pushed to production, update the server code
-export GIT_WORK_TREE="{{ remote_repo_path }}" git checkout -f
+export GIT_WORK_TREE="{{ remote_repo_path }}"
+git checkout -f
 
 # install Node.js dependencies
 cd ${GIT_WORK_TREE}/application
-NODE_ENV='production' npm install
+
+if [[ -f package.json ]]; then
+  NODE_ENV='production' npm install
+fi
