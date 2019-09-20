@@ -1,12 +1,11 @@
 const express = require("express");
+const path = require("path");
+
 const app = express();
 const PORT = 1648;
 
-app.get("/", (req, res) => {
-  res.send("Hello world");
-});
+app.use(express.static(path.join(__dirname, "public")));
 
-const server = app.listen(PORT, () => {
-  const { port, address } = server.address();
-  console.log(`=> Listening on http://${address}:${port}`);
+app.listen(PORT, () => {
+  console.log(`=> Listening on http://localhost:${PORT}`);
 });
