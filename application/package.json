@@ -1,0 +1,23 @@
+{
+  "name": "csc648",
+  "version": "0.1.0",
+  "description": "SFSU CSC 648/848 class project",
+  "main": "server.js",
+  "private": true,
+  "keywords": [],
+  "author": "Team 12",
+  "scripts": {
+    "dev": "vagrant ssh -c 'cd /vagrant && /bin/bash'",
+    "start": "node src/server.js",
+    "watch": "nodemon src/server.js",
+    "check": "prettier --check \"src/**/*.js\" \"src/**/*.css\" \"src/**/*.html\"",
+    "fix": "prettier --write \"src/**/*.js\" \"src/**/*.css\" \"src/**/*.html\""
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "prettier": "^1.18.2",
+    "nodemon": "^1.19.2"
+  }
+}
