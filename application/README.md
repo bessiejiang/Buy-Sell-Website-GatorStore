@@ -29,15 +29,13 @@ Tools being used for development
 
 Once the tools are installed:
 
-```
+```sh
 cd application
 
-# download and create the virtual machine
-# it will take a while the first time
-vagrant up
-
-# open a shell to the virtual machine
-npm run dev
+# 1. sets up the virtual machine
+# 2. it will take a while the first time
+# 3. opens a shell to the virtual machine
+./scripts/dev
 ```
 
 Now you should have a prompt that looks like:
@@ -48,7 +46,7 @@ vagrant@vagrant:/vagrant$
 
 You should now install the Node.js dependencies:
 
-```
+```sh
 npm install
 ```
 
@@ -60,14 +58,13 @@ After that, you should be ready to start the server!
 
 If you haven't already, start the VM and get a remote shell:
 
-```
-vagrant up
-npm run dev
+```sh
+./scripts/dev
 ```
 
 Now start the server and have it automatically restart when changes are made:
 
-```
+```sh
 npm run watch
 ```
 
@@ -85,7 +82,7 @@ In an effort to keep code style the same, there is an auto formatter that should
 
 It's called [Prettier](https://prettier.io/) and can format JavaScript, CSS, and HTML.
 
-```
+```sh
 # print files that aren't formatted
 npm run check
 
@@ -95,8 +92,23 @@ npm run fix
 
 # Deploying to production server
 
+To deploy the code on the master branch and restart the production server:
+
+```sh
+./scripts/prod git
+```
+
 To deploy ansible (ie. software packages) changes:
 
+```sh
+./scripts/prod ansible
 ```
-ansible-playbook -i provision/webserver.ini provision/ansible.yml
+
+_When first initializing the production server, run in this order:_
+
+```sh
+./scripts/prod bootstrap
+./scripts/prod ansible
+./scripts/prod git-init
+./scripts/prod git
 ```

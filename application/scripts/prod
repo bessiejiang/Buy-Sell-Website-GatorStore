@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+# this ssh key path is relative to project root
+export GIT_SSH_COMMAND='ssh -i credentials/ssh/id_csc648'
+
+# the rest of the paths are relative to the application folder
+cd "$( dirname "${BASH_SOURCE[0]}" )/.."
+
+case "$1" in
+  "ansible")
+    ansible-playbook -i provision/webserver.ini provision/ansible.yml
+    ;;
+  "bootstrap")
+    ssh -i ../credentials/ssh/id_csc648 csc648@34.83.135.4 'sudo bash -s' < provision/bootstrap.sh
+    ;;
+  "git-init")
+    # add new remote and push master branch to it
+    git remote add prod ssh://csc648@34.83.135.4/home/csc648/csc648-fall2019-Team12.git 2> /dev/null
+    git push prod +master:refs/heads/master
+    ;;
+  "git")
+    git push prod master
+    ;;
+  *)
+    echo "Specify to deploy one of: ansible, bootstrap, git-init, git"
+    exit 1
+    ;;
+esac

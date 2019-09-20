@@ -26,9 +26,11 @@
         name: "{{ packages }}"
       vars:
         packages:
+          - git
           - nodejs
           - mysql-server
           - nginx
+          - htop
 
     - name: Remove default nginx conf
       file:
@@ -40,6 +42,38 @@
         src: nginx.conf.template
         dest: /etc/nginx/sites-enabled/webserver.conf
       notify: Restart nginx
+
+- hosts: webserver
+  become: yes
+  vars:
+    remote_repo_path: "/home/csc648/csc648-fall2019-Team12"
+
+  tasks:
+    - name: Create git folder
+      command: "git init --bare {{ remote_repo_path }}.git"
+      args:
+        creates: "{{ remote_repo_path }}.git/HEAD"
+      become_user: csc648
+
+    - name: Copy post-receive hook
+      template:
+        src: post-receive.template
+        dest: "{{ remote_repo_path }}.git/hooks/post-receive"
+        owner: csc648
+        group: csc648
+        mode: u=rwx,g=rx,o=rx
+
+    - name: Create git working directory
+      file:
+        path: "{{ remote_repo_path }}"
+        state: directory
+        owner: csc648
+        group: csc648
+
+    - name: Install Node.js pm2
+      npm:
+        name: pm2
+        global: yes
 
 - hosts: default
   become: yes
