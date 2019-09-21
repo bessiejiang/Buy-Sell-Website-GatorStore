@@ -20,7 +20,16 @@ Tools being used for development
 
   - [Download here](https://www.vagrantup.com/downloads.html)
 
-- [Ansible](https://www.ansible.com/)
+- [VirtualBox](https://www.virtualbox.org)
+
+  Used by Vagrant to create a virtual machine for local development
+
+  - [Download here](https://www.virtualbox.org/wiki/Downloads)
+
+- [Ansible](https://www.ansible.com)
+
+  **For local development this will automatically be installed**<br/>
+  **Only need to manually download if deploying to production**
 
   Used to install the server software like Node.js and MySQL
 
@@ -110,5 +119,5 @@ _When first initializing the production server, run in this order:_
 ./scripts/prod bootstrap
 ./scripts/prod ansible
 ./scripts/prod git-init
-./scripts/prod git
+./scripts/prod code
 ```

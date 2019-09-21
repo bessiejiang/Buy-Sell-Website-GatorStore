@@ -18,11 +18,11 @@ case "$1" in
     git remote add prod ssh://csc648@34.83.135.4/home/csc648/csc648-fall2019-Team12.git 2> /dev/null
     git push prod +master:refs/heads/master
     ;;
-  "git")
+  "code")
     git push prod master
     ;;
   *)
-    echo "Specify to deploy one of: ansible, bootstrap, git-init, git"
+    echo "Specify to deploy one of: ansible, bootstrap, git-init, code"
     exit 1
     ;;
 esac
