@@ -9,4 +9,5 @@ cd ${GIT_WORK_TREE}/application
 
 if [[ -f package.json ]]; then
   NODE_ENV='production' npm install
+  pm2 restart all
 fi
