@@ -2,6 +2,8 @@
 
 # this ssh key path is relative to project root
 export GIT_SSH_COMMAND='ssh -i credentials/ssh/id_csc648'
+export prod_user='csc648'
+export prod_ip='34.83.135.4'
 
 # the rest of the paths are relative to the application folder
 cd "$( dirname "${BASH_SOURCE[0]}" )/.."
@@ -11,18 +13,25 @@ case "$1" in
     ansible-playbook -i provision/webserver.ini provision/ansible.yml
     ;;
   "bootstrap")
-    ssh -i ../credentials/ssh/id_csc648 csc648@34.83.135.4 'sudo bash -s' < provision/bootstrap.sh
-    ;;
-  "git-init")
-    # add new remote and push master branch to it
-    git remote add prod ssh://csc648@34.83.135.4/home/csc648/csc648-fall2019-Team12.git 2> /dev/null
-    git push prod +master:refs/heads/master
+    ssh -i ../credentials/ssh/id_csc648 ${prod_user}@${prod_ip} 'sudo bash -s' < provision/bootstrap.sh
     ;;
   "code")
-    git push prod master
+    if git remote | grep 'prod' -q; then
+      echo 'Pushing branch master'
+      git push prod master
+    else
+      # add new remote and push master branch to it
+      echo 'Creating git remote "prod"'
+      git remote add prod ssh://${prod_user}@${prod_ip}/home/${prod_user}/csc648-fall2019-Team12.git
+      echo 'Pushing branch master'
+      git push prod +master:refs/heads/master
+    fi
+    ;;
+  "ssh")
+    ssh -i ../credentials/ssh/id_csc648 ${prod_user}@${prod_ip}
     ;;
   *)
-    echo "Specify to deploy one of: ansible, bootstrap, git-init, code"
+    echo "Specify one of: ansible, bootstrap, code, ssh"
     exit 1
     ;;
 esac

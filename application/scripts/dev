@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
+# run `vagrant up` if it's not up already
 vagrant status | grep 'default\s*running' -q || vagrant up
-vagrant ssh -c 'cd /vagrant && /usr/bin/env bash'
+vagrant ssh
 
 echo ''
-echo -e "Don't forget to run '\e[33mvagrant suspend\e[39m' when done working"
+echo -e "Remember to run '\e[33mvagrant suspend\e[39m' when done working"
