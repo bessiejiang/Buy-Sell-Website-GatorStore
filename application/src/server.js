@@ -9,3 +9,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.listen(PORT, () => {
   console.log(`=> Listening on http://localhost:${PORT}`);
 });
+
+app.get('/about', function (req, res) {
+  res.sendFile(path.join(__dirname+'/public/about.html'));
+});
