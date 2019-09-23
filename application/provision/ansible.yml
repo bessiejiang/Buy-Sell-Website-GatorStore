@@ -43,6 +43,18 @@
         dest: /etc/nginx/sites-enabled/webserver.conf
       notify: Restart nginx
 
+    - name: Disable Ubuntu news in login message (motd)
+      lineinfile:
+        path: /etc/default/motd-news
+        regexp: "^ENABLED="
+        line: ENABLED=0
+
+    - name: Disable Ubuntu livepatch in login message (motd)
+      file:
+        path: /etc/update-motd.d/80-livepatch
+        mode: a-x
+
+# host webserver is only run for production
 - hosts: webserver
   become: yes
   vars:
@@ -75,9 +87,33 @@
         name: pm2
         global: yes
 
+    - name: Start the server with pm2
+      command: pm2 start src/server.js --name webserver
+      become_user: csc648
+      args:
+        chdir: "{{ remote_repo_path }}/application"
+        creates: /home/csc648/.pm2/pids/webserver-0.pid
+
+    - name: Generate pm2 startup script
+      command: "env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u csc648 --hp /home/csc648"
+      args:
+        creates: /etc/systemd/system/pm2-csc648.service
+
+    - name: Save pm2 server list
+      command: pm2 save
+      become_user: csc648
+      args:
+        creates: /home/csc648/.pm2/dump.pm2
+
+# host default is only run for vagrant
 - hosts: default
   become: yes
   tasks:
+    - name: Change default folder for ssh
+      lineinfile:
+        path: /home/vagrant/.bashrc
+        line: cd /vagrant
+
     - name: Create node_modules folder
       file:
         path: /home/vagrant/node_modules

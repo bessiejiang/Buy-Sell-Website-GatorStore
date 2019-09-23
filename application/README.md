@@ -39,7 +39,7 @@ Tools being used for development
 Once the tools are installed:
 
 ```sh
-cd application
+cd csc648-fall2019-Team12/application
 
 # 1. sets up the virtual machine
 # 2. it will take a while the first time
@@ -104,20 +104,28 @@ npm run fix
 To deploy the code on the master branch and restart the production server:
 
 ```sh
-./scripts/prod git
+# create git remote "prod" and push master branch
+./scripts/prod code
 ```
 
-To deploy ansible (ie. software packages) changes:
+To deploy ansible (ie. software and configuration):
 
 ```sh
 ./scripts/prod ansible
+```
+
+To ssh into production and get a remote shell:
+
+```sh
+./scripts/prod ssh
 ```
 
 _When first initializing the production server, run in this order:_
 
 ```sh
+# setup the server to be ready for ansible
 ./scripts/prod bootstrap
+
 ./scripts/prod ansible
-./scripts/prod git-init
 ./scripts/prod code
 ```

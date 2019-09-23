@@ -8,7 +8,8 @@
   "author": "Team 12",
   "scripts": {
     "start": "node src/server.js",
-    "watch": "nodemon -L src/server.js",
+    "dev": "nodemon -L src/server.js",
+    "watch": "echo 'run `npm run dev` instead'",
     "check": "prettier --check \"src/**/*.js\" \"src/**/*.css\" \"src/**/*.html\"",
     "fix": "prettier --write \"src/**/*.js\" \"src/**/*.css\" \"src/**/*.html\""
   },
