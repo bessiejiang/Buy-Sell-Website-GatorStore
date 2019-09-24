@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const PORT = 1648;
+const consolidate=require('consolidate');
 const fs = require('fs');
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -15,7 +16,8 @@ app.get('/about', function (req, res) {
 
 //re-set up default views folder to public
 app.set('views', path.join(__dirname, '/public'));
-
+app.set('view engine', 'html');
+app.engine("html",consolidate.ejs);
 /*If you need to render ejs file, you can set up in this way:
 * app.get('/Your_Name', function (req, res) {
     res.render('/Your_Folder/Your_ejs_File', {});
