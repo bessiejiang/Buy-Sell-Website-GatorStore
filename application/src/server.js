@@ -27,6 +27,7 @@ app.get('/about', function (req, res) {
 app.set('views', path.join(__dirname, '/public'));
 app.set('view engine', 'html');
 app.engine("html",consolidate.ejs);
+
 /*If you need to render ejs file, you can set up in this way:
 * app.get('/Your_Name', function (req, res) {
     res.render('/Your_Folder/Your_ejs_File', {});
