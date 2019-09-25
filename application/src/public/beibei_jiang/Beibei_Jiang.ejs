@@ -3,28 +3,22 @@
   <head>
     <meta charset="utf-8" />
     <title>Beibei Jiang's personal page</title>
-     <link rel="stylesheet" type="text/css" href="style.css">
+     <link rel="stylesheet" type="text/css" href="./beibei_jiang/style.css">
      <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
   </head>
-
-
   <body>
    <div class="wrapper"> 
     <div class="left">
-      <img class="profile-picture" src="img/profile.jpg" width="300"/>
-      <h1 class="name">Beibei Jiang</h1>
+      <img class="profile-picture" src="<%=img %>" width="300"/>
+      <h1 class="name"><%=name %></h1>
       <h4 class="subtitle"></h4>
     </div>
     
     <div class="right">
-      <p class="bio" style="color:white;font-size:40px;">
-        SFSU computer science major student.
-        <br>
-        Welcome to my personal page.
-      </p>
-      <ul class="social-links">
-        <li><a href="https://www.linkedin.com/in/beibei-jiang-392119192/">Linkedin</a></li>
-      </ul>
+        <p><%=intro%></p>
+        <ul class="social-links">
+          <li><a href="https://www.linkedin.com/in/beibei-jiang-392119192/">Linkedin</a></li>
+        </ul>
     </div>
     
   </div>

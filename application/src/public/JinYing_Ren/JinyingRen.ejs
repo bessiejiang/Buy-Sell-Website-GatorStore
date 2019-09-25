@@ -2,19 +2,19 @@
   <head>
    <meta charset="utf-8" />
     <title>Jinying Ren's personal page</title> 
-    <link rel = "stylesheet" type = "text/css" href = "myStyle.css" />
+    <link rel = "stylesheet" type = "text/css" href = "./JinYing_Ren/myStyle.css" />
   </head>
 
   <body> 
     <div class = "top-container"> 
-        <h1>Jinying Ren</h1> 
+        <h1><%=name%></h1>
     </div>
     <div class="container">
     <div class = "left-container">
-        <img class="picture" src="photo.jpg" />
+        <img class="picture" src="<%=img%>"/>
     </div>
     <div class = "right-container">
-        <p>This is my personal page. I'm a senior student from SFSU, and my major is computer science. </p>
+        <p><%=intro%> </p>
         <ul>
           <a href = "https://github.com/renfiona9">-> My Github Page</a>
         </ul>
