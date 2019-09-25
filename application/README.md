@@ -129,3 +129,21 @@ _When first initializing the production server, run in this order:_
 ./scripts/prod ansible
 ./scripts/prod code
 ```
+
+## Troubleshooting
+
+If you see this:
+
+```
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+```
+
+Then run this:
+
+```sh
+chmod 400 ../credentials/ssh/id_csc648
+```
+
+And try again.

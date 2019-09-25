@@ -6,6 +6,15 @@ const consolidate=require('consolidate');
 const jinghanRouter=require('../src/public/routes/jinghanRouter');
 app.use(express.static(path.join(__dirname, "public")));
 
+app.get('/angelo', (req,res) =>{
+    const data = JSON.parse(fs.readFileSync(PATH+"/angelo_solitario/angeloinfo.json",'utf8'));
+    res.render('angelo_solitario/angelosolitario.ejs',{
+        "name": data.name, 
+        "intro": data.intro,
+        "img" :  data.img
+    })
+})
+
 app.listen(PORT, () => {
     console.log(`=> Listening on http://localhost:${PORT}`);
 });

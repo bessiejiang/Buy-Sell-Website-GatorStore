@@ -9,8 +9,14 @@ Server IP: `34.83.135.4`
 
 ### Connect to server
 
-```
+```sh
 ssh -i ./ssh/id_csc648 csc648@34.83.135.4
+```
+
+Or from the application folder:
+
+```sh
+./scripts/prod ssh
 ```
 
 ## Database
