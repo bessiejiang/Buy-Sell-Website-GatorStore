@@ -6,11 +6,10 @@ const fs = require('fs');
 let PATH=path.resolve();
 router.get('/', function (req, res) {
     const info=JSON.parse(fs.readFileSync(PATH+"/src/public/info.json",'utf8'));
-    res.render('jinghan_cao/jinghan_Cao.ejs', {
-        "name":info.JinghanCao.name,
-        "intro":info.JinghanCao.intro,
-        "img":info.JinghanCao.img,
-        "courses":info.JinghanCao.courses
+    res.render('beibei_jiang/Beibei_Jiang.ejs', {
+        "name":info.BeibeiJiang.name,
+        "intro":info.BeibeiJiang.intro,
+        "img":info.BeibeiJiang.img
     });
 })
 module.exports=router;
