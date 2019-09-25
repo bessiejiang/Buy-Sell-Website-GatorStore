@@ -6,7 +6,7 @@ const fs = require('fs');
 let PATH=path.resolve();
 router.get('/', function (req, res) {
     const info=JSON.parse(fs.readFileSync(PATH+"/src/public/info.json",'utf8'));
-    res.render('jinYing_Ren/JinyingRen.ejs', {
+    res.render('./jinying_ren/Jinying_Ren.ejs', {
         "name":info.JinYingRen.name,
         "intro":info.JinYingRen.intro,
         "img":info.JinYingRen.img
