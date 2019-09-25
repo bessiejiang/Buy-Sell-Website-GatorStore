@@ -1,0 +1,33 @@
+{
+  "BeibeiJiang" : {
+      "name" : "Beibei Jiang",
+      "intro" : "I am a graduate student majored in computer science of SFSU. Welcome",
+      "img" : "./beibei_jiang/img/profile.jpg"
+    },
+  "AngeloSolitario" : {
+      "name" : "Angelo Solitario",
+      "intro" : "I am a Front End Developer for Team 12",
+      "img" : "https://i.imgur.com/v066SIF.jpg"
+    },
+  "JesseSmick" : {
+      "name" : "Jesse Smick",
+      "intro" : "SFSU Computer Science Student",
+      "intro2" : "I am Back-end Lead for Team 12",
+      "img" : "https://i.imgur.com/v066SIF.jpg"
+    },
+  "JinghanCao" : {
+      "name": "Jinghan Cao",
+      "intro": "This is my personal webpage. I am glad to work with talented developers in Team 12.",
+      "img": "./jinghan_cao/pics/photo.jpg",
+      "courses": ["Software Engineering", "Internet App Design & Dev", "Intro to Databases"]
+    },
+  "JinYingRen" : {
+      "name" : "Jinying Ren",
+      "intro" : "This is my personal page. I'm a senior student from SFSU, and my major is computer science.",
+      "img" : "./JinYing_Ren/photo.jpg"
+    },
+  "MelissaEndang" : {
+      "name" : "Melissa Endang",
+      "img" : "https://i.imgur.com/MmJeKzj.jpg"
+    }
+}
