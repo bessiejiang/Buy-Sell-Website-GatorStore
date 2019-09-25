@@ -13,7 +13,7 @@
       "name" : "Jesse Smick",
       "intro" : "SFSU Computer Science Student",
       "intro2" : "I am Back-end Lead for Team 12",
-      "img" : "https://i.imgur.com/v066SIF.jpg"
+      "img" : "https://secure.gravatar.com/avatar/708dc88ce629f35288eaa787b46f9f63?s=256"
     },
   "JinghanCao" : {
       "name": "Jinghan Cao",
@@ -24,7 +24,7 @@
   "JinYingRen" : {
       "name" : "Jinying Ren",
       "intro" : "This is my personal page. I'm a senior student from SFSU, and my major is computer science.",
-      "img" : "./JinYing_Ren/photo.jpg"
+      "img" : "./JinYing_Ren/img/photo.jpg"
     },
   "MelissaEndang" : {
       "name" : "Melissa Endang",
