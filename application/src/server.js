@@ -3,7 +3,7 @@ const path = require("path");
 const app = express();
 const PORT = 1648;
 const consolidate=require('consolidate');
-const fs = require('fs');
+const jinghanRouter=require('../src/public/routes/jinghanRouter');
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get('/angelo', (req,res) =>{
@@ -22,27 +22,10 @@ app.listen(PORT, () => {
 app.get('/about', function (req, res) {
     res.sendFile(path.join(__dirname + '/public/about.html'));
 });
-
+app.use('/jinghan',jinghanRouter);
 //re-set up default views folder to public
 app.set('views', path.join(__dirname, '/public'));
 app.set('view engine', 'html');
 app.engine("html",consolidate.ejs);
 
-/*If you need to render ejs file, you can set up in this way:
-* app.get('/Your_Name', function (req, res) {
-    res.render('/Your_Folder/Your_ejs_File', {});
-})
-*
-* */
-let PATH=path.resolve(__dirname+"/public");
-app.get('/jinghan', function (req, res) {
-    const info=JSON.parse(fs.readFileSync(PATH+"/jinghan_cao/info.json",'utf8'));
-    res.render('jinghan_cao/jinghan_Cao.ejs', {
-        "name":info.name,
-        "intro":info.intro,
-        "img":info.img,
-        "courses":info.courses
-    });
-
-})
 

@@ -12,8 +12,11 @@ body{
     /*border: 1px solid black;*/
     margin: 10% auto;
 }
-img{
+.imgContainer{
     width: 40%;
+}
+.imgContainer img{
+    width: 100%;
 }
 .upper{
     display: inline-flex;
