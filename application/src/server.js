@@ -6,6 +6,15 @@ const consolidate=require('consolidate');
 const fs = require('fs');
 app.use(express.static(path.join(__dirname, "public")));
 
+app.get('/angelo', (req,res) =>{
+    const data = JSON.parse(fs.readFileSync(PATH+"/angelo_solitario/angeloinfo.json",'utf8'));
+    res.render('angelo_solitario/angelosolitario.ejs',{
+        "name": data.name, 
+        "intro": data.intro,
+        "img" :  data.img
+    })
+})
+
 app.listen(PORT, () => {
     console.log(`=> Listening on http://localhost:${PORT}`);
 });
@@ -18,6 +27,7 @@ app.get('/about', function (req, res) {
 app.set('views', path.join(__dirname, '/public'));
 app.set('view engine', 'html');
 app.engine("html",consolidate.ejs);
+
 /*If you need to render ejs file, you can set up in this way:
 * app.get('/Your_Name', function (req, res) {
     res.render('/Your_Folder/Your_ejs_File', {});
