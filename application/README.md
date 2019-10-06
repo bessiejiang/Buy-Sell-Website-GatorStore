@@ -112,6 +112,9 @@ To deploy ansible (ie. software and configuration):
 
 ```sh
 ./scripts/prod ansible
+
+# if errors happen, run this and try again
+./scripts/prod update
 ```
 
 To ssh into production and get a remote shell:
@@ -124,7 +127,7 @@ _When first initializing the production server, run in this order:_
 
 ```sh
 # setup the server to be ready for ansible
-./scripts/prod bootstrap
+./scripts/prod update
 
 ./scripts/prod ansible
 ./scripts/prod code

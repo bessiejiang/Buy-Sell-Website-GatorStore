@@ -29,8 +29,17 @@
           - git
           - nodejs
           - mysql-server
+          - libmysqlclient-dev
           - nginx
           - htop
+          - python-pip
+
+    - name: Install python packages
+      pip:
+        name: "{{ packages }}"
+      vars:
+        packages:
+          - MySQL-python
 
     - name: Remove default nginx conf
       file:
@@ -53,6 +62,24 @@
       file:
         path: /etc/update-motd.d/80-livepatch
         mode: a-x
+
+    - name: Removes mysql anonymous user
+      mysql_user:
+        name: ""
+        host: localhost
+        state: absent
+
+    - name: Create mysql csc648 user
+      mysql_user:
+        name: csc648
+        password: csc648
+        priv: "*.*:ALL"
+        state: present
+
+    - name: Create mysql csc648 database
+      mysql_db:
+        name: csc648
+        state: present
 
 # host webserver is only run for production
 - hosts: webserver

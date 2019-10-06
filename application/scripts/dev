@@ -1,8 +1,24 @@
 #!/usr/bin/env bash
 
-# run `vagrant up` if it's not up already
-vagrant status | grep 'default\s*running' -q || vagrant up
-vagrant ssh
+case "$1" in
+  '')
+    # connect to virtual machine
 
-echo ''
-echo -e "Remember to run '\e[33mvagrant suspend\e[39m' when done working"
+    # run `vagrant up` if it's not up already
+    vagrant status | grep 'default\s*running' -q || vagrant up
+    vagrant ssh
+
+    echo ''
+    echo -e 'Remember to run "\e[33mvagrant suspend\e[39m" when done working'
+    ;;
+  'update')
+    # update virtual machine and run ansible
+    vagrant up --provision
+    ;;
+  *)
+    echo 'Usage:'
+    echo -e "\t$0"
+    echo -e "\t$0 update"
+    exit 1
+    ;;
+esac
