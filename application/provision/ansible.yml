@@ -135,6 +135,12 @@
 # host default is only run for vagrant
 - hosts: default
   become: yes
+  handlers:
+    - name: Restart mysql
+      service:
+        name: mysql
+        state: restarted
+
   tasks:
     - name: Change default folder for ssh
       lineinfile:
@@ -153,3 +159,18 @@
         src: /home/vagrant/node_modules
         dest: /vagrant/node_modules
         state: link
+
+    - name: Create mysql csc648 user accessible from VM host
+      mysql_user:
+        name: csc648
+        password: csc648
+        host: "%"
+        priv: "*.*:ALL"
+        state: present
+
+    - name: Allow VM host to connect to mysql
+      lineinfile:
+        path: /etc/mysql/mysql.conf.d/mysqld.cnf
+        regexp: "^bind-address"
+        line: bind-address = 0.0.0.0
+      notify: Restart mysql
