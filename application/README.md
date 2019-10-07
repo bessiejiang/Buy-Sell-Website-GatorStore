@@ -28,8 +28,8 @@ Tools being used for development
 
 - [Ansible](https://www.ansible.com)
 
-  **For local development this will automatically be installed**<br/>
-  **Only need to manually download if deploying to production**
+  **For local development this will automatically be installed.**<br/>
+  **You only need to manually download if you are deploying to production.**
 
   Used to install the server software like Node.js and MySQL
 
@@ -61,11 +61,11 @@ npm install
 
 After that, you should be ready to start the server!
 
-**When you are done, you should suspend the VM to save laptop battery: `vagrant suspend`**
+**When you are done, press ctrl-d to exit the vagrant shell**
 
 ## 2. Run the local server
 
-If you haven't already, start the VM and get a remote shell:
+If you haven't already, start the VM and get a vagrant shell:
 
 ```sh
 ./scripts/dev
@@ -74,18 +74,37 @@ If you haven't already, start the VM and get a remote shell:
 Now start the server and have it automatically restart when changes are made:
 
 ```sh
-npm run watch
+npm run dev
 ```
 
-_Note: if the server doesn't auto restart, type `rs` and press Enter to restart it_
+_Tip: if the server doesn't auto restart, type `rs` and press Enter to restart it_
 
 Open up [http://localhost:1648](http://localhost:1648) to see the local server.
 
 Woohoo, now you can work on stuff 🎉!
 
-**When you are done, you should suspend the VM to save laptop battery: `vagrant suspend`**
+**When you are done, press ctrl-d to exit the vagrant shell**
 
-## 3. Auto format source code
+## 3. Develop and push code
+
+If you haven't already, start the VM and get a vagrant shell:
+
+```sh
+./scripts/dev
+```
+
+### Database
+
+To setup the database for the first time, run these:
+
+```sh
+./scripts/db reset
+./scripts/db seed
+```
+
+_Note: you will need to run those again if the models or seed data changes_
+
+### Code formatting
 
 In an effort to keep code style the same, there is an auto formatter that should be run before commits, or at least before Pull Requests.
 
@@ -99,7 +118,19 @@ npm run check
 npm run fix
 ```
 
+## Troubleshooting
+
+If you see `command not found: sequelize` then run:
+
+```sh
+./scripts/dev
+```
+
+And try again.
+
 # Deploying to production server
+
+_Note: `./scripts/prod` should **NOT** be run in the vagrant shell (`vagrant@vagrant:/vagrant$`)_
 
 To deploy the code on the master branch and restart the production server:
 

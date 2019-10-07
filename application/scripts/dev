@@ -9,7 +9,7 @@ case "$1" in
     vagrant ssh
 
     echo ''
-    echo -e 'Remember to run "\e[33mvagrant suspend\e[39m" when done working'
+    echo -e 'Remember to run "\e[33mvagrant suspend\e[39m" when done working to save laptop battery'
     ;;
   'update')
     # update virtual machine and run ansible
@@ -17,8 +17,8 @@ case "$1" in
     ;;
   *)
     echo 'Usage:'
-    echo -e "\t$0"
-    echo -e "\t$0 update"
+    echo -e "\t$0        \tConnect to virtual machine"
+    echo -e "\t$0 update \tUpdate and run ansible on virtual machine"
     exit 1
     ;;
 esac

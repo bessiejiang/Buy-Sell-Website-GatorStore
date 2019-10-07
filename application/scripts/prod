@@ -32,10 +32,10 @@ case "$1" in
     ;;
   *)
     echo 'Usage:'
-    echo -e "\t$0 ansible"
-    echo -e "\t$0 code"
-    echo -e "\t$0 ssh"
-    echo -e "\t$0 update"
+    echo -e "\t$0 ansible \tRun ansible on production"
+    echo -e "\t$0 code    \tPush master branch to production"
+    echo -e "\t$0 ssh     \tOpen SSH to production"
+    echo -e "\t$0 update  \tUpdate production server"
     exit 1
     ;;
 esac
