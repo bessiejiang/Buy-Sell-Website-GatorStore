@@ -104,6 +104,18 @@ To setup the database for the first time, run these:
 
 _Note: you will need to run those again if the models or seed data changes_
 
+To export data into the file `db-export.json`, run this:
+
+```sh
+# export all data
+./scripts/db export
+
+# export only data for model-name, ie. `user`, `post`, etc.
+./scripts/db export model-name
+```
+
+This is useful for getting data to put into the seed files.
+
 ### Code formatting
 
 In an effort to keep code style the same, there is an auto formatter that should be run before commits, or at least before Pull Requests.

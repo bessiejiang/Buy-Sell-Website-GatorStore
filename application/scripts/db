@@ -5,6 +5,9 @@
 cd "$( dirname "${BASH_SOURCE[0]}" )/.."
 
 case "$1" in
+  'export')
+    node ./scripts/db-export.js "$2"
+    ;;
   'reset')
     # drop and recreate all model tables
     npx sequelize db:migrate:undo
@@ -17,8 +20,9 @@ case "$1" in
     ;;
   *)
     echo 'Usage:'
-    echo -e "\t$0 reset \tDrop and recreate all model tables"
-    echo -e "\t$0 seed  \tRemove all model data and populate with seeders folder"
+    echo -e "\t$0 export [model] \tExports all (or model only) data from the database"
+    echo -e "\t$0 reset          \tDrop and recreate all model tables"
+    echo -e "\t$0 seed           \tRemove all model data and populate with seeders folder"
     exit 1
     ;;
 esac
