@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+
+# cd to application folder
+cd "$( dirname "${BASH_SOURCE[0]}" )/.."
+
+case "$1" in
+  'export')
+    node ./scripts/db-export.js "$2"
+    ;;
+  'reset')
+    # drop and recreate all model tables
+    npx sequelize db:migrate:undo
+    npx sequelize db:migrate
+    ;;
+  'seed')
+    # remove all data and populate with seed data
+    npx sequelize db:seed:undo:all
+    npx sequelize db:seed:all
+    ;;
+  *)
+    echo 'Usage:'
+    echo -e "\t$0 export [model] \tExports all (or model only) data from the database"
+    echo -e "\t$0 reset          \tDrop and recreate all model tables"
+    echo -e "\t$0 seed           \tRemove all model data and populate with seeders folder"
+    exit 1
+    ;;
+esac

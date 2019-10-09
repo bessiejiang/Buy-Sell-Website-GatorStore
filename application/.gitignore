@@ -1,2 +1,4 @@
 .vagrant
+ansible.retry
 node_modules
+db-export.json

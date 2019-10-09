@@ -1,8 +1,3 @@
 .vscode
 .DS_Store
-application/.DS_Store
-application/src/.DS_Store
-application/src/public/.DS_Store
-application/src/public/jinying_ren/.DS_Store
-application/src/public/routes/.DS_Store
-.idea/
+.idea

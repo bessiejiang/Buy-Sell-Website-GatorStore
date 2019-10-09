@@ -9,13 +9,10 @@ export prod_ip='34.83.135.4'
 cd "$( dirname "${BASH_SOURCE[0]}" )/.."
 
 case "$1" in
-  "ansible")
+  'ansible')
     ansible-playbook -i provision/webserver.ini provision/ansible.yml
     ;;
-  "bootstrap")
-    ssh -i ../credentials/ssh/id_csc648 ${prod_user}@${prod_ip} 'sudo bash -s' < provision/bootstrap.sh
-    ;;
-  "code")
+  'code')
     if git remote | grep 'prod' -q; then
       echo 'Pushing branch master'
       git push prod master
@@ -27,11 +24,18 @@ case "$1" in
       git push prod +master:refs/heads/master
     fi
     ;;
-  "ssh")
+  'ssh')
     ssh -i ../credentials/ssh/id_csc648 ${prod_user}@${prod_ip}
     ;;
+  'update')
+    ssh -i ../credentials/ssh/id_csc648 ${prod_user}@${prod_ip} 'sudo bash -s' < provision/bootstrap.sh
+    ;;
   *)
-    echo "Specify one of: ansible, bootstrap, code, ssh"
+    echo 'Usage:'
+    echo -e "\t$0 ansible \tRun ansible on production"
+    echo -e "\t$0 code    \tPush master branch to production"
+    echo -e "\t$0 ssh     \tOpen SSH to production"
+    echo -e "\t$0 update  \tUpdate production server"
     exit 1
     ;;
 esac
