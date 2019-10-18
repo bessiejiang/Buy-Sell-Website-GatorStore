@@ -23,12 +23,11 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         unique: true
       },
-      username: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true
-      },
       password: {
+        type: DataTypes.TEXT,
+        allowNull: false
+      },
+      role: {
         type: DataTypes.TEXT,
         allowNull: false
       }
@@ -39,7 +38,6 @@ module.exports = (sequelize, DataTypes) => {
   User.associate = function(models) {
     // Associations can be defined here
     // See https://sequelize.org/master/manual/associations.html
-    models.User.hasMany(models.Post);
   };
 
   return User;

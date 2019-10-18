@@ -18,9 +18,11 @@ module.exports = (sequelize, DataTypes) => {
   const Post = sequelize.define(
     "Post",
     {
-      name: DataTypes.TEXT,
+      title: DataTypes.TEXT,
       price: DataTypes.FLOAT,
       description: DataTypes.TEXT,
+      photo: DataTypes.TEXT,
+      tag: DataTypes.TEXT,
       approval: {
         type: DataTypes.ENUM,
         values: ["pending", "approved", "rejected"]
@@ -32,6 +34,12 @@ module.exports = (sequelize, DataTypes) => {
   Post.associate = function(models) {
     // Associations can be defined here
     // See https://sequelize.org/master/manual/associations.html
+
+    // Add UserId to Post
+    models.Post.belongsTo(models.User);
+
+    // Add CategoryId to Post
+    // models.Post.belongsTo(models.Category);
   };
 
   return Post;

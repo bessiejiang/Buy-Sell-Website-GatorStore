@@ -18,18 +18,18 @@ module.exports = {
       setDefaults([
         {
           email: "silvester-seller@mail.sfsu.edu",
-          username: "silvester",
-          password: "password"
+          password: "password",
+          role: "user"
         },
         {
           email: "bella-buyer@mail.sfsu.edu",
-          username: "bella",
-          password: "password"
+          password: "password",
+          role: "user"
         },
         {
           email: "ali-admin@mail.sfsu.edu",
-          username: "ali",
-          password: "password"
+          password: "password",
+          role: "user,admin"
         }
       ]),
       {}
