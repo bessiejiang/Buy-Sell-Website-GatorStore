@@ -12,7 +12,9 @@ const jesseRouter = require("../src/public/routes/jesseRouter");
 const angeloRouter = require("../src/public/routes/angeloRouter");
 const jinyingRouter = require("../src/public/routes/jinyingRouter");
 const melissaRouter = require("../src/public/routes/melissaRouter");
+
 app.use(express.static(path.join(__dirname, "public")));
+app.use('/static', express.static(path.join(__dirname, "static")));
 
 let PATH = path.resolve();
 app.get("/about", function(req, res) {
