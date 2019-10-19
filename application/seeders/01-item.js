@@ -6,7 +6,7 @@ const { Item } = require("../models");
 /**
  * If you modify something here make sure to run:
  * ```
- * ./scripts/db seed
+ * ./scripts/db reset
  * ```
  *
  * WARNING: That will remove all data from the database and replace it with only

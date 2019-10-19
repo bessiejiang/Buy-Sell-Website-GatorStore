@@ -2,7 +2,6 @@
  * If you modify something here, make sure to update the seeders folder and run:
  * ```
  * ./scripts/db reset
- * ./scripts/db seed
  * ```
  *
  * WARNING: That will remove all data from the database and replace it with only
