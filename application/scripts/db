@@ -9,7 +9,7 @@ case "$1" in
     node ./scripts/db-export.js "$2"
     ;;
   'reset')
-    echo -n "Are you sure you want to reset the database (y/N)? "
+    echo -n "Really reset the database? [y/N] "
     read answer
     if [ "$answer" != "${answer#[Yy]}" ] ;then
       # drop and recreate all model tables
