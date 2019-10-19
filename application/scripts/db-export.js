@@ -1,8 +1,9 @@
 const fs = require("fs");
+const path = require("path");
 const readline = require("readline");
 const models = require("../models");
 
-const exportFile = __dirname + "/../db-export.json";
+const exportFile = path.resolve(__dirname, "../db-export.json");
 const excludeFields = ["id", "createdAt", "updatedAt"];
 
 fs.stat(exportFile, (err, stat) => {
@@ -32,8 +33,14 @@ function runExport() {
     // if specified a model, try to find it
     modelName = capitalize(modelName);
 
-    if (!(modelName in models)) {
-      return console.log(`Model "${modelName}" not found`);
+    if (!(modelName in models) || modelName === "Sequelize") {
+      const allModels = Object.keys(models)
+        .map(s => s.toLowerCase())
+        .filter(s => s !== "sequelize");
+
+      console.log(`Model "${modelName}" not found`);
+      console.log("Specify one of:", allModels.join(", "));
+      return;
     }
   }
 
@@ -42,6 +49,7 @@ function runExport() {
 
     if (modelName) {
       // if specified a model, use that
+      console.log("Exporting", modelName);
       exportData[modelName] = await findAll(models[modelName]);
     } else {
       // else find all
@@ -50,6 +58,7 @@ function runExport() {
           continue;
         }
 
+        console.log("Exporting", key);
         exportData[key] = await findAll(Model);
       }
     }
@@ -60,15 +69,19 @@ function runExport() {
 }
 
 async function findAll(Model) {
-  return await Model.findAll().then(items =>
-    items.map(item => {
-      for (let field of excludeFields) {
-        delete item.dataValues[field];
-      }
+  return await Model.findAll()
+    .then(records =>
+      records.map(record => {
+        for (let field of excludeFields) {
+          delete record.dataValues[field];
+        }
 
-      return item.dataValues;
-    })
-  );
+        return record.dataValues;
+      })
+    )
+    .catch(err => {
+      console.log(err.original.sqlMessage);
+    });
 }
 
 function capitalize(string) {

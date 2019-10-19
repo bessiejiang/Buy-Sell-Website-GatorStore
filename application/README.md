@@ -99,10 +99,9 @@ To setup the database for the first time, run these:
 
 ```sh
 ./scripts/db reset
-./scripts/db seed
 ```
 
-_Note: you will need to run those again if the models or seed data changes_
+_Note: you will need to run that again if the models or seed data changes_
 
 To export data into the file `db-export.json`, run this:
 
@@ -110,7 +109,7 @@ To export data into the file `db-export.json`, run this:
 # export all data
 ./scripts/db export
 
-# export only data for model-name, ie. `user`, `post`, etc.
+# export only data for model-name, ie. `user`, `item`, etc.
 ./scripts/db export model-name
 ```
 
