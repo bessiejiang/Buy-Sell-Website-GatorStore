@@ -60,13 +60,13 @@ function runExport() {
 }
 
 async function findAll(Model) {
-  return await Model.findAll().then(items =>
-    items.map(item => {
+  return await Model.findAll().then(records =>
+    records.map(record => {
       for (let field of excludeFields) {
-        delete item.dataValues[field];
+        delete record.dataValues[field];
       }
 
-      return item.dataValues;
+      return record.dataValues;
     })
   );
 }

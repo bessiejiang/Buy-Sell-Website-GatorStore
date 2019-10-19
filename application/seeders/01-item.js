@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const rimraf = require("rimraf");
-const { Post } = require("../models");
+const { Item } = require("../models");
 
 /**
  * If you modify something here make sure to run:
@@ -13,12 +13,12 @@ const { Post } = require("../models");
  *          the data from the seeders folder!
  */
 
-const seedImagesPath = path.join(__dirname, "01-post-images");
+const seedImagesPath = path.join(__dirname, "01-item-images");
 const staticImagesPath = path.join(__dirname, "..", "src", "static", "photos");
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    // Copy images from 01-post-images to src/static/images
+    // Copy images from 01-item-images to src/static/images
     const start = Date.now();
     const images = fs.readdirSync(seedImagesPath);
 
@@ -43,7 +43,7 @@ module.exports = {
 
     // All items have an id that starts at 1 and goes up from there
     return queryInterface.bulkInsert(
-      Post.tableName,
+      Item.tableName,
       setDefaults([
         {
           title: "IKEA Sofa",
@@ -104,7 +104,7 @@ module.exports = {
       `== ${path.basename(__filename, ".js")}: removed images (${duration}s)`
     );
 
-    return queryInterface.bulkDelete(Post.tableName, null, {});
+    return queryInterface.bulkDelete(Item.tableName, null, {});
   }
 };
 
