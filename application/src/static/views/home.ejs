@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+    <script type="text/javascript" src="./lib/jquery.js"></script>
+    <script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js"></script>
+    <script type="text/javascript" src="./lib/bootstrap.js"></script>
+    <script type="text/javascript" src="./js/home.js"></script>
+    <script src="https://kit.fontawesome.com/cbf78f87f8.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./lib/bootstrap.css">
+    <link rel="stylesheet" href="./static/styles/home.css" />
+    <title>Home Page</title>
+</head>
+<body>
+    <div class="header">
+        <div class="header-image"></div>
+        <div class="header-title">
+            <p class="title"> Gator Store </p>
+        </div>
+        <div class="header-login">
+            <p>Admin</p>
+            <p><a href="#">Sign In</a> | <a href="#">Log In</a></p>
+        </div>
+    </div>
+    <div class="search-bar">
+        <form action="" method="get">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Go Find It!" >
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="navi-bar">
+        <div class="search-result">
+            <p>
+                Here returns the search result
+            </p>
+        </div>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="category_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Category
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">All</a>
+                <a class="dropdown-item" href="#">Book</a>
+                <a class="dropdown-item" href="#">Electric</a>
+                <a class="dropdown-item" href="#">Furniture</a>
+                <a class="dropdown-item" href="#">Tutor</a>
+            </div>
+        </div>
+    </div>
+    <div class="display-container"></div>
+
+
+
+</body>
+</html>
