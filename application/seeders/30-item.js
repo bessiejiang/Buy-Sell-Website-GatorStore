@@ -64,7 +64,7 @@ module.exports = {
           photo: "/static/photos/23170998252_1c52ebc167_o.jpg",
           approval: "pending",
           UserId: 1,
-          CategoryId: 1
+          CategoryId: 2
         },
         {
           title: "My book",
@@ -73,7 +73,7 @@ module.exports = {
           photo: null,
           approval: "rejected",
           UserId: 1,
-          CategoryId: 1
+          CategoryId: 2
         },
         {
           title: "Sector 9 longboard",
@@ -83,7 +83,7 @@ module.exports = {
           photo: "/static/photos/5697784828_41e0a5b365_k.jpg",
           approval: "approved",
           UserId: 1,
-          CategoryId: 1
+          CategoryId: 4
         },
         {
           title: "MATH 324 textbook",
@@ -93,8 +93,9 @@ module.exports = {
           photo: "/static/photos/4764741238_6d041f648e_h.jpg",
           approval: "approved",
           UserId: 1,
-          CategoryId: 1
-        }
+          CategoryId: 2
+        },
+
       ]),
       {}
     );

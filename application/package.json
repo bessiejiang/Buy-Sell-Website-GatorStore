@@ -19,6 +19,7 @@
     "express": "^4.17.1",
     "mysql": "^2.17.1",
     "mysql2": "^1.7.0",
+    "npx": "^10.2.0",
     "sequelize": "^5.19.3"
   },
   "devDependencies": {

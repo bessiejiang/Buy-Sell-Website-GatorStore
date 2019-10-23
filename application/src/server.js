@@ -6,6 +6,11 @@ const PORT = 1648;
 const models = require("../models");
 const homeRouter = require("./router/homeRouter.js");
 const fetchData = require("./controller/fetchData");
+const fetchBook=require("./controller/fetchBook")
+const fetchElec=require("./controller/fetchElec")
+const fetchEquipment=require("./controller/fetchEquipment")
+const fetchTutor=require("./controller/fetchTutor")
+const fetchFurniture=require("./controller/fetchFuniture")
 
 app.use(express.static(path.join(__dirname)));
 // console.log(__dirname);
@@ -34,3 +39,8 @@ models.sequelize
 
 app.use('/', homeRouter);
 app.use('/getAll', fetchData);
+app.use('/getBook', fetchBook);
+app.use('/getElec', fetchElec);
+app.use('/getEquipment', fetchEquipment);
+app.use('/getTutor', fetchTutor);
+app.use('/getFurniture', fetchFurniture);
