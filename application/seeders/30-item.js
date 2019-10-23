@@ -13,7 +13,8 @@ const { Item } = require("../models");
  *          the data from the seeders folder!
  */
 
-const seedImagesPath = path.join(__dirname, "01-item-images");
+const seedName = path.basename(__filename, ".js");
+const seedImagesPath = path.join(__dirname, seedName + "-images");
 const staticImagesPath = path.join(__dirname, "..", "src", "static", "photos");
 
 module.exports = {
@@ -52,7 +53,8 @@ module.exports = {
             "Selling my sofa I had for 3 semesters.\nColor is light gray. Clean, no stains.",
           photo: "/static/images/456776348_0d3644f73c_k.jpg",
           approval: "approved",
-          UserId: 1
+          UserId: 1,
+          CategoryId: 1
         },
         {
           title: "CSC 510 textbook",
@@ -61,7 +63,8 @@ module.exports = {
             "Foundations of Algorithms Using C++ Pseudocode (Third Edition).\nISBN: 0763723878. Good condition.",
           photo: "/static/photos/23170998252_1c52ebc167_o.jpg",
           approval: "pending",
-          UserId: 1
+          UserId: 1,
+          CategoryId: 1
         },
         {
           title: "My book",
@@ -69,7 +72,8 @@ module.exports = {
           description: "Book for sale",
           photo: null,
           approval: "rejected",
-          UserId: 1
+          UserId: 1,
+          CategoryId: 1
         },
         {
           title: "Sector 9 longboard",
@@ -78,7 +82,8 @@ module.exports = {
             "Bearings are only one month old. It's a great board and has had lot's of use.\nSelling this because I got a boosted board now.",
           photo: "/static/photos/5697784828_41e0a5b365_k.jpg",
           approval: "approved",
-          UserId: 1
+          UserId: 1,
+          CategoryId: 1
         },
         {
           title: "MATH 324 textbook",
@@ -87,7 +92,8 @@ module.exports = {
             "Math book for MATH 324. No writing in it. I got it brand new.",
           photo: "/static/photos/4764741238_6d041f648e_h.jpg",
           approval: "approved",
-          UserId: 1
+          UserId: 1,
+          CategoryId: 1
         }
       ]),
       {}
