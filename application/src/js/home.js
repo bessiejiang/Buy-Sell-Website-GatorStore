@@ -16,7 +16,7 @@ $(document).ready(function () {
                             +obj.price+" "
                             +obj.description+" "
                             +"</p>"
-                        let wrap="<div style='border-bottom: solid black 1px; margin: 1%'>" +img + add+"</div>";
+                        let wrap="<div style='border: groove #e2dede 2px; margin: 1%'>" +img + add+"</div>";
                         $(".display-container").append(wrap);
                     }
                 })
@@ -32,7 +32,7 @@ $(document).ready(function () {
                             +obj.price+" "
                             +obj.description+" "
                             +"</p>"
-                        let wrap="<div style='border-bottom: solid black 1px; margin: 1%'>" +img + add+"</div>"
+                        let wrap="<div style='border: groove #e2dede 2px; margin: 1%'>" +img + add+"</div>"
                         $(".display-container").append(wrap);
                     }
                 })
@@ -49,7 +49,7 @@ $(document).ready(function () {
                             +obj.price+" "
                             +obj.description+" "
                             +"</p>"
-                        let wrap="<div style='border-bottom: solid black 1px; margin: 1%'>" +img + add+"</div>"
+                        let wrap="<div style='border: groove #e2dede 2px; margin: 1%'>" +img + add+"</div>"
                         $(".display-container").append(wrap);
                     }
                 })
@@ -66,7 +66,7 @@ $(document).ready(function () {
                             +obj.price+" "
                             +obj.description+" "
                             +"</p>"
-                        let wrap="<div style='border-bottom: solid black 1px; margin: 1%'>" +img + add+"</div>"
+                        let wrap="<div style='border: groove #e2dede 2px; margin: 1%'>" +img + add+"</div>"
                         $(".display-container").append(wrap);
                     }
                 })
@@ -83,7 +83,7 @@ $(document).ready(function () {
                             +obj.price+" "
                             +obj.description+" "
                             +"</p>"
-                        let wrap="<div style='border-bottom: solid black 1px; margin: 1%'>" +img + add+"</div>"
+                        let wrap="<div style='border: groove #e2dede 2px; margin: 1%'>" +img + add+"</div>"
                         $(".display-container").append(wrap);
                     }
                 })
@@ -100,7 +100,7 @@ $(document).ready(function () {
                             +obj.price+" "
                             +obj.description+" "
                             +"</p>"
-                        let wrap="<div style='border-bottom: solid black 1px; margin: 1%'>" +img + add+"</div>"
+                        let wrap="<div style='border: groove #e2dede 2px; margin: 1%'>" +img + add+"</div>"
                         $(".display-container").append(wrap);
                     }
                 })
