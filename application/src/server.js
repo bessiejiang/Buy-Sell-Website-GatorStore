@@ -12,11 +12,10 @@ const fetchEquipment=require("./controller/fetchEquipment")
 const fetchTutor=require("./controller/fetchTutor")
 const fetchFurniture=require("./controller/fetchFuniture")
 
-app.use(express.static(path.join(__dirname)));
-// console.log(__dirname);
+app.use("/static", express.static(path.join(__dirname, 'static')));
 
 //re-set up default views folder to public
-app.set("views", path.join(__dirname, "/static"));
+app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "html");
 app.engine("html", consolidate.ejs);
 
