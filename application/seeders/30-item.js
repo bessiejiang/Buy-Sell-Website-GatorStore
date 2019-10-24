@@ -51,7 +51,7 @@ module.exports = {
           price: 150,
           description:
             "Selling my sofa I had for 3 semesters.\nColor is light gray. Clean, no stains.",
-          photo: "/static/images/456776348_0d3644f73c_k.jpg",
+          photo: "/static/photos/456776348_0d3644f73c_k.jpg",
           approval: "approved",
           UserId: 1,
           CategoryId: 1
