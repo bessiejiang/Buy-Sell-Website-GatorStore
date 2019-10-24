@@ -14,32 +14,18 @@
 module.exports = (sequelize, DataTypes) => {
   // The name should always be singular (ie. Model not Models)
   // Available DataTypes: https://sequelize.org/master/manual/data-types.html
-  const Item = sequelize.define(
-    "Item",
+  const Category = sequelize.define(
+    "Category",
     {
-      title: DataTypes.TEXT,
-      price: DataTypes.FLOAT,
-      description: DataTypes.TEXT,
-      photo: DataTypes.TEXT,
-      tag: DataTypes.TEXT,
-      approval: {
-        type: DataTypes.ENUM,
-        values: ["pending", "approved", "rejected"]
-      }
+      name: DataTypes.TEXT
     },
     {}
   );
 
-  Item.associate = function(models) {
+  Category.associate = function(models) {
     // Associations can be defined here
     // See https://sequelize.org/master/manual/associations.html
-
-    // Add UserId to Item
-    models.Item.belongsTo(models.User);
-
-    // Add CategoryId to Item
-    models.Item.belongsTo(models.Category);
   };
 
-  return Item;
+  return Category;
 };
