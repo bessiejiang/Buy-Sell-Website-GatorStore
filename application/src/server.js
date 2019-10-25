@@ -7,7 +7,7 @@ const models = require("../models");
 const homeRouter = require("./router/homeRouter.js");
 const itemRouter = require("./router/itemRouter.js");
 
-app.use("/static", express.static(path.join(__dirname, 'static')));
+app.use("/static", express.static(path.join(__dirname, "static")));
 
 //re-set up default views folder to public
 app.set("views", path.join(__dirname, "views"));
@@ -15,21 +15,21 @@ app.set("view engine", "html");
 app.engine("html", consolidate.ejs);
 
 models.sequelize
-    .authenticate()
-    .then(() => {
-        console.log("Database connected");
-        return models.sequelize.sync();
-    })
-    .then(() => {
-        console.log("Database synchronized");
+  .authenticate()
+  .then(() => {
+    console.log("Database connected");
+    return models.sequelize.sync();
+  })
+  .then(() => {
+    console.log("Database synchronized");
 
-        app.listen(PORT, () => {
-            console.log(`=> Listening on http://localhost:${PORT}`);
-        });
-    })
-    .catch(err => {
-        console.log("Error with database:", err);
+    app.listen(PORT, () => {
+      console.log(`=> Listening on http://localhost:${PORT}`);
     });
+  })
+  .catch(err => {
+    console.log("Error with database:", err);
+  });
 
-app.use('/', homeRouter);
-app.use('/getItems', itemRouter);
+app.use("/", homeRouter);
+app.use("/getItems", itemRouter);

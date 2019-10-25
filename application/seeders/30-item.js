@@ -94,8 +94,7 @@ module.exports = {
           approval: "approved",
           UserId: 1,
           CategoryId: 2
-        },
-
+        }
       ]),
       {}
     );
