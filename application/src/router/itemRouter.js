@@ -3,10 +3,9 @@ const router = express.Router();
 const Item = require("../controller/item");
 
 router.get("/", function(req, res) {
-  let category = req.query.category;
-  let search = req.query.search;
+  const { search, category, limit, offset } = req.query;
 
-  Item.find({ search, category }).then(result => {
+  Item.find({ search, category, limit, offset }).then(result => {
     res.json(result);
   });
 });
