@@ -6,6 +6,8 @@ module.exports = {
     const where = {};
 
     if (search) {
+      search = search.slice(0, 40).replace(/[^0-9A-Za-z ]/g, "");
+
       where[Op.or] = {
         title: {
           [Op.like]: `%${search}%`
