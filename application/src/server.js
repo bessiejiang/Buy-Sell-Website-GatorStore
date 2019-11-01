@@ -6,6 +6,7 @@ const PORT = 1648;
 const models = require("../models");
 const homeRouter = require("./router/homeRouter.js");
 const itemRouter = require("./router/itemRouter.js");
+const itemDetailsRouter = require("./router/itemDetailsRouter.js");
 
 app.use("/static", express.static(path.join(__dirname, "static")));
 
@@ -33,3 +34,4 @@ models.sequelize
 
 app.use("/", homeRouter);
 app.use("/getItems", itemRouter);
+app.use("/item", itemDetailsRouter);
