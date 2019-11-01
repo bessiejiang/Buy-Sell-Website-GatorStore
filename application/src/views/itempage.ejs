@@ -1,0 +1,40 @@
+<%include ./partials/header.ejs%>
+
+<%const data = JSON.parse(JSON.stringify(item.dataValues))%>
+<%console.log(data)%>;
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 col-md-8">
+      <h2><%=data.title%></h2>
+      <div>
+        <img class="item-img" src = <%=data.photo%> alt="" />
+      </div>
+      <div>
+        <h5>$<%=data.price%></h5>
+        <p><strong>Last updated:</strong> <%=data.updatedAt%></p>
+      </div>
+
+      <div class="item-description">
+        <p><%=data.description%></p>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-4">
+      <h5>Seller:</h5>
+      <div class="seller-image text-center">
+        <img
+          src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
+          style="max-width: 250px;"
+          alt=""
+        />
+        <p>SellerFirst SellerLast</p>
+      </div>
+      <div class="text-center">
+        <button class="btn btn-warning">Contact Seller</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%include ./partials/footer.ejs%>

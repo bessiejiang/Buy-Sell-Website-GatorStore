@@ -1,0 +1,76 @@
+<%include ./partials/header.ejs%>
+
+<script language="javascript" type="text/javascript">
+    const check = input => {
+        if (input.value != document.getElementById("apassword").value) {
+            input.setCustomValidity("Password Must be Matching.");
+        } else {
+            // input is valid -- reset the error message
+            input.setCustomValidity("");
+        }
+    };
+</script>
+
+<div class="container signup">
+    <h2 class="text-center">SIGN UP</h2>
+    <div class="form">
+        <form>
+            <div class="form-group">
+                <label for="">First Name:</label>
+                <input class="form-control" type="text" required />
+            </div>
+            <div class="form-group">
+                <label for="">Last Name:</label>
+                <input class="form-control" type="text" required />
+            </div>
+            <div class="form-group">
+                <label for="">Email:</label>
+                <input class="form-control" type="text" required />
+            </div>
+            <div class="form-group">
+                <label for="">Password:</label>
+                <input
+                    id="apassword"
+                    name="apassword"
+                    class="form-control"
+                    type="password"
+                    required
+                />
+                <small class="form-text text-muted">
+                    Your password must be 8-20 characters long, contain letters
+                    and numbers, and must not contain spaces, special
+                    characters, or emoji.
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="">Confirm Password:</label>
+                <span id="message"></span>
+                <input
+                    oninput="check(this)"
+                    name="confirm_password"
+                    id="confirm_password"
+                    class="form-control"
+                    type="password"
+                    required
+                />
+            </div>
+
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" required />
+                <label class="form-check-label"
+                    >I agree to terms and conditions</label
+                >
+            </div>
+
+            <div class="form-group text-center">
+                <button class="btn btn-success btn-lg">
+                    Sign Up
+                </button>
+            </div>
+        </form>
+    </div>
+    <div>
+        <p>Already have an account? <a href="/login">Login</a></p>
+    </div>
+</div>
+<%include ./partials/footer.ejs%>
