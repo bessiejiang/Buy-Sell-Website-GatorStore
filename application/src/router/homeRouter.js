@@ -8,7 +8,7 @@ router.get("/", function(req, res) {
     Category.find(),
     Item.find({ limit: 6, orderBy: "createdAt", orderDirection: "desc" })
   ]).then(([categories, items]) => {
-    res.render("home.ejs", {
+    res.render("homepage.ejs", {
       categories,
       items
     });

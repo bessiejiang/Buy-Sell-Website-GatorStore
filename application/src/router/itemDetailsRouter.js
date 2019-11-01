@@ -4,7 +4,7 @@ const Item = require("../controller/item");
 
 router.get("/:id", function(req, res) {
   Item.findByPk(req.params.id).then(item => {
-    res.render("item-details.ejs", {
+    res.render("itempage.ejs", {
       item
     });
   });
