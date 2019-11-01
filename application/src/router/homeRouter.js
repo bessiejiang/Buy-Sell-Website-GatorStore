@@ -4,10 +4,13 @@ const Item = require("../controller/item");
 const router = express.Router();
 
 router.get("/", function(req, res) {
-  Category.find().then(categories => {
-    console.log(categories.length);
+  Promise.all([
+    Category.find(),
+    Item.find({ limit: 6, orderBy: "createdAt", orderDirection: "desc" })
+  ]).then(([categories, items]) => {
     res.render("home.ejs", {
-      categories
+      categories,
+      items
     });
   });
 });
