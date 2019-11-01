@@ -2,8 +2,9 @@ const { Item, Sequelize } = require("../../models");
 const Op = Sequelize.Op;
 
 module.exports = {
-  find({ search, category, limit, offset } = {}) {
+  find({ search, category, limit, offset, orderBy, orderDirection } = {}) {
     const where = {};
+    const order = [];
 
     if (search) {
       search = search.slice(0, 40).replace(/[^0-9A-Za-z ]/g, "");
@@ -33,16 +34,24 @@ module.exports = {
       offset = undefined;
     }
 
+    if (orderBy && orderBy in Item.tableAttributes) {
+      order.push([orderBy]);
+
+      if (orderDirection && orderDirection.toLowerCase() === "desc") {
+        order[0].push("DESC");
+      } else {
+        order[0].push("ASC");
+      }
+    }
+
     return Item.findAndCountAll({
       where,
       limit,
-      offset
+      offset,
+      order
     }).catch(e => {
       console.log(e.original);
-      return {
-        count: 0,
-        rows: []
-      };
+      return null;
     });
   },
   findByPk(id) {
