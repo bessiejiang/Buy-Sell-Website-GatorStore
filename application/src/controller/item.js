@@ -1,4 +1,4 @@
-const { Item, Sequelize } = require("../../models");
+const { Item, Category, User, Sequelize } = require("../../models");
 const Op = Sequelize.Op;
 
 module.exports = {
@@ -48,13 +48,24 @@ module.exports = {
       where,
       limit,
       offset,
-      order
-    }).catch(e => {
-      console.log(e.original);
-      return null;
-    });
+      order,
+      include: [Category, User]
+    })
+      .then(({ count, rows }) => ({ count, rows: toJSON(rows) }))
+      .catch(e => {
+        console.log(e.original);
+        return null;
+      });
   },
   findByPk(id) {
-    return Item.findByPk(id);
+    return Item.findByPk(id, { include: [Category, User] }).then(toJSON);
   }
 };
+
+function toJSON(item) {
+  if (Array.isArray(item)) {
+    return item.map(toJSON);
+  }
+
+  return item.get({ plain: true });
+}
