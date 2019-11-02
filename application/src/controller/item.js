@@ -59,6 +59,14 @@ module.exports = {
   },
   findByPk(id) {
     return Item.findByPk(id, { include: [Category, User] }).then(toJSON);
+  },
+  middleware(options) {
+    return (req, res, next) => {
+      module.exports.find(options || req.query).then(items => {
+        res.locals.items = items;
+        next();
+      });
+    };
   }
 };
 
