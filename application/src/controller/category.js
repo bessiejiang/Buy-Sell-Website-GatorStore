@@ -7,11 +7,13 @@ module.exports = {
   findByPk(id) {
     return Category.findByPk(id).then(toJSON);
   },
-  middleware(req, res, next) {
-    module.exports.find().then(categories => {
-      res.locals.categories = categories;
-      next();
-    });
+  middleware() {
+    return (req, res, next) => {
+      module.exports.find().then(categories => {
+        res.locals.categories = categories;
+        next();
+      });
+    };
   }
 };
 
