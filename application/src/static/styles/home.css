@@ -2,13 +2,14 @@ body {
   margin: 0;
   padding: 0;
 }
+
 .item-description{
   border: 2px solid black;
   padding: 5px;
   height: 150px;
 }
 .item-img {
-  max-width: 70%;
+  max-width: 80%;
   height: 25vw;
 }
 .items-container {

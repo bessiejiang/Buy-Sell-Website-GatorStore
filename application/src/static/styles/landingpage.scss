@@ -1,0 +1,28 @@
+.landing {
+
+    .background {
+        height: 100vh;
+        background-image: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), url('');
+        background-size: cover;
+        background-position: top;
+
+        h1 {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            color: black;
+            font-size: 55px;
+            text-align: center;
+            padding: 70px 10px 0 10px;
+        }
+
+        h2 {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            color: black;
+            font-weight: normal;
+            text-align: center;
+            font-size: 20px;
+            padding: 10px 10px 30px 10px;
+        }
+    }
+}

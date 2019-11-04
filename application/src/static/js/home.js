@@ -15,6 +15,7 @@ $(document).ready(function() {
           let img = obj.photo
             ? `<img style="max-width: 100px" src="${obj.photo}">`
             : "<div>NO IMAGE</div>";
+          
           let add =
             "<p>" +
             obj.id +
