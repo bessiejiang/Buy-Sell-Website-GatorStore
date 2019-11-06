@@ -1,15 +1,10 @@
-<%include ./partials/header.ejs%>
-<%include ./partials/classtext.ejs%> 
-<%include ./partials/navbar.ejs%>
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-2">Welcome to Gator Store!</h1>
-    <p class="lead">
-      This buy/sell website is dedicated to San Francisco State University Students
-    </p>
-  </div>
-</div>
+<%include ./partials/header.ejs%> <%include ./partials/classtext.ejs%> <%include
+./partials/navbar.ejs%>
+
 <div class="container-fluid">
+    <div>
+        <p>Showing <%=results.length%> items</p>
+    </div>
   <div class="text-right">
     <label for="">Sort by:</label>
     <select>
@@ -28,8 +23,20 @@
     </div>
 
     <div class="items-container col m-2">
-      <div class="row display-container">
-        
+      <div class="row">
+          <!-- items are displayed here -->
+
+          <%for(let item in results){ %>
+            <div class='col-md-4 col-sm-6 col-12'>
+                <div class="card">
+                    <h4 style='background: white;' class='position-absolute'>
+                </div>
+                <div class="card-body">
+
+                </div>
+            </div>
+           <%}%>
+
       </div>
     </div>
   </div>
