@@ -26,10 +26,29 @@
         Sub Categories
       </div>
     </div>
-
     <div class="items-container col m-2">
-      <div class="row display-container">
-        
+      <div class="row">
+          <%for(let item of items.rows){ %>
+            <div class="col-md-4 col-sm-6 col-12">
+              <div class="card">
+                <h4 style="background: white;" class="position-absolute">
+                  <%=item.price%>
+                </h4>
+                <div>
+                  <img src="<%=item.photo%>" class="img-fluid card-img-top" />
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title text-center">
+                    <p>
+                      <a href="item/<%=item.id%>" target="_blank">
+                        <%=item.title%></a
+                      >
+                    </p>
+                  </h5>
+                </div>
+              </div>
+            </div>
+            <%}%>
       </div>
     </div>
   </div>
