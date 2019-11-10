@@ -1,21 +1,21 @@
 <%include ./partials/header.ejs%>
-
+<%include ./partials/navbar.ejs%>
 <%const data = item%>
 
-<div class="container-fluid">
+<div class="container mt-5">
   <div class="row">
     <div class="col-12 col-md-8">
-      <h2><%=data.title%></h2>
-      <div>
+      <h2><%=data.title%> - $<%=data.price%></h2>
+      <div class="d-flex justify-content-center mb-3">
         <img class="item-img" src = <%=data.photo%> alt="" />
       </div>
-      <div>
-        <h5>$<%=data.price%></h5>
-        <p><strong>Last updated:</strong> <%=data.updatedAt%></p>
-      </div>
-
+      
+      <p><strong>Item description:</strong></h2>
       <div class="item-description">
         <p><%=data.description%></p>
+      </div>
+      <div>
+        <p class = 'text-muted'><strong>Last updated:</strong> <%=data.updatedAt%></p>
       </div>
     </div>
 
