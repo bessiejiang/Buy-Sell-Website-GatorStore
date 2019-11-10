@@ -2,16 +2,7 @@
 ./partials/navbar.ejs%>
 
 <div class="container-fluid">
-    <div class="text-right">
-      <p>Showing <%=items.rows.length%> items</p>
-      <label for="">Sort by:</label>
-      <select>
-        <option value="Most Recent">Most Recent</option>
-        <option value="Oldest">Oldest</option>
-        <option value="Price: low to high">Price: low to high</option>
-        <option value="Price: high to low">Price: high to low</option>
-      </select>
-    </div>
+    
 
   <div class="row">
     <div class="col-2 d-none d-lg-block side mt-2 mb-2">
@@ -20,14 +11,28 @@
       </div>
     </div>
 
-    <div class="items-container col m-2">
+    <div class="results-container col m-2">
+      <div class="row mt-5">
+        <div class = "col-10">
+          <p>Showing <%=items.rows.length%> items</p>
+        </div>
+          <div class="col-2 text-right">
+              <label for="">Sort by:</label>
+              <select>
+                <option value="Most Recent">Most Recent</option>
+                <option value="Oldest">Oldest</option>
+                <option value="Price: low to high">Price: low to high</option>
+                <option value="Price: high to low">Price: high to low</option>
+              </select>
+            </div>
+      </div>
       <div class="row">
         <!-- items are displayed here -->
         <%for(let item of items.rows){ %>
         <div class="col-md-4 col-sm-6 col-12">
-          <div class="card">
+          <div class="card rounded">
             <h4 style="background: white;" class="position-absolute">
-              <%=item.price%>
+              $<%=item.price%>
             </h4>
             <div>
               <img src="<%=item.photo%>" class="img-fluid card-img-top" />

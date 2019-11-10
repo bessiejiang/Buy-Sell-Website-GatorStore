@@ -2,7 +2,7 @@
 <%include ./partials/classtext.ejs%> 
 <%include ./partials/navbar.ejs%>
 <div class="jumbotron jumbotron-fluid">
-  <div class="container">
+  <div class="container mt-5">
     <h1 class="display-2">Welcome to Gator Store!</h1>
     <p class="lead">
       This buy/sell website is dedicated to San Francisco State University Students
@@ -10,19 +10,20 @@
   </div>
 </div>
 <div class="container">
+
   <div class="text-center">
-    <h2>Don't buy/sell on your own</h2>
-    <h2>Checkout the most recent postings.</h2>
+    <h2>Check out our most recent postings.</h2>
+    <h2>From books to furniture to tutoring.</h2>
   </div>
 
 
     <div class="items-container">
       <div class="row">
           <%for(let item of items.rows){ %>
-            <div class="col-md-4 col-sm-6 col-12">
+            <div class="col-4 col-md-4 col-sm-6 col-12">
               <div class="card">
                 <h4 style="background: white;" class="position-absolute">
-                  <%=item.price%>
+                  $<%=item.price%>
                 </h4>
                 <div>
                   <img src="<%=item.photo%>" class="img-fluid card-img-top" />
