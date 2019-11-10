@@ -2,18 +2,16 @@
 ./partials/navbar.ejs%>
 
 <div class="container-fluid">
-  <div>
-    <p>Showing <%=items.rows.length%> items</p>
-  </div>
-  <div class="text-right">
-    <label for="">Sort by:</label>
-    <select>
-      <option value="Most Recent">Most Recent</option>
-      <option value="Oldest">Oldest</option>
-      <option value="Price: low to high">Price: low to high</option>
-      <option value="Price: high to low">Price: high to low</option>
-    </select>
-  </div>
+    <div class="text-right">
+      <p>Showing <%=items.rows.length%> items</p>
+      <label for="">Sort by:</label>
+      <select>
+        <option value="Most Recent">Most Recent</option>
+        <option value="Oldest">Oldest</option>
+        <option value="Price: low to high">Price: low to high</option>
+        <option value="Price: high to low">Price: high to low</option>
+      </select>
+    </div>
 
   <div class="row">
     <div class="col-2 d-none d-lg-block side mt-2 mb-2">
