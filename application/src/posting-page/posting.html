@@ -1,0 +1,84 @@
+<html> 
+  <head>
+   <meta charset="utf-8" />
+   <title>Post Item</title>
+    <link rel = "stylesheet" type = "text/css" href = "poststyle.css" />
+  </head>
+
+  <body>
+      <div class="header">
+          <h1>Gator Store</h1> 
+      </div>
+
+      <div class="navbar">
+         <!-- <a href="#">Home</a>
+          <a href="#">Link</a>
+          <a href="#">Link</a> -->
+      </div>
+     
+     
+       <h2>Post Items</h2>
+       <div class="container">
+           <form action="/action_page.php">
+        <div class="row">
+            <div class="col-25">
+                <label for="title">Title</label>
+            </div>
+            <div class="col-75">
+                <input type="text" id="title" name="title" 
+                placeholder="name,brand,year..." spellcheck="true">
+            </div>
+        </div>
+
+        <div class="row">
+                <div class="col-25">
+                    <label for="price">Price</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="price" name="price" placeholder="$">
+                </div>
+        </div>
+
+        <div class="row">
+                <div class="col-25">
+                    <label for="category">Category</label>
+                </div>
+                <div class="col-75">
+                    <select id="category" name="category">
+                        <option value="book">Book</option>
+                        <option value="funiture">Funiture</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="equipment">Equipment</option>
+                        <option value="tutor">Tutor</option>
+                    </select>
+                </div>
+            </div>
+
+        <div class="row">
+                    <div class="col-25">
+                        <label for="description">Description</label>
+                    </div>
+                    <div class="col-75">
+                        <textarea id="description" name="description" 
+                        placeholder="Type the description of item here..." 
+                        style="height:200px" spellcheck="true"></textarea>
+                    </div>
+        </div>
+
+        <div class="row">
+                <div class="col-25">
+                    <label for="picture">Pictures:</label>
+                </div>
+                <div class="col-75">
+                    <input type="file" name="picture" accept="image/*" multiple>
+                </div>
+        </div>
+
+        <div class="row">
+            <a href="#" class="button">Cancel</a>
+            <input type="submit" value="Submit">
+        </div>
+        </form>
+       </div>
+  </body>
+</html>
