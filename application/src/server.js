@@ -12,6 +12,7 @@ const resultsRouter = require("./router/resultsRouter.js");
 const postingRouter = require("./router/posting");
 const dashboardRouter = require("./router/dashboard");
 const signupRouter = require("./router/signup");
+const loginRouter = require("./router/login");
 
 
 app.use("/static", express.static(path.join(__dirname, "static")));
@@ -48,3 +49,4 @@ app.use("/results", resultsRouter);
 app.use("/posting", postingRouter);
 app.use("/dashboard", dashboardRouter);
 app.use("/signup", signupRouter);
+app.use("/login", loginRouter);
