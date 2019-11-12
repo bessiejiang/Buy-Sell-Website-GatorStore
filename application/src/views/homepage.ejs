@@ -1,0 +1,46 @@
+<%include ./partials/header.ejs%>
+<%include ./partials/classtext.ejs%> 
+<%include ./partials/navbar.ejs%>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container mt-5">
+    <h1 class="display-2">Welcome to Gator Store!</h1>
+    <p class="lead">
+      This buy/sell website is dedicated to San Francisco State University Students
+    </p>
+  </div>
+</div>
+<div class="container">
+
+  <div class="text-center">
+    <h2>Check out our most recent postings.</h2>
+    <h2>From books to furniture to tutoring.</h2>
+  </div>
+
+
+    <div class="items-container">
+      <div class="row">
+          <%for(let item of items.rows){ %>
+            <div class="col-4 col-md-4 col-sm-6 col-12">
+              <div class="card">
+                <h4 style="background: white;" class="position-absolute">
+                  $<%=item.price%>
+                </h4>
+                <div>
+                  <img src="<%=item.photo%>" class="img-fluid card-img-top" />
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title text-center">
+                    <p>
+                      <a href="item/<%=item.id%>" target="_blank">
+                        <%=item.title%></a
+                      >
+                    </p>
+                  </h5>
+                </div>
+              </div>
+            </div>
+            <%}%>
+      </div>
+    </div>
+</div>
+<%include ./partials/footer.ejs%>
