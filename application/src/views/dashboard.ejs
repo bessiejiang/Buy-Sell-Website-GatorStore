@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Gator Store Dashboard</title>
+		<link rel="stylesheet" href="styles.css">
+
+	</head>
+
+	<body>
+		
+		<p>CSC648-848 Section 02 TEAM #12</p>
+		<center><h1>Gator Store Dashboard</h1></center>
+		<hr>
+		<br>
+
+		<div class="center"><p><h3>Recently posted items: </p></h3>
+			<div class="slideshow-container">
+
+				<div class="mySlides fade">
+				  <img src="ikea_sofa.jpg" alt="ikea sofa" style="width:220px;height:150px;">
+				  <img src="longboard.jpg" alt="longboard" style="width:90px;height:150px;">
+				  <img src="csc510tb.jpg" alt="csc510 textbook" style="width:210px;height:150px;">
+				</div>
+
+				<div class="mySlides fade">
+				  <img src="longboard.jpg" alt="longboard" style="width:90px;height:150px;">
+				  <img src="csc510tb.jpg" alt="csc510 textbook" style="width:210px;height:150px;">
+				  <img src="ikea_sofa.jpg" alt="ikea sofa" style="width:220px;height:150px;">
+				</div>
+
+				<div class="mySlides fade">
+				  <div class="numbertext"> </div>
+				  <img src="csc510tb.jpg" alt="csc510 textbook" style="width:210px;height:150px;">
+				  <div class="text"> </div>
+				</div>
+
+				<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+				<a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+			</div>
+		</div>
+
+		<div>
+			<br><br>
+			<h3>Messages</h3>
+
+			<table>
+			  <tr>
+			    <th>From</th>
+			    <th>To</th>
+			    <th>Subject</th>
+			    <th>Message</th>
+			    <th>Time</th>
+			    <th>Reply</th>
+			  </tr>
+			  <tr>
+			    <td>Bob</td>
+			    <td>Tom</td>
+			    <td>Sofa</td>
+			    <td>Is it still available?</td>
+			    <td>11/4/19 10:01 AM</td>
+			    <td><button id="myBtn">Reply</button></td>
+			  </tr>
+			  <tr>
+			    <td>Tom</td>
+			    <td>Bob</td>
+			    <td>Sofa</td>
+			    <td>Yes</td>
+			    <td>11/4/19 12:07 PM</td>
+			    <td> </td>
+			  </tr>
+			  <tr>
+			    <td> </td>
+			    <td> </td>
+			    <td> </td>
+			    <td> </td>
+			    <td> </td>
+			    <td> </td>
+			  </tr>
+			  <tr>
+			    <td>Tom</td>
+			    <td>Jill</td>
+			    <td>Textbook</td>
+			    <td>Still have it?</td>
+			    <td>11/5/19 1:45 PM</td>
+			    <td> </td>
+			  </tr>
+			  <tr>
+			    <td>Jill</td>
+			    <td>Tom</td>
+			    <td>Textbook</td>
+			    <td>No</td>
+			    <td>11/5/19 1:59 PM</td>
+			    <td><button id="myBtn">Reply</button></td>
+			  </tr>
+			  <tr>
+			    <td> </td>
+			    <td> </td>
+			    <td> </td>
+			    <td> </td>
+			    <td> </td>
+			    <td> </td>
+			  </tr>
+			  <tr>
+			    <td>Jake</td>
+			    <td>Tom</td>
+			    <td>Longboard</td>
+			    <td>Still selling?</td>
+			    <td>11/5/19 4:50 PM</td>
+			    <td><button id="myBtn">Reply</button></td>
+			  </tr>
+			  <tr>
+			    <td>Tom</td>
+			    <td>Jake</td>
+			    <td>Longboard</td>
+			    <td>Yes</td>
+			    <td>11/5/19 4:55 PM</td>
+			    <td> </td>
+			  </tr>
+			</table>
+			<br><br>
+		</div>
+
+
+
+		<script>
+		var slideIndex = 1;
+		showSlides(slideIndex);
+
+		function plusSlides(n) {
+		  showSlides(slideIndex += n);
+		}
+
+		function currentSlide(n) {
+		  showSlides(slideIndex = n);
+		}
+
+		function showSlides(n) {
+		  var i;
+		  var slides = document.getElementsByClassName("mySlides");
+		  var dots = document.getElementsByClassName("dot");
+		  if (n > slides.length) {slideIndex = 1}    
+		  if (n < 1) {slideIndex = slides.length}
+		  for (i = 0; i < slides.length; i++) {
+		      slides[i].style.display = "none";  
+		  }
+		  for (i = 0; i < dots.length; i++) {
+		      dots[i].className = dots[i].className.replace(" active", "");
+		  }
+		  slides[slideIndex-1].style.display = "block";  
+		  dots[slideIndex-1].className += " active";
+		}
+		</script>
+
+	</body>
+</html>
