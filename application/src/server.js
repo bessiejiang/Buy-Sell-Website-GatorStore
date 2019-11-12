@@ -9,6 +9,10 @@ const homeRouter = require("./router/homeRouter.js");
 const itemRouter = require("./router/itemRouter.js");
 const itemDetailsRouter = require("./router/itemDetailsRouter.js");
 const resultsRouter = require("./router/resultsRouter.js");
+const postingRouter = require("./router/posting");
+const dashboardRouter = require("./router/dashboard");
+const signupRouter = require("./router/signup");
+
 
 app.use("/static", express.static(path.join(__dirname, "static")));
 
@@ -41,3 +45,6 @@ app.use("/", homeRouter);
 app.use("/getItems", itemRouter);
 app.use("/item", itemDetailsRouter);
 app.use("/results", resultsRouter);
+app.use("/posting", postingRouter);
+app.use("/dashboard", dashboardRouter);
+app.use("/signup", signupRouter);
