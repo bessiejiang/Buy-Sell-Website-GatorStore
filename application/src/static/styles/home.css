@@ -3,6 +3,10 @@ body {
   padding: 0;
 }
 
+.signup{
+  width: 25%;
+}
+
 .jumbotron{
   min-height: 75vh;
   background-image: url('../img/jumbotronBackground.jpg');
