@@ -4,15 +4,16 @@ body {
 }
 
 .signup{
-  width: 25%;
+  width: 22%;
 }
 
 .jumbotron{
-  min-height: 75vh;
+  min-height: 50vh;
   background-image: url('../img/jumbotronBackground.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  background-position: center;
 }
 
 .navbar-background{
@@ -32,11 +33,9 @@ body {
   margin: 1rem;
 }
 
-
-
 .items-container .card-img-top {
   width: 100%;
-  height: 10vw;
+  height: 25vw;
   object-fit: cover;
   border: black 1px solid;
 }
@@ -57,51 +56,5 @@ body {
   font-size: 3rem;
 }
 
-.header {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: space-around;
-  margin-bottom: 2%;
-  border-bottom: solid 2px black;
-  /*border: black 1px solid;*/
-}
-.header .header-image {
-  width: 30%;
-  height: 100%;
-}
-.header .header-title {
-  text-align: center;
-  width: 30%;
-}
-.header .header-login {
-  display: flex;
-  justify-content: space-around;
-  width: 30%;
-}
-.header-login > p {
-  margin-right: 10%;
-}
+/* captcha */
 
-.navi-bar {
-  width: 100%;
-  height: 40px;
-  background: #efefef;
-  margin-bottom: 2%;
-  display: inline-flex;
-  align-items: center;
-}
-.navi-bar > .search-result {
-  width: 50%;
-}
-.search-result {
-  margin-left: 5%;
-}
-
-.navi-bar > .dropdown {
-  width: 50%;
-}
-.dropdown > button {
-  width: 100px;
-  float: right;
-}

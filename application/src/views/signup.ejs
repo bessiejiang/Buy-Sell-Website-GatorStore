@@ -1,6 +1,8 @@
 <%include ./partials/header.ejs%>
 
+<!-- script to check if two inputs for password match -->
 <script language="javascript" type="text/javascript">
+    document.title = "Sign Up"
     const check = input => {
         if (input.value != document.getElementById("apassword").value) {
             input.setCustomValidity("Password Must be Matching.");
@@ -9,6 +11,8 @@
             input.setCustomValidity("");
         }
     };
+
+    
 </script>
 
 <div class="container signup">
@@ -58,11 +62,26 @@
                 >
             </div>
 
-            <div class="form-group text-center">
-                <button class="btn btn-success btn-lg">
-                    Sign Up
-                </button>
+            <!-- captcha -->
+            <div class="captcha form-group text-center">
+                    <label class="submit__control">
+                      <h3>Are you human?</h3>
+                      <div class="submit__generated">
+                  
+                      </div>
+                      <i class="fa fa-refresh"></i>
+                      <span class="submit__error hide">Incorrect value</span>
+                      <span class="submit__error--empty hide">Required field cannot be left blank</span>
+                    </label>
+                  
+                    <div class="form-group text-center">
+                        <button class="btn btn-success btn-lg submit overlay" value="submit">
+                            Sign Up
+                        </button>
+                    </div>
             </div>
+
+            
         </form>
     </div>
     <div>
@@ -70,3 +89,4 @@
     </div>
 </div>
 <%include ./partials/footer.ejs%>
+<!-- last updated: 11/19/2019 - angelo solitario -->
