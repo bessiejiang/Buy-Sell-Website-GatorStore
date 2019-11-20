@@ -32,7 +32,7 @@
             placeholder="Go Find It!"
             maxlength="40"
             name="search"
-            <%= (typeof query != 'undefined' && query.search) ? `value="${query.search}"` : '' %>
+            <% if (typeof query != 'undefined' && query.search) { %>value="<%= query.search %>"<% } %>
           />
           <button
             class="btn btn-warning input-group-append"
