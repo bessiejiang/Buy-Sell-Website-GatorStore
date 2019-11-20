@@ -22,7 +22,7 @@
           <select class="custom-select btn" name="category">
             <option value="">All</option>
             <% for (let category of categories) { %>
-            <option value="<%= category.id %>"><%= category.name %></option>
+            <option value="<%= category.id %>"<%= typeof query != 'undefined' && query.category == category.id ? ' selected' : '' %>><%= category.name %></option>
             <% } %>
           </select>
 
@@ -30,7 +30,9 @@
             type="text"
             class="form-control form-inline w-75"
             placeholder="Go Find It!"
+            maxlength="40"
             name="search"
+            <%= (typeof query != 'undefined' && query.search) ? `value="${query.search}"` : '' %>
           />
           <button
             class="btn btn-warning input-group-append"
