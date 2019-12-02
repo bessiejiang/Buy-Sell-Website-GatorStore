@@ -3,8 +3,15 @@ body {
   padding: 0;
 }
 
-.signup{
-  width: 22%;
+.form-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login,.signup{
+  margin: auto;
+  width: 35%;
 }
 
 .jumbotron{
@@ -57,4 +64,23 @@ body {
 }
 
 /* captcha */
+
+.capbox {
+	/* background-color: #660099; */
+	border-width: 0px 12px 0px 0px;
+	padding: 8px 40px 8px 8px;
+}
+  
+#CaptchaDiv {
+	font: bold 17px verdana, arial, sans-serif;
+	font-style: italic;
+	color: #000000;
+	background-color: #FFFFFF;
+	padding: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	}
+
+
 

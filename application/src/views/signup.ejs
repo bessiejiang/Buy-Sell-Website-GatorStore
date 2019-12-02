@@ -1,8 +1,8 @@
 <%include ./partials/header.ejs%>
 
-<!-- script to check if two inputs for password match -->
+<!-- script to check if two inputs for password match and for captcha -->
 <script language="javascript" type="text/javascript">
-    document.title = "Sign Up"
+    document.title = "Sign Up";
     const check = input => {
         if (input.value != document.getElementById("apassword").value) {
             input.setCustomValidity("Password Must be Matching.");
@@ -12,81 +12,77 @@
         }
     };
 
-    
 </script>
 
-<div class="container signup">
-    <h2 class="text-center">SIGN UP</h2>
-    <div class="form">
-        <small>*All fields are mandatory</small>
-        <form>
-            <div class="form-group">
-                <label for="">First Name:</label>
-                <input class="form-control" type="text" required />
-            </div>
-            <div class="form-group">
-                <label for="">Last Name:</label>
-                <input class="form-control" type="text" required />
-            </div>
-            <div class="form-group">
-                <label for="">Email:</label>
-                <input class="form-control" type="text" required />
-            </div>
-            <div class="form-group">
-                <label for="">Password:</label>
-                <input
-                    id="apassword"
-                    name="apassword"
-                    class="form-control"
-                    type="password"
-                    required
-                />
-            </div>
-            <div class="form-group">
-                <label for="">Confirm Password:</label>
-                <span id="message"></span>
-                <input
-                    oninput="check(this)"
-                    name="confirm_password"
-                    id="confirm_password"
-                    class="form-control"
-                    type="password"
-                    required
-                />
-            </div>
+<div class="container">
+    <div class="signup">
+        <h2 class="text-center">SIGN UP</h2>
+        <div class="form">
+            <small>*All fields are mandatory</small>
+            <form method = "post" action="" onsubmit="return checkform(this)">
+                <div class="form-group">
+                    <label for="">First Name:</label>
+                    <input class="form-control" type="text" required />
+                </div>
+                <div class="form-group">
+                    <label for="">Last Name:</label>
+                    <input class="form-control" type="text" required />
+                </div>
+                <div class="form-group">
+                    <label for="">Email:</label>
+                    <input class="form-control" type="text" required />
+                </div>
+                <div class="form-group">
+                    <label for="">Password:</label>
+                    <input
+                        id="apassword"
+                        name="apassword"
+                        class="form-control"
+                        type="password"
+                        required
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="">Confirm Password:</label>
+                    <span id="message"></span>
+                    <input
+                        oninput="check(this)"
+                        name="confirm_password"
+                        id="confirm_password"
+                        class="form-control"
+                        type="password"
+                        required
+                    />
+                </div>
 
-            <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" required />
-                <label class="form-check-label"
-                    >I agree to terms and conditions</label
-                >
-            </div>
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" required />
+                    <label class="form-check-label"
+                        >I agree to terms and conditions</label
+                    >
+                </div>
 
-            <!-- captcha -->
-            <div class="captcha form-group text-center">
-                    <label class="submit__control">
-                      <h3>Are you human?</h3>
-                      <div class="submit__generated">
-                  
-                      </div>
-                      <i class="fa fa-refresh"></i>
-                      <span class="submit__error hide">Incorrect value</span>
-                      <span class="submit__error--empty hide">Required field cannot be left blank</span>
-                    </label>
-                  
-                    <div class="form-group text-center">
-                        <button class="btn btn-success btn-lg submit overlay" value="submit">
-                            Sign Up
-                        </button>
-                    </div>
-            </div>
-
-            
-        </form>
-    </div>
-    <div>
-        <p>Already have an account? <a href="/login">Login</a></p>
+                <!-- captcha -->
+                <div class = "capbox form-group text-center">
+                        Please enter the number:
+                        <span id="CaptchaDiv"></span>
+                        <input type = "hidden" id = "txtCaptcha" value="">
+                        <input type = "text" name="CaptchaInput" id="CaptchaInput" size="15"> <br />
+                </div>
+                <!-- end of captcha -->
+                <div class="form-group text-center">
+                    <button class="btn btn-large btn-success">JOIN</button>
+                </div>
+            </form>
+        </div>
+        <div>
+            <p>Already have an account? <a href="/login">Login</a></p>
+        </div>
     </div>
 </div>
 <%include ./partials/footer.ejs%>
-<!-- last updated: 11/19/2019 - angelo solitario -->
+
+<!-- last updated: 12/1/2019 - 
+    - added captcha
+
+    ----angelo solitario -->
