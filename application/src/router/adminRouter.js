@@ -3,13 +3,10 @@ const router = express.Router();
 const Item = require("../controller/item");
 
 router.get("/", Item.middleware({
-  category: req.query.category,
-  search: req.query.search,
-  approvalStatus: "approved"
+    approvalStatus: "pending"
 }), function(req, res) {
-  res.render("results.ejs", {
-    query: req.query
-  });
+    // res.json(res.locals.items);
+    res.render("admin.ejs");
 });
 
 module.exports = router;

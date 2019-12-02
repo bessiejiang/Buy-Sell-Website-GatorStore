@@ -16,6 +16,8 @@ const signupRouter = require("./router/signup");
 const loginRouter = require("./router/login");
 const aboutRouter = require("./router/about");
 const contactRouter = require("./router/contactRouter");
+const reviewRouter = require("./router/reviewRouter");
+const adminRouter = require("./router/adminRouter");
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -56,3 +58,5 @@ app.use("/signup", signupRouter);
 app.use("/login", loginRouter);
 app.use("/about", aboutRouter);
 app.use('/contact', contactRouter);
+app.use('/review', reviewRouter);
+app.use('/admin', adminRouter);

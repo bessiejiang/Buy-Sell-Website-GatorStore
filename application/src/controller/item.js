@@ -2,7 +2,7 @@ const { Item, Category, User, Sequelize } = require("../../models");
 const Op = Sequelize.Op;
 
 module.exports = {
-  find({ search, category, limit, offset, orderBy, orderDirection } = {}) {
+  find({ search, category, limit, offset, orderBy, orderDirection, approvalStatus } = {}) {
     const where = {};
     const order = [];
 
@@ -21,6 +21,10 @@ module.exports = {
 
     if (category) {
       where.CategoryId = category;
+    }
+
+    if (approvalStatus) {
+      where.approval = approvalStatus;
     }
 
     limit = parseInt(limit);
@@ -67,6 +71,24 @@ module.exports = {
         next();
       });
     };
+  },
+  updateApproval() {
+    return (req, res, next) => {
+      let result = req.body.reviewResult;
+      let status;
+      if (result === 'approve') {
+        status = "approved";
+      } else {
+        status = "rejected";
+      }
+
+      Item.update(
+          { approval: status},
+          { where: { id: req.query.item } }
+      ).then(result => {
+        next();
+      });
+    }
   }
 };
 
