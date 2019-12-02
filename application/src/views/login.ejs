@@ -5,7 +5,7 @@
     <h2 class="text-center">LOGIN</h2>
     <div class="form">
       <small>*All fields are mandatory</small>
-      <form>
+      <form onsubmit="return checkform(this)">
         <div class="form-group">
           <label for="">Email:</label>
           <input class="form-control" type="text" required />
@@ -49,7 +49,8 @@
 </div>
 
 <%include ./partials/footer.ejs%>
-<!-- last updated: 12/01/2019 
+<!-- last updated: 12/02/2019 
     -added captcha
+    - fixed form onsubmit
   
   ----angelo solitario -->
