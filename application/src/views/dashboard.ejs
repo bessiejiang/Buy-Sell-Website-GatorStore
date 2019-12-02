@@ -16,6 +16,7 @@
 		<hr>
 		<br>
 
+		<!-- TODO replace hardcoded pictures after login/signup implemented -->
 		<div class="center"><p><h3>Recently posted items:</h3></p>
 			<div class="slideshow-container">
 
@@ -68,6 +69,7 @@
 						<td><%=message.dealTime%></td>
 						<td><%=message.message%></td>
 						<td><%=message.createdAt%></td>
+						<!-- TODO: Only enable reply button for those messages sent to seller-->
 						<td><button data-toggle="modal" data-target="#reply-modal-<%=i%>">Reply</button></td>
 					</tr>
 

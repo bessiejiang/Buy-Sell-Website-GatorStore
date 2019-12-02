@@ -13,8 +13,8 @@ module.exports = {
     create() {
         return (req, res, next) => {
             Message.create({
-                from: req.body.buyerName,
-                to: req.body.sellerName,
+                from: req.body.from,
+                to: req.body.to,
                 item: req.query.item,
                 message: req.body.contactDetails,
                 dealLocation: req.body.contactLocation,

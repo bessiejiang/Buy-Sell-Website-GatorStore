@@ -27,7 +27,7 @@
           style="max-width: 250px;"
           alt=""
         />
-        <p>SellerFirst SellerLast</p>
+        <p>Seller Bar</p>
       </div>
       <div class="text-center">
         <button class="btn btn-warning" data-toggle="modal" data-target="#contact-modal">Contact Seller</button>
@@ -44,8 +44,8 @@
               </div>
                 <div class="modal-body row">
                   <!--TODO: replace hardcoded values with user info once login is implemented -->
-                  <p class="col-md-10">Buyer <input name="buyerName" readonly type="text" value="<%= "BuyerFirst BuyerLast" %>"></p>
-                  <p class="col-md-10">Seller <input name="sellerName" readonly type="text" value="<%= "SellerFirst SellerLast" %>"></p>
+                  <p class="col-md-10">Buyer <input name="from" readonly type="text" value="<%= "Buyer Foo" %>"></p>
+                  <p class="col-md-10">Seller <input name="to" readonly type="text" value="<%= "Seller Bar" %>"></p>
 
                   <select name="contactLocation" class="float-left col-md-5">
                     <option>Library</option>
