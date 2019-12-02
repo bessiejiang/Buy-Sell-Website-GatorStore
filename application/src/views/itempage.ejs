@@ -36,32 +36,33 @@
       <!-- Contact Modal -->
       <div class="modal fade" id="contact-modal" role="dialog">
         <div class="modal-dialog">
-          <!-- Contact Modal content-->
-          <div class="modal-content row">
-            <div class="modal-header">
-              <h4 class="modal-title"><%=data.title%></h4>
+          <form action="/contact?item=<%=data.title%>" method="post">
+            <!-- Contact Modal content-->
+            <div class="modal-content row">
+              <div class="modal-header">
+                <h4 class="modal-title"><%=data.title%></h4>
+              </div>
+                <div class="modal-body row">
+                  <!--TODO: replace hardcoded values with user info once login is implemented -->
+                  <p class="col-md-10">Buyer <input name="buyerName" readonly type="text" value="<%= "BuyerFirst BuyerLast" %>"></p>
+                  <p class="col-md-10">Seller <input name="sellerName" readonly type="text" value="<%= "SellerFirst SellerLast" %>"></p>
+
+                  <select name="contactLocation" class="float-left col-md-5">
+                    <option>Library</option>
+                    <option>Station Cafe</option>
+                    <option>Thornton Hall</option>
+                  </select>
+
+                  <input name="contactTime" class="float-right col-md-5" type="text" placeholder="type in time to contact">
+
+                  <textarea name="contactDetails" class="item-description col-md-12" type="text" placeholder="type in details"></textarea>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                  <button id="submit-contact" type="submit" class="btn btn-success">Send</button>
+                </div>
             </div>
-            <div class="modal-body row">
-              <!--TODO: replace hardcoded values with user info once login is implemented -->
-              <p class="col-md-10">Buyer <input id="buyer-name" readonly type="text" value="<%= "BuyerFirst BuyerLast" %>"></p>
-              <p class="col-md-10">Seller <input id="seller-name" readonly type="text" value="<%= "SellerFirst SellerLast" %>"></p>
-
-              <select id="contact-location" class="float-left col-md-5">
-                <option>Library</option>
-                <option>Station Cafe</option>
-                <option>Thornton Hall</option>
-              </select>
-
-              <input id="contact-time" class="float-right col-md-5" type="text" placeholder="type in time to contact">
-
-              <textarea id="contact-details" class="item-description col-md-12" type="text" placeholder="type in details"></textarea>
-            </div>
-
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-              <button type="button" class="btn btn-success" data-dismiss="modal">Send</button>
-            </div>
-          </div>
+          </form>
         </div>
       </div>
 

@@ -1,3 +1,4 @@
+const bodyParser = require('body-parser');
 const consolidate = require("consolidate");
 const express = require("express");
 const path = require("path");
@@ -13,8 +14,11 @@ const postingRouter = require("./router/posting");
 const dashboardRouter = require("./router/dashboard");
 const signupRouter = require("./router/signup");
 const loginRouter = require("./router/login");
+const aboutRouter = require("./router/about");
+const contactRouter = require("./router/contactRouter");
 
 
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/static", express.static(path.join(__dirname, "static")));
 
 //re-set up default views folder to public
@@ -50,3 +54,5 @@ app.use("/posting", postingRouter);
 app.use("/dashboard", dashboardRouter);
 app.use("/signup", signupRouter);
 app.use("/login", loginRouter);
+app.use("/about", aboutRouter);
+app.use('/contact', contactRouter);
