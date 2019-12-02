@@ -45,78 +45,28 @@
 			<h3>Messages</h3>
 
 			<table>
-			  <tr>
-			    <th>From</th>
-			    <th>To</th>
-			    <th>Subject</th>
-			    <th>Message</th>
-			    <th>Time</th>
-			    <th>Reply</th>
-			  </tr>
-			  <tr>
-			    <td>Bob</td>
-			    <td>Tom</td>
-			    <td>Sofa</td>
-			    <td>Is it still available?</td>
-			    <td>11/4/19 10:01 AM</td>
-			    <td><button id="myBtn">Reply</button></td>
-			  </tr>
-			  <tr>
-			    <td>Tom</td>
-			    <td>Bob</td>
-			    <td>Sofa</td>
-			    <td>Yes</td>
-			    <td>11/4/19 12:07 PM</td>
-			    <td> </td>
-			  </tr>
-			  <tr>
-			    <td> </td>
-			    <td> </td>
-			    <td> </td>
-			    <td> </td>
-			    <td> </td>
-			    <td> </td>
-			  </tr>
-			  <tr>
-			    <td>Tom</td>
-			    <td>Jill</td>
-			    <td>Textbook</td>
-			    <td>Still have it?</td>
-			    <td>11/5/19 1:45 PM</td>
-			    <td> </td>
-			  </tr>
-			  <tr>
-			    <td>Jill</td>
-			    <td>Tom</td>
-			    <td>Textbook</td>
-			    <td>No</td>
-			    <td>11/5/19 1:59 PM</td>
-			    <td><button id="myBtn">Reply</button></td>
-			  </tr>
-			  <tr>
-			    <td> </td>
-			    <td> </td>
-			    <td> </td>
-			    <td> </td>
-			    <td> </td>
-			    <td> </td>
-			  </tr>
-			  <tr>
-			    <td>Jake</td>
-			    <td>Tom</td>
-			    <td>Longboard</td>
-			    <td>Still selling?</td>
-			    <td>11/5/19 4:50 PM</td>
-			    <td><button id="myBtn">Reply</button></td>
-			  </tr>
-			  <tr>
-			    <td>Tom</td>
-			    <td>Jake</td>
-			    <td>Longboard</td>
-			    <td>Yes</td>
-			    <td>11/5/19 4:55 PM</td>
-			    <td> </td>
-			  </tr>
+				<tr>
+					<th>From</th>
+					<th>To</th>
+					<th>Item</th>
+					<th>Deal Location</th>
+					<th>Deal time</th>
+					<th>Message</th>
+					<th>Created Time</th>
+					<th>Reply</th>
+				</tr>
+				<%for(let message of messages){ %>
+					<tr>
+						<td><%=message.from%></td>
+						<td><%=message.to%></td>
+						<td><%=message.item%></td>
+						<td><%=message.dealLocation%></td>
+						<td><%=message.dealTime%></td>
+						<td><%=message.message%></td>
+						<td><%=message.createdAt%></td>
+						<td><button>Reply</button></td>
+					</tr>
+				<%}%>
 			</table>
 			<br><br>
 		</div>
