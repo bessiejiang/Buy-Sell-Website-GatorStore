@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Gator Store Dashboard</title>
+		<script type="text/javascript" src="/static/lib/jquery.js"></script>
+		<script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js"></script>
+		<script type="text/javascript" src="/static/lib/bootstrap.js"></script>
+		<link rel="stylesheet" href="/static/lib/bootstrap.css" />
 		<link rel="stylesheet" href="static/styles/dashboard.css">
-
+		<title>Gator Store Dashboard</title>
 	</head>
 
 	<body>
@@ -13,24 +16,24 @@
 		<hr>
 		<br>
 
-		<div class="center"><p><h3>Recently posted items: </p></h3>
+		<div class="center"><p><h3>Recently posted items:</h3></p>
 			<div class="slideshow-container">
 
-				<div class="mySlides fade">
+				<div class="mySlides slide-fade">
 				  <img src="static/img/ikea_sofa.jpg" alt="ikea sofa" style="width:220px;height:150px;">
 				  <img src="static/img/longboard.jpg" alt="longboard" style="width:90px;height:150px;">
 				  <img src="static/img/csc510tb.jpg" alt="csc510 textbook" style="width:210px;height:150px;">
 				</div>
 
-				<div class="mySlides fade">
-				  <img src="longboard.jpg" alt="longboard" style="width:90px;height:150px;">
-				  <img src="csc510tb.jpg" alt="csc510 textbook" style="width:210px;height:150px;">
-				  <img src="ikea_sofa.jpg" alt="ikea sofa" style="width:220px;height:150px;">
+				<div class="mySlides slide-fade">
+				  <img src="static/img/longboard.jpg" alt="longboard" style="width:90px;height:150px;">
+				  <img src="static/img/csc510tb.jpg" alt="csc510 textbook" style="width:210px;height:150px;">
+				  <img src="static/img/ikea_sofa.jpg" alt="ikea sofa" style="width:220px;height:150px;">
 				</div>
 
-				<div class="mySlides fade">
+				<div class="mySlides slide-fade">
 				  <div class="numbertext"> </div>
-				  <img src="csc510tb.jpg" alt="csc510 textbook" style="width:210px;height:150px;">
+				  <img src="static/img/csc510tb.jpg" alt="csc510 textbook" style="width:210px;height:150px;">
 				  <div class="text"> </div>
 				</div>
 
@@ -55,7 +58,8 @@
 					<th>Created Time</th>
 					<th>Reply</th>
 				</tr>
-				<%for(let message of messages){ %>
+				<% for (var i = 0; i < messages.length; i++) {%>
+					<% message = messages[i];%>
 					<tr>
 						<td><%=message.from%></td>
 						<td><%=message.to%></td>
@@ -64,8 +68,33 @@
 						<td><%=message.dealTime%></td>
 						<td><%=message.message%></td>
 						<td><%=message.createdAt%></td>
-						<td><button>Reply</button></td>
+						<td><button data-toggle="modal" data-target="#reply-modal-<%=i%>">Reply</button></td>
 					</tr>
+
+					<!-- Contact Modal -->
+					<div class="modal fade" id="reply-modal-<%=i%>" role="dialog">
+						<div class="modal-dialog">
+							<form action="/contact?item=<%=message.item%>" method="post">
+								<!-- Contact Modal content-->
+								<div class="modal-content row">
+									<div class="modal-header">
+										<h4 class="modal-title"><%=message.item%></h4>
+									</div>
+									<div class="modal-body row">
+										<!-- From and To are opposite for reply -->
+										<p class="col-md-10">From <input name="from" readonly type="text" value="<%=message.to%>"></p>
+										<p class="col-md-10">To <input name="to" readonly type="text" value="<%=message.from%>"></p>
+										<textarea name="contactDetails" class="item-description col-md-12" type="text" placeholder="type in details"></textarea>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+										<button type="submit" class="btn btn-success">Send</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+
 				<%}%>
 			</table>
 			<br><br>
@@ -88,17 +117,17 @@
 		function showSlides(n) {
 		  var i;
 		  var slides = document.getElementsByClassName("mySlides");
-		  var dots = document.getElementsByClassName("dot");
+		  // var dots = document.getElementsByClassName("dot");
 		  if (n > slides.length) {slideIndex = 1}    
 		  if (n < 1) {slideIndex = slides.length}
 		  for (i = 0; i < slides.length; i++) {
 		      slides[i].style.display = "none";  
 		  }
-		  for (i = 0; i < dots.length; i++) {
-		      dots[i].className = dots[i].className.replace(" active", "");
-		  }
+		  // for (i = 0; i < dots.length; i++) {
+		  //     dots[i].className = dots[i].className.replace(" active", "");
+		  // }
 		  slides[slideIndex-1].style.display = "block";  
-		  dots[slideIndex-1].className += " active";
+		  // dots[slideIndex-1].className += " active";
 		}
 		</script>
 
