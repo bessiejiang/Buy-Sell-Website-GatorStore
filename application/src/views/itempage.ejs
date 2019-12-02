@@ -1,9 +1,11 @@
+<!-- single item page -->
 <%include ./partials/header.ejs%>
 <%include ./partials/navbar.ejs%>
-<%const data = item%>
+<%const data = item%> 
 
 <div class="container mt-5">
   <div class="row">
+    <!-- item container -->
     <div class="col-12 col-md-8">
       <h2><%=data.title%> - $<%=data.price%></h2>
       <div class="d-flex justify-content-center mb-3">
@@ -19,6 +21,7 @@
       </div>
     </div>
 
+    <!-- seller information (hard coded for now) -->
     <div class="col-6 col-md-4">
       <h5>Seller:</h5>
       <div class="seller-image text-center">
@@ -37,3 +40,4 @@
 </div>
 
 <%include ./partials/footer.ejs%>
+<!-- last updated: 11/19/2019 - angelo solitario -->

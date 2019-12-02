@@ -1,38 +1,55 @@
+<!-- login page -->
 <%include ./partials/header.ejs%>
-<div class="container signup">
+<div class="container form-container">
+  <div class="login">
     <h2 class="text-center">LOGIN</h2>
     <div class="form">
-        <form>
-            <div class="form-group">
-                <label for="">Email:</label>
-                <input class="form-control" type="text" required />
-            </div>
-            <div class="form-group">
-                <label for="">Password:</label>
-                <input
-                    id="apassword"
-                    name="apassword"
-                    class="form-control"
-                    type="password"
-                    required
-                />
-            </div>
-            <div class="form-group text-center">
-                <button class="btn btn-success btn-lg">
-                    Login
-                </button>
-            </div>
-        </form>
+      <small>*All fields are mandatory</small>
+      <form>
+        <div class="form-group">
+          <label for="">Email:</label>
+          <input class="form-control" type="text" required />
+        </div>
+        <div class="form-group">
+          <label for="">Password:</label>
+          <input
+            id="apassword"
+            name="apassword"
+            class="form-control"
+            type="password"
+            required
+          />
+        </div>
+        <!-- captcha -->
+        <div class="capbox form-group text-center">
+          Please enter the number:
+          <span id="CaptchaDiv"></span>
+          <input type="hidden" id="txtCaptcha" value="" />
+          <input type="text" name="CaptchaInput" id="CaptchaInput" size="15" />
+          <br />
+        </div>
+        <!-- end of captcha -->
+        <div class="form-group text-center">
+          <button class="btn btn-success btn-lg">
+            Login
+          </button>
+        </div>
+      </form>
     </div>
     <div class="row">
-        <div class="col">
-            <p><a href="#">Forgot Email? </a></p>
-            <p><a href="#">Forgot Password? </a></p>
-        </div>
-        <div class="position-relative text-right col">
-            <p>Don't have an account? <a href="/signup">Sign Up </a></p>
-        </div>
+      <div class="col">
+        <p><a href="#">Forgot Email? </a></p>
+        <p><a href="#">Forgot Password? </a></p>
+      </div>
+      <div class="position-relative text-right col">
+        <p>Don't have an account? <a href="/signup">Sign Up </a></p>
+      </div>
     </div>
+  </div>
 </div>
 
 <%include ./partials/footer.ejs%>
+<!-- last updated: 12/01/2019 
+    -added captcha
+  
+  ----angelo solitario -->

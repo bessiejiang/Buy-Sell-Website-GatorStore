@@ -1,5 +1,9 @@
+<!-- navbar includes the searchbar -->
+
 <nav class="navbar navbar-expand-lg navbar-dark navbar-background">
-  <a class="navbar-brand" href="/">Home</a>
+  <a class="navbar-brand" href="/">Gator Store</a>
+  
+  <!-- hamburger dropdown when collapsed  -->
   <button
     class="navbar-toggler"
     type="button"
@@ -11,12 +15,14 @@
   >
     <span class="navbar-toggler-icon"></span>
   </button>
+  
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav w-100 justify-content-center">
 
         <a class="nav-item nav-link" href="#">About </a>
         <a class="nav-item nav-link mr-5" href="#">Sell</a>
 
+      <!-- form for the searchbar -->
       <form class="w-50" action="/results" method="get" id="search-form">
         <div class="input-group">
           <select class="custom-select btn" name="category">
@@ -44,8 +50,10 @@
         </div>
       </form>
 
-      <a class="nav-item nav-link ml-5" href="#">Sign Up </a>
-      <a class="nav-item nav-link" href="#">Login</a>
+      <a class="nav-item nav-link ml-5" href="/signup">Sign Up </a>
+      <a class="nav-item nav-link" href="/login">Login</a>
     </div>
   </div>
 </nav>
+
+<!-- last updated: 11/19/2019 - angelo solitario -->
