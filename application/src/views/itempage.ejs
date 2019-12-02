@@ -12,7 +12,7 @@
         <img class="item-img" src = <%=data.photo%> alt="" />
       </div>
       
-      <p><strong>Item description:</strong></h2>
+      <h3><strong>Item description:</strong></h3>
       <div class="item-description">
         <p><%=data.description%></p>
       </div>
@@ -30,14 +30,49 @@
           style="max-width: 250px;"
           alt=""
         />
-        <p>SellerFirst SellerLast</p>
+        <p>Seller Bar</p>
       </div>
       <div class="text-center">
-        <button class="btn btn-warning">Contact Seller</button>
+        <button class="btn btn-warning" data-toggle="modal" data-target="#contact-modal">Contact Seller</button>
       </div>
+
+      <!-- Contact Modal -->
+      <div class="modal fade" id="contact-modal" role="dialog">
+        <div class="modal-dialog">
+          <form action="/contact?item=<%=data.title%>" method="post">
+            <!-- Contact Modal content-->
+            <div class="modal-content row">
+              <div class="modal-header">
+                <h4 class="modal-title"><%=data.title%></h4>
+              </div>
+                <div class="modal-body row">
+                  <!--TODO: replace hardcoded values with user info once login is implemented -->
+                  <p class="col-md-10">Buyer <input name="from" readonly type="text" value="<%= "Buyer Foo" %>"></p>
+                  <p class="col-md-10">Seller <input name="to" readonly type="text" value="<%= "Seller Bar" %>"></p>
+
+                  <select name="contactLocation" class="float-left col-md-5">
+                    <option>Library</option>
+                    <option>Station Cafe</option>
+                    <option>Thornton Hall</option>
+                  </select>
+
+                  <input name="contactTime" class="float-right col-md-5" type="text" placeholder="type in time to contact">
+
+                  <textarea name="contactDetails" class="item-description col-md-12" type="text" placeholder="type in details"></textarea>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                  <button id="submit-contact" type="submit" class="btn btn-success">Send</button>
+                </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
+
 
 <%include ./partials/footer.ejs%>
 <!-- last updated: 11/19/2019 - angelo solitario -->

@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 const Message = require("../controller/message");
 
-router.get("/", Message.find(), function(req, res) {
-    res.render("dashboard.ejs");
+router.post("/", Message.create(), function(req, res) {
+    res.redirect('back'); // refresh after saving contact message
 });
 
 module.exports = router;
