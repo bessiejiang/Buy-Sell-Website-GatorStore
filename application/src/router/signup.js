@@ -2,7 +2,11 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/", function(req, res) {
-    res.render("signup.ejs");
+  if (req.user) {
+    return res.redirect("/");
+  }
+
+  res.render("signup.ejs");
 });
 
 module.exports = router;

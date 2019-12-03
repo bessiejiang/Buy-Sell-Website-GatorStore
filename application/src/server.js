@@ -60,6 +60,12 @@ app.use(auth.session());
 // When logged in, adds `user` to all pages and available in ejs
 app.use(User.middleware());
 
+// Adds all url query parameters to all pages and available in ejs
+app.use((req, res, next) => {
+  res.locals.query = req.query;
+  next();
+});
+
 app.use("/", homeRouter);
 app.use("/getItems", itemRouter);
 app.use("/item", itemDetailsRouter);

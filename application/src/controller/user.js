@@ -12,9 +12,7 @@ module.exports = {
   },
   middleware() {
     return (req, res, next) => {
-      if (req.user) {
-        res.locals.user = req.user;
-      }
+      res.locals.user = req.user;
 
       next();
     };
