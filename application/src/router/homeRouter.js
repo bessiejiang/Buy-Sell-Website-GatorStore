@@ -7,7 +7,8 @@ router.get(
   Item.middleware({
     limit: 6,
     orderBy: "createdAt",
-    orderDirection: "desc"
+    orderDirection: "desc",
+    approvalStatus: "approved"
   }),
   function(req, res) {
     res.render("homepage.ejs");
