@@ -1,11 +1,14 @@
 const bodyParser = require('body-parser');
 const consolidate = require("consolidate");
 const express = require("express");
+const session = require("express-session");
 const path = require("path");
 const app = express();
 const PORT = 1648;
+const auth = require("./auth");
 const models = require("../models");
 const Category = require("./controller/category");
+const User = require("./controller/user");
 const homeRouter = require("./router/homeRouter.js");
 const itemRouter = require("./router/itemRouter.js");
 const itemDetailsRouter = require("./router/itemDetailsRouter.js");
@@ -47,6 +50,11 @@ models.sequelize
 
 // Adds `categories` to all pages and available in ejs
 app.use(Category.middleware());
+
+app.use(session({ secret: "csc648", resave: false, saveUninitialized: false }));
+app.use(auth.initialize());
+app.use(auth.session());
+app.use(User.middleware());
 
 app.use("/", homeRouter);
 app.use("/getItems", itemRouter);

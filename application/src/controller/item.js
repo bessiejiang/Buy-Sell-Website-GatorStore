@@ -90,5 +90,5 @@ function toJSON(item) {
     return item.map(toJSON);
   }
 
-  return item.get({ plain: true });
+  return item && item.get({ plain: true });
 }
