@@ -66,7 +66,8 @@ module.exports = {
   },
   middleware(options) {
     return (req, res, next) => {
-      module.exports.find(options || req.query).then(items => {
+      // Merge request query params and optional params
+      module.exports.find(Object.assign(options, req.query)).then(items => {
         res.locals.items = items;
         next();
       });
@@ -74,16 +75,8 @@ module.exports = {
   },
   updateApproval() {
     return (req, res, next) => {
-      let result = req.body.reviewResult;
-      let status;
-      if (result === 'approve') {
-        status = "approved";
-      } else {
-        status = "rejected";
-      }
-
       Item.update(
-          { approval: status},
+          { approval: req.body.reviewResult},
           { where: { id: req.query.item } }
       ).then(result => {
         next();
