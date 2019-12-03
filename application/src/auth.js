@@ -41,7 +41,7 @@ passport.deserializeUser(function(id, done) {
 module.exports = {
   initialize: passport.initialize.bind(passport),
   session: passport.session.bind(passport),
-  authenticate: passport.authenticate("local", {
+  authenticate: passport.authenticate.bind(passport, "local", {
     successRedirect: "/",
     failureRedirect: "/login"
   })

@@ -17,6 +17,7 @@ const postingRouter = require("./router/posting");
 const dashboardRouter = require("./router/dashboard");
 const signupRouter = require("./router/signup");
 const loginRouter = require("./router/login");
+const logoutRouter = require("./router/logout");
 const aboutRouter = require("./router/about");
 const contactRouter = require("./router/contactRouter");
 const reviewRouter = require("./router/reviewRouter");
@@ -51,9 +52,12 @@ models.sequelize
 // Adds `categories` to all pages and available in ejs
 app.use(Category.middleware());
 
+// Sets up authentication handling
 app.use(session({ secret: "csc648", resave: false, saveUninitialized: false }));
 app.use(auth.initialize());
 app.use(auth.session());
+
+// When logged in, adds `user` to all pages and available in ejs
 app.use(User.middleware());
 
 app.use("/", homeRouter);
@@ -64,6 +68,7 @@ app.use("/posting", postingRouter);
 app.use("/dashboard", dashboardRouter);
 app.use("/signup", signupRouter);
 app.use("/login", loginRouter);
+app.use("/logout", logoutRouter);
 app.use("/about", aboutRouter);
 app.use('/contact', contactRouter);
 app.use('/review', reviewRouter);

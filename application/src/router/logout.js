@@ -1,11 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const auth = require("../auth");
 
 router.get("/", function(req, res) {
-  res.render("login.ejs");
+  req.logout();
+  res.redirect("/");
 });
-
-router.post("/", auth.authenticate());
 
 module.exports = router;
