@@ -1,3 +1,4 @@
+const argon2 = require("argon2");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const User = require("./controller/user");
@@ -15,14 +16,17 @@ passport.use(
             return done(null, false, { message: "Incorrect email." });
           }
 
-          if (user.password !== password) {
-            return done(null, false, { message: "Incorrect password." });
-          }
+          return argon2.verify(user.password, password).then(verified => {
+            if (!verified) {
+              return done(null, false, { message: "Incorrect password." });
+            }
 
-          return done(null, user);
+            return done(null, user);
+          });
         })
         .catch(err => {
-          done(err);
+          console.error(err);
+          done(null, false, { message: err.message });
         });
     }
   )
