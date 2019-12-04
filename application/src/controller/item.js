@@ -2,7 +2,7 @@ const { Item, Category, User, Sequelize } = require("../../models");
 const Op = Sequelize.Op;
 
 module.exports = {
-  find({ search, category, limit, offset, orderBy, orderDirection } = {}) {
+  find({ search, category, limit, offset, orderBy, orderDirection, approvalStatus } = {}) {
     const where = {};
     const order = [];
 
@@ -21,6 +21,10 @@ module.exports = {
 
     if (category) {
       where.CategoryId = category;
+    }
+
+    if (approvalStatus) {
+      where.approval = approvalStatus;
     }
 
     limit = parseInt(limit);
@@ -62,11 +66,22 @@ module.exports = {
   },
   middleware(options) {
     return (req, res, next) => {
-      module.exports.find(options || req.query).then(items => {
+      // Merge request query params and optional params
+      module.exports.find(Object.assign(options, req.query)).then(items => {
         res.locals.items = items;
         next();
       });
     };
+  },
+  updateApproval() {
+    return (req, res, next) => {
+      Item.update(
+          { approval: req.body.reviewResult},
+          { where: { id: req.query.item } }
+      ).then(result => {
+        next();
+      });
+    }
   }
 };
 
