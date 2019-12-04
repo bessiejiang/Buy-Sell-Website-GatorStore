@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const Message = require("../controller/message");
+const auth = require("../auth");
 
-router.get("/", Message.find(), function(req, res) {
+router.get("/", auth.restrict(), Message.find(), function(req, res) {
   if (!req.user) {
     return res.redirect("/");
   }

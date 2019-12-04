@@ -1,11 +1,9 @@
 const { Category } = require("../../models");
 const { toJSON } = require("./_utils");
 
-console.log(toJSON);
-
 exports = module.exports = {
   find() {
-    return Category.findAll().then(toJSON).catch(err => console.log(err));
+    return Category.findAll().then(toJSON);
   },
   findByPk(id) {
     return Category.findByPk(id).then(toJSON);

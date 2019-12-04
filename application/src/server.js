@@ -52,7 +52,7 @@ models.sequelize
 app.use(Category.middleware());
 
 // Sets up authentication handling
-app.use(session({ secret: "csc648", resave: false, saveUninitialized: false }));
+app.use(session({ secret: "csc648", resave: false, saveUninitialized: true }));
 app.use(auth.initialize());
 app.use(auth.session());
 

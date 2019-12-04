@@ -51,7 +51,11 @@
       </form>
 
       <% if (user) { %>
-        <a class="nav-item nav-link ml-5" href="/logout">Log Out</a>
+        <a class="nav-item nav-link ml-5" href="/dashboard">Dashboard</a>
+        <% if (user.role.split(',').includes('admin')) { %>
+          <a class="nav-item nav-link" href="/admin">Admin</a>
+        <% } %>
+        <a class="nav-item nav-link" href="/logout">Log Out</a>
       <% } else { %>
         <a class="nav-item nav-link ml-5" href="/signup">Sign Up</a>
         <a class="nav-item nav-link" href="/login">Login</a>

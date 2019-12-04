@@ -38,15 +38,53 @@ passport.serializeUser(function(user, done) {
 
 passport.deserializeUser(function(id, done) {
   User.findByPk(id)
-    .then(user => done(null, user))
+    .then(user => {
+      delete user.password;
+      done(null, user);
+    })
     .catch(err => done(err));
 });
 
 module.exports = {
   initialize: passport.initialize.bind(passport),
   session: passport.session.bind(passport),
-  authenticate: passport.authenticate.bind(passport, "local", {
-    successRedirect: "/",
-    failureRedirect: "/login"
-  })
+  authenticate() {
+    return (req, res, next) => {
+      passport.authenticate("local", (err, user, info) => {
+        if (err) {
+          return next(err);
+        }
+
+        if (!user) {
+          return res.redirect("/login");
+        }
+
+        req.logIn(user, err => {
+          if (err) {
+            return next(err);
+          }
+
+          let redirectTo = req.session.redirectTo || "/";
+          delete req.session.redirectTo;
+
+          return res.redirect(redirectTo);
+        });
+      })(req, res, next);
+    };
+  },
+  restrict: (options = {}) => {
+    return (req, res, next) => {
+      let redirect = options.redirect || "/login";
+
+      if (
+        !req.user ||
+        (options.role && !req.user.role.split(",").includes(options.role))
+      ) {
+        req.session.redirectTo = req.originalUrl;
+        return res.redirect(redirect);
+      }
+
+      next();
+    };
+  }
 };
