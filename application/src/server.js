@@ -1,4 +1,4 @@
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
 const consolidate = require("consolidate");
 const express = require("express");
 const session = require("express-session");
@@ -22,7 +22,6 @@ const aboutRouter = require("./router/about");
 const contactRouter = require("./router/contactRouter");
 const reviewRouter = require("./router/reviewRouter");
 const adminRouter = require("./router/adminRouter");
-
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/static", express.static(path.join(__dirname, "static")));
@@ -76,6 +75,6 @@ app.use("/signup", signupRouter);
 app.use("/login", loginRouter);
 app.use("/logout", logoutRouter);
 app.use("/about", aboutRouter);
-app.use('/contact', contactRouter);
-app.use('/review', reviewRouter);
-app.use('/admin', adminRouter);
+app.use("/contact", contactRouter);
+app.use("/review", reviewRouter);
+app.use("/admin", adminRouter);
