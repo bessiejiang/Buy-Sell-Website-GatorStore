@@ -1,26 +1,21 @@
 const { Category } = require("../../models");
+const { toJSON } = require("./_utils");
 
-module.exports = {
+console.log(toJSON);
+
+exports = module.exports = {
   find() {
-    return Category.findAll().then(toJSON);
+    return Category.findAll().then(toJSON).catch(err => console.log(err));
   },
   findByPk(id) {
     return Category.findByPk(id).then(toJSON);
   },
   middleware() {
     return (req, res, next) => {
-      module.exports.find().then(categories => {
+      exports.find().then(categories => {
         res.locals.categories = categories;
         next();
       });
     };
   }
 };
-
-function toJSON(item) {
-  if (Array.isArray(item)) {
-    return item.map(toJSON);
-  }
-
-  return item && item.get({ plain: true });
-}

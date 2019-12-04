@@ -1,4 +1,5 @@
 const { User } = require("../../models");
+const { toJSON } = require("./_utils");
 
 module.exports = {
   find() {
@@ -18,11 +19,3 @@ module.exports = {
     };
   }
 };
-
-function toJSON(item) {
-  if (Array.isArray(item)) {
-    return item.map(toJSON);
-  }
-
-  return item && item.get({ plain: true });
-}
