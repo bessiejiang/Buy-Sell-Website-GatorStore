@@ -5,9 +5,7 @@ const Item = require("../controller/item");
 router.get("/", Item.middleware({
   approvalStatus: "approved"
 }), function(req, res) {
-  res.render("results.ejs", {
-    query: req.query
-  });
+  res.render("results.ejs");
 });
 
 module.exports = router;

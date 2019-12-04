@@ -1,8 +1,17 @@
 const { Item, Category, User, Sequelize } = require("../../models");
+const { toJSON } = require("./_utils");
 const Op = Sequelize.Op;
 
-module.exports = {
-  find({ search, category, limit, offset, orderBy, orderDirection, approvalStatus } = {}) {
+exports = module.exports = {
+  find({
+    search,
+    category,
+    limit,
+    offset,
+    orderBy,
+    orderDirection,
+    approvalStatus
+  } = {}) {
     const where = {};
     const order = [];
 
@@ -67,7 +76,7 @@ module.exports = {
   middleware(options) {
     return (req, res, next) => {
       // Merge request query params and optional params
-      module.exports.find(Object.assign(options, req.query)).then(items => {
+      exports.find(Object.assign(options, req.query)).then(items => {
         res.locals.items = items;
         next();
       });
@@ -76,19 +85,11 @@ module.exports = {
   updateApproval() {
     return (req, res, next) => {
       Item.update(
-          { approval: req.body.reviewResult},
-          { where: { id: req.query.item } }
+        { approval: req.body.reviewResult },
+        { where: { id: req.query.item } }
       ).then(result => {
         next();
       });
-    }
+    };
   }
 };
-
-function toJSON(item) {
-  if (Array.isArray(item)) {
-    return item.map(toJSON);
-  }
-
-  return item.get({ plain: true });
-}
