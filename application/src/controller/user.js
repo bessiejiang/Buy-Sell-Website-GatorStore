@@ -1,3 +1,4 @@
+const argon2 = require("argon2");
 const { User } = require("../../models");
 const { toJSON } = require("./_utils");
 
@@ -17,5 +18,16 @@ module.exports = {
 
       next();
     };
+  },
+  create(user) {
+    return argon2.hash(user.password).then(password =>
+      User.create({
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        password: password,
+        role: "user"
+      })
+    );
   }
 };

@@ -12,7 +12,6 @@
             input.setCustomValidity("");
         }
     };
-
 </script>
 
 <div class="container">
@@ -20,27 +19,29 @@
         <h2 class="text-center">SIGN UP</h2>
         <div class="form">
             <small>*All fields are mandatory</small>
-            <form method = "post" action="" onsubmit="return checkform(this)">
+            <form method = "post" action="/signup" onsubmit="return checkform(this)">
                 <div class="form-group">
                     <label for="">First Name:</label>
-                    <input class="form-control" type="text" required />
+                    <input name="firstName" class="form-control" type="text" required value="<%= formData.firstName %>" />
                 </div>
                 <div class="form-group">
                     <label for="">Last Name:</label>
-                    <input class="form-control" type="text" required />
+                    <input name="lastName" class="form-control" type="text" required value="<%= formData.lastName %>" />
                 </div>
                 <div class="form-group">
                     <label for="">Email:</label>
-                    <input class="form-control" type="text" required />
+                    <input name="email" class="form-control" type="text" required value="<%= formData.email %>" />
                 </div>
                 <div class="form-group">
                     <label for="">Password:</label>
                     <input
                         id="apassword"
-                        name="apassword"
+                        name="password"
                         class="form-control"
                         type="password"
+                        minlength="8"
                         required
+                        value="<%= formData.password %>"
                     />
                 </div>
                 <div class="form-group">
@@ -48,20 +49,25 @@
                     <span id="message"></span>
                     <input
                         oninput="check(this)"
-                        name="confirm_password"
+                        name="confirmPassword"
                         id="confirm_password"
                         class="form-control"
                         type="password"
                         required
+                        value="<%= formData.confirmPassword %>"
                     />
                 </div>
 
                 <div class="form-group form-check">
-                    <input type="checkbox" class="form-check-input" required />
+                    <input name="agreeTerms" type="checkbox" class="form-check-input" required <%= formData.agreeTerms === 'on' ? 'checked' : '' %> />
                     <label class="form-check-label"
                         >I agree to terms and conditions</label
                     >
                 </div>
+
+                <% if (flash.length > 0) { %>
+                    <div class="alert alert-danger"><%= flash.map(f => f.message).join(' ') %></div>
+                <% } %>
 
                 <!-- captcha -->
                 <div class = "capbox form-group text-center">
@@ -72,7 +78,7 @@
                 </div>
                 <!-- end of captcha -->
                 <div class="form-group text-center">
-                    <button class="btn btn-large btn-success">JOIN</button>
+                    <button type="submit" class="btn btn-large btn-success">JOIN</button>
                 </div>
             </form>
         </div>
