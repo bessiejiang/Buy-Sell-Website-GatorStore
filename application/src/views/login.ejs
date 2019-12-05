@@ -22,6 +22,12 @@
             required
           />
         </div>
+
+        <% if (flash.length > 0) { %>
+          <div class="alert alert-danger"><%= flash.map(f => f.message).join(' ') %></div>
+          <% flash.splice(0, flash.length); // remove all messages %>
+        <% } %>
+
         <!-- captcha -->
         <div class="capbox form-group text-center">
           Please enter the number:

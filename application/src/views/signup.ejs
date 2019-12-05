@@ -67,6 +67,7 @@
 
                 <% if (flash.length > 0) { %>
                     <div class="alert alert-danger"><%= flash.map(f => f.message).join(' ') %></div>
+                    <% flash.splice(0, flash.length); // remove all messages %>
                 <% } %>
 
                 <!-- captcha -->
