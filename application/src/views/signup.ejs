@@ -1,9 +1,10 @@
+<% title = 'Sign Up'; jsFiles = ['/static/js/captcha.js']; cssFiles = []; %>
+
 <%include ./partials/header.ejs%>
 <%include ./partials/navbar.ejs%>
 
 <!-- script to check if two inputs for password match and for captcha -->
 <script language="javascript" type="text/javascript">
-    document.title = "Sign Up";
     const check = input => {
         if (input.value != document.getElementById("apassword").value) {
             input.setCustomValidity("Password Must be Matching.");
