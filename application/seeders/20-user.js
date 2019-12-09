@@ -19,18 +19,24 @@ module.exports = {
       User.tableName,
       setDefaults([
         {
+          firstName: "Silvester",
+          lastName: "Seller",
           email: "silvester-seller@mail.sfsu.edu",
           password:
             "$argon2i$v=19$m=4096,t=3,p=1$rzvYerT4f3A6qReTzgeBOg$bhNvyHf/DS0zGpgdvbI51ZOobFiN5Dmx39LMbPQxtEs",
           role: "user"
         },
         {
+          firstName: "Bella",
+          lastName: "Buyer",
           email: "bella-buyer@mail.sfsu.edu",
           password:
             "$argon2i$v=19$m=4096,t=3,p=1$o/3tRPVgd4tc3OiSMg71VA$2GhX1git5N4wa9br54ZZcYz/6peniymbxg+fhnAjNaE",
           role: "user"
         },
         {
+          firstName: "Ali",
+          lastName: "Admin",
           email: "ali-admin@mail.sfsu.edu",
           password:
             "$argon2i$v=19$m=4096,t=3,p=1$atTZ9NzZXLivVX79h9sjgw$+FG/9KVJUciPRTuZmE6kZr8dhYGajmP4oR2lx8FXKWs",

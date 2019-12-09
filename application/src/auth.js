@@ -13,7 +13,7 @@ passport.use(
       User.findByEmail(email)
         .then(user => {
           if (!user) {
-            return done(null, false, { message: "Incorrect email." });
+            return done(null, false, { message: "No user with that email." });
           }
 
           return argon2.verify(user.password, password).then(verified => {
@@ -25,7 +25,6 @@ passport.use(
           });
         })
         .catch(err => {
-          console.error(err);
           done(null, false, { message: err.message });
         });
     }
@@ -51,6 +50,10 @@ module.exports = {
   authenticate() {
     return (req, res, next) => {
       passport.authenticate("local", (err, user, info) => {
+        if (info) {
+          req.flash("info", info.message);
+        }
+
         if (err) {
           return next(err);
         }
@@ -72,7 +75,7 @@ module.exports = {
       })(req, res, next);
     };
   },
-  restrict: (options = {}) => {
+  restrict(options = {}) {
     return (req, res, next) => {
       let redirect = options.redirect || "/login";
 

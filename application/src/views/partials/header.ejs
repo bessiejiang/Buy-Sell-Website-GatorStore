@@ -19,11 +19,21 @@
     <script
       src="https://kit.fontawesome.com/cbf78f87f8.js"
       crossorigin="anonymous"
+      async
     ></script>
-    <script type="text/javascript" src="/static/js/captcha.js"></script>
+
+    <% for (let file of (typeof jsFiles != 'undefined' ? jsFiles : [])) { %>
+      <script type="text/javascript" src="<%= file %>"></script>
+    <% } %>
+
     <link rel="stylesheet" href="/static/lib/bootstrap.css" />
     <link rel="stylesheet" href="/static/styles/home.css" />
-    <title>Home Page</title>
+
+    <% for (let file of (typeof cssFiles != 'undefined' ? cssFiles : [])) { %>
+      <link rel="stylesheet" href="<%= file %>" />
+    <% } %>
+
+    <title><%= typeof title == 'string' ? title + ' | ' : '' %>Gator Store</title>
   </head>
   <body>
 
