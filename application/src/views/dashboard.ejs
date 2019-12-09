@@ -13,23 +13,14 @@
     <p><h3>Recently posted items:</h3></p>
     <div class="slideshow-container">
 
-      <div class="mySlides slide-fade">
-        <img src="static/img/ikea_sofa.jpg" alt="ikea sofa" style="width:220px;height:150px;">
-        <img src="static/img/longboard.jpg" alt="longboard" style="width:90px;height:150px;">
-        <img src="static/img/csc510tb.jpg" alt="csc510 textbook" style="width:210px;height:150px;">
-      </div>
-
-      <div class="mySlides slide-fade">
-        <img src="static/img/longboard.jpg" alt="longboard" style="width:90px;height:150px;">
-        <img src="static/img/csc510tb.jpg" alt="csc510 textbook" style="width:210px;height:150px;">
-        <img src="static/img/ikea_sofa.jpg" alt="ikea sofa" style="width:220px;height:150px;">
-      </div>
-
-      <div class="mySlides slide-fade">
-        <div class="numbertext"> </div>
-        <img src="static/img/csc510tb.jpg" alt="csc510 textbook" style="width:210px;height:150px;">
-        <div class="text"> </div>
-      </div>
+      <% for (let i = 0; i < items.rows.length; i++) { %>
+        <div class="mySlides slide-fade">
+        <% for (let j = 0; j < items.rows.length; j++) { %>
+          <% let item = items.rows[(i + j) % items.rows.length]; %>
+          <a href="/item/<%= item.id %>"><img src="<%= item.photo %>" alt="<%= item.title %>" style="height:150px;"></a>
+          <% } %>
+        </div>
+      <% } %>
 
       <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
       <a class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -42,7 +33,7 @@
       <a class="nav-link active" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="true">Messages</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" id="items-tab" data-toggle="tab" href="#items" role="tab" aria-controls="items" aria-selected="false">Items</a>
+      <a class="nav-link" id="items-tab" data-toggle="tab" href="#items" role="tab" aria-controls="items" aria-selected="false">Your Items</a>
     </li>
   </ul>
   <div class="tab-content">
@@ -60,6 +51,10 @@
             <th>Reply</th>
           </tr>
         </thead>
+        <tbody>
+        <% if (messages.length == 0) { %>
+          <tr><td colspan="8" class="text-center text-bold"><b>No Messages</b></td></tr>
+        <% } %>
         <% for (var i = 0; i < messages.length; i++) {%>
           <% message = messages[i];%>
           <tr>
@@ -71,7 +66,7 @@
             <td><%=message.message%></td>
             <td><%=message.createdAt%></td>
             <!-- TODO: Only enable reply button for those messages sent to seller-->
-            <td><button data-toggle="modal" data-target="#reply-modal-<%=i%>" class="btn btn-secondary">Reply</button></td>
+            <td><button data-toggle="modal" data-target="#reply-modal-<%=i%>" class="btn btn-primary">Reply</button></td>
           </tr>
 
           <!-- Contact Modal -->
@@ -99,6 +94,7 @@
           </div>
 
         <%}%>
+        </tbody>
       </table>
     </div>
 
@@ -112,9 +108,14 @@
             <th>Description</th>
             <th>Photo</th>
             <th>Approval</th>
-            <th></th>
+            <th>View</th>
+            <th>Delete</th>
           </tr>
         </thead>
+        <tbody>
+        <% if (items.rows.length == 0) { %>
+          <tr><td colspan="8" class="text-center"><b>No Items</b></td></tr>
+        <% } %>
         <% for (let item of items.rows) {%>
           <tr>
             <td><%=item.title%></td>
@@ -129,10 +130,12 @@
                 'fa-times-circle text-danger'
               %>" title="<%= item.approval %>" aria-hidden="true"></i>
             </td>
+            <td><a href="/item/<%= item.id %>" class="btn btn-primary">View</a></td>
             <td><form action="/item/<%= item.id %>/delete" method="post"><button type="submit" class="btn btn-danger">Delete</button></form></td>
           </tr>
         <% } %>
-        </table>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
