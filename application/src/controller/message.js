@@ -16,7 +16,7 @@ module.exports = {
       Message.create({
         from: req.body.from,
         to: req.body.to,
-        item: req.query.title,
+        item: req.query.item,
         message: req.body.reviewResult + " " + req.body.contactDetails,
         dealLocation: req.body.contactLocation,
         dealTime: req.body.contactTime

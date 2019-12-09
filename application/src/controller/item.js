@@ -10,7 +10,8 @@ exports = module.exports = {
     offset,
     orderBy,
     orderDirection,
-    approvalStatus
+    approvalStatus,
+    author
   } = {}) {
     const where = {};
     const order = [];
@@ -36,6 +37,10 @@ exports = module.exports = {
       where.approval = approvalStatus;
     }
 
+    if (author) {
+      where.UserId = author;
+    }
+
     limit = parseInt(limit);
     offset = parseInt(offset);
 
@@ -48,13 +53,13 @@ exports = module.exports = {
     }
 
     if (orderBy && orderBy in Item.tableAttributes) {
-      order.push([orderBy]);
+      let direction = "ASC";
 
       if (orderDirection && orderDirection.toLowerCase() === "desc") {
-        order[0].push("DESC");
-      } else {
-        order[0].push("ASC");
+        direction = "DESC";
       }
+
+      order.push([orderBy, direction]);
     }
 
     return Item.findAndCountAll({
@@ -76,7 +81,13 @@ exports = module.exports = {
   middleware(options) {
     return (req, res, next) => {
       // Merge request query params and optional params
-      exports.find(Object.assign(options, req.query)).then(items => {
+      Object.assign(options, req.query);
+
+      if (options.user && req.user) {
+        options.author = req.user.id;
+      }
+
+      exports.find(options).then(items => {
         res.locals.items = items;
         next();
       });
@@ -91,5 +102,8 @@ exports = module.exports = {
         next();
       });
     };
+  },
+  delete(id) {
+    return Item.destroy({ where: { id } });
   }
 };
