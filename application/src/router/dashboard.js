@@ -7,7 +7,7 @@ const auth = require("../auth");
 router.get(
   "/",
   auth.restrict(),
-  Message.find(),
+  Message.middleware({ user: true }),
   Item.middleware({ user: true, orderBy: "createdAt" }),
   function(req, res) {
     res.render("dashboard.ejs");
