@@ -97,7 +97,7 @@ exports = module.exports = {
     return (req, res, next) => {
       Item.update(
         { approval: req.body.reviewResult },
-        { where: { id: req.query.item } }
+        { where: { id: req.query.itemId } }
       ).then(result => {
         next();
       });

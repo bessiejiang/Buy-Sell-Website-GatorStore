@@ -20,17 +20,21 @@
     <br><br>
     <h3>Items</h3>
 
-    <table>
-        <tr>
-            <th>Title</th>
-            <th>Price</th>
-            <th>Description</th>
-            <th>Photo</th>
-            <!-- TODO: Add column for category -->
-        </tr>
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Photo</th>
+                <th>Review</th>
+            </tr>
+        </thead>
         <% for (let item of items.rows) {%>
             <tr>
                 <td><%=item.title%></td>
+                <td><%=item.Category.name%></td>
                 <td><%=item.price%></td>
                 <td><%=item.description%></td>
                 <td><img src="<%=item.photo%>" class="img-fluid card-img-top" style="width: 150px; height: 150px"/></td>
@@ -40,7 +44,7 @@
             <!-- Review Modal -->
             <div class="modal fade" id="review-<%=item.id%>" role="dialog">
                 <div class="modal-dialog">
-                    <form action="/review?item=<%=item.id%>&title=<%=item.title%>" method="post">
+                    <form action="/review?itemId=<%=item.id%>&item=<%=item.title%>" method="post">
                         <!-- Review Modal content-->
                         <div class="modal-content row">
                             <div class="modal-header">
@@ -48,6 +52,8 @@
                             </div>
                             <div class="modal-body row">
                                 <textarea name="contactDetails" class="item-description col-md-12" type="text" placeholder="type in details"></textarea>
+                                <input style="display: none" name="from" readonly type="text" <% if (user) { %>value="<%= user.firstName %>"<% } %>></p>
+                                <input style="display: none" name="to" readonly type="text" value="<%= item.User.firstName %>"></p>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>

@@ -7,7 +7,6 @@
 <hr>
 <br>
 
-<!-- TODO replace hardcoded pictures after login/signup implemented -->
 <div class="container">
   <div class="center">
     <p><h3>Recently posted items:</h3></p>
@@ -65,8 +64,10 @@
             <td><%=message.dealTime%></td>
             <td><%=message.message%></td>
             <td><%=message.createdAt%></td>
-            <!-- TODO: Only enable reply button for those messages sent to seller-->
+            <!-- Only enable reply button for those messages sent to seller -->
+            <% if (message.to == user.firstName) { %>
             <td><button data-toggle="modal" data-target="#reply-modal-<%=i%>" class="btn btn-primary">Reply</button></td>
+            <% } %>
           </tr>
 
           <!-- Contact Modal -->

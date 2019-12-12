@@ -20,7 +20,7 @@ module.exports = {
       setDefaults([
         {
           firstName: "Silvester",
-          lastName: "Seller",
+          lastName: "Sam",
           email: "silvester-seller@mail.sfsu.edu",
           password:
             "$argon2i$v=19$m=4096,t=3,p=1$rzvYerT4f3A6qReTzgeBOg$bhNvyHf/DS0zGpgdvbI51ZOobFiN5Dmx39LMbPQxtEs",
@@ -28,7 +28,7 @@ module.exports = {
         },
         {
           firstName: "Bella",
-          lastName: "Buyer",
+          lastName: "Bob",
           email: "bella-buyer@mail.sfsu.edu",
           password:
             "$argon2i$v=19$m=4096,t=3,p=1$o/3tRPVgd4tc3OiSMg71VA$2GhX1git5N4wa9br54ZZcYz/6peniymbxg+fhnAjNaE",

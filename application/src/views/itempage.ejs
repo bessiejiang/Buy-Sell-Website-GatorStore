@@ -31,10 +31,13 @@
           style="max-width: 250px;"
           alt=""
         />
-        <p>Seller Bar</p>
+        <p><%=item.User.firstName%> <%=item.User.lastName%></p>
       </div>
+      <!-- Redirect to login if not logged in -->
       <div class="text-center">
-        <button class="btn btn-warning" data-toggle="modal" data-target="#contact-modal">Contact Seller</button>
+        <button class="btn btn-warning"
+                <% if (!user) { %>onclick="location.href='../login';" <% } %>
+                <% if (user) { %>data-toggle="modal" data-target="#contact-modal"<% } %>>Contact Seller</button>
       </div>
 
       <!-- Contact Modal -->
@@ -47,14 +50,15 @@
                 <h4 class="modal-title"><%=item.title%></h4>
               </div>
                 <div class="modal-body row">
-                  <!--TODO: replace hardcoded values with user info once login is implemented -->
-                  <p class="col-md-10">Buyer <input name="from" readonly type="text" value="<%= "Buyer Foo" %>"></p>
-                  <p class="col-md-10">Seller <input name="to" readonly type="text" value="<%= "Seller Bar" %>"></p>
+                  <p class="col-md-10">Buyer <input name="from" readonly type="text" <% if (user) { %>value="<%= user.firstName %>"<% } %>></p>
+                  <p class="col-md-10">Seller <input name="to" readonly type="text" value="<%= item.User.firstName %>"></p>
 
                   <select name="contactLocation" class="float-left col-md-5">
                     <option>Library</option>
                     <option>Station Cafe</option>
                     <option>Thornton Hall</option>
+                    <option>Peet's Coffee</option>
+                    <option>Student Center</option>
                   </select>
 
                   <input name="contactTime" class="float-right col-md-5" type="text" placeholder="type in time to contact">
