@@ -1,4 +1,4 @@
-const { Category, User, Item, Post } = require("../models");
+const { Category, User, Item } = require("../models");
 
 module.exports = {
   /**
@@ -22,9 +22,6 @@ module.exports = {
   down: async (queryInterface, Sequelize) => {
     // Order of these matter, be careful
     // This should be opposite the order above
-
-    // Post changed to Item, so only drop and not create
-    await queryInterface.dropTable(Post.tableName);
 
     await queryInterface.dropTable(Item.tableName);
     await queryInterface.dropTable(User.tableName);

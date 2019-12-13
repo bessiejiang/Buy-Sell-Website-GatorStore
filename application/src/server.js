@@ -1,11 +1,16 @@
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
 const consolidate = require("consolidate");
 const express = require("express");
+const session = require("express-session");
+const flash = require("flash");
+const morgan = require("morgan");
 const path = require("path");
 const app = express();
 const PORT = 1648;
+const auth = require("./auth");
 const models = require("../models");
 const Category = require("./controller/category");
+const User = require("./controller/user");
 const homeRouter = require("./router/homeRouter.js");
 const itemRouter = require("./router/itemRouter.js");
 const itemDetailsRouter = require("./router/itemDetailsRouter.js");
@@ -14,12 +19,13 @@ const postingRouter = require("./router/posting");
 const dashboardRouter = require("./router/dashboard");
 const signupRouter = require("./router/signup");
 const loginRouter = require("./router/login");
+const logoutRouter = require("./router/logout");
 const aboutRouter = require("./router/about");
 const contactRouter = require("./router/contactRouter");
 const reviewRouter = require("./router/reviewRouter");
 const adminRouter = require("./router/adminRouter");
 
-
+app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/static", express.static(path.join(__dirname, "static")));
 
@@ -48,6 +54,21 @@ models.sequelize
 // Adds `categories` to all pages and available in ejs
 app.use(Category.middleware());
 
+// Sets up authentication handling
+app.use(session({ secret: "csc648", resave: false, saveUninitialized: true }));
+app.use(flash());
+app.use(auth.initialize());
+app.use(auth.session());
+
+// When logged in, adds `user` to all pages and available in ejs
+app.use(User.middleware());
+
+// Adds all url query parameters to all pages and available in ejs
+app.use((req, res, next) => {
+  res.locals.query = req.query;
+  next();
+});
+
 app.use("/", homeRouter);
 app.use("/getItems", itemRouter);
 app.use("/item", itemDetailsRouter);
@@ -56,7 +77,8 @@ app.use("/posting", postingRouter);
 app.use("/dashboard", dashboardRouter);
 app.use("/signup", signupRouter);
 app.use("/login", loginRouter);
+app.use("/logout", logoutRouter);
 app.use("/about", aboutRouter);
-app.use('/contact', contactRouter);
-app.use('/review', reviewRouter);
-app.use('/admin', adminRouter);
+app.use("/contact", contactRouter);
+app.use("/review", reviewRouter);
+app.use("/admin", adminRouter);
