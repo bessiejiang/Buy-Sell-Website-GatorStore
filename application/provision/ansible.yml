@@ -5,6 +5,8 @@
     nodejs_version: "10"
     ubuntu_release: "bionic"
     webserver_port: "1648"
+    nginx_file: "nginx{{ '-webserver' if ansible_user == 'csc648' else '' }}.conf.template"
+    certbot_dns: "gatorstore.duckdns.org" # used for nginx template file
 
   handlers:
     - name: Restart nginx
@@ -48,7 +50,7 @@
 
     - name: Add custom nginx conf
       template:
-        src: nginx.conf.template
+        src: "{{ nginx_file }}"
         dest: /etc/nginx/sites-enabled/webserver.conf
       notify: Restart nginx
 
@@ -86,6 +88,8 @@
   become: yes
   vars:
     remote_repo_path: "/home/csc648/csc648-fall2019-Team12"
+    certbot_dns: "gatorstore.duckdns.org"
+    certbot_email: "jsmick@mail.sfsu.edu"
 
   tasks:
     - name: Create git folder
@@ -131,6 +135,24 @@
       become_user: csc648
       args:
         creates: /home/csc648/.pm2/dump.pm2
+
+    - name: Add certbot repository
+      apt_repository:
+        repo: "ppa:certbot/certbot"
+
+    - name: Install certbot
+      apt:
+        name: "{{ packages }}"
+      vars:
+        packages:
+          - certbot
+          - python-certbot-nginx
+
+    - name: Create certbot cert
+      command: "certbot certonly --nginx --noninteractive --agree-tos --email '{{ certbot_email }}' -d '{{ certbot_dns }}'"
+      args:
+        creates: "/etc/letsencrypt"
+      become_user: csc648
 
 # host default is only run for vagrant
 - hosts: default

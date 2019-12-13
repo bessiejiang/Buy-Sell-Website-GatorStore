@@ -14,13 +14,19 @@
     "fix": "prettier --write \"./**/*.js\" \"./**/*.json\" \"./**/*.css\" \"./**/*.html\""
   },
   "dependencies": {
+    "argon2": "^0.25.1",
     "body-parser": "^1.19.0",
     "consolidate": "^0.15.1",
     "ejs": "^2.7.1",
     "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "flash": "^1.1.0",
+    "morgan": "^1.9.1",
     "mysql": "^2.17.1",
     "mysql2": "^1.7.0",
     "npx": "^10.2.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "sequelize": "^5.19.3"
   },
   "devDependencies": {

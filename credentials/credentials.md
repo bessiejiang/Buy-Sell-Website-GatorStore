@@ -1,6 +1,6 @@
 # Credentials
 
-Server IP: `34.83.135.4`
+Server IP: `34.82.221.18`
 
 ## SSH
 
@@ -10,7 +10,7 @@ Server IP: `34.83.135.4`
 ### Connect to server
 
 ```sh
-ssh -i ./ssh/id_csc648 csc648@34.83.135.4
+ssh -i ./ssh/id_csc648 csc648@34.82.221.18
 ```
 
 Or from the application folder:

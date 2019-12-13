@@ -1,8 +1,18 @@
 const { Item, Category, User, Sequelize } = require("../../models");
+const { toJSON } = require("./_utils");
 const Op = Sequelize.Op;
 
-module.exports = {
-  find({ search, category, limit, offset, orderBy, orderDirection } = {}) {
+exports = module.exports = {
+  find({
+    search,
+    category,
+    limit,
+    offset,
+    orderBy,
+    orderDirection,
+    approvalStatus,
+    author
+  } = {}) {
     const where = {};
     const order = [];
 
@@ -23,6 +33,14 @@ module.exports = {
       where.CategoryId = category;
     }
 
+    if (approvalStatus) {
+      where.approval = approvalStatus;
+    }
+
+    if (author) {
+      where.UserId = author;
+    }
+
     limit = parseInt(limit);
     offset = parseInt(offset);
 
@@ -35,13 +53,13 @@ module.exports = {
     }
 
     if (orderBy && orderBy in Item.tableAttributes) {
-      order.push([orderBy]);
+      let direction = "ASC";
 
       if (orderDirection && orderDirection.toLowerCase() === "desc") {
-        order[0].push("DESC");
-      } else {
-        order[0].push("ASC");
+        direction = "DESC";
       }
+
+      order.push([orderBy, direction]);
     }
 
     return Item.findAndCountAll({
@@ -62,18 +80,30 @@ module.exports = {
   },
   middleware(options) {
     return (req, res, next) => {
-      module.exports.find(options || req.query).then(items => {
+      // Merge request query params and optional params
+      Object.assign(options, req.query);
+
+      if (options.user && req.user) {
+        options.author = req.user.id;
+      }
+
+      exports.find(options).then(items => {
         res.locals.items = items;
         next();
       });
     };
+  },
+  updateApproval() {
+    return (req, res, next) => {
+      Item.update(
+        { approval: req.body.reviewResult },
+        { where: { id: req.query.itemId } }
+      ).then(result => {
+        next();
+      });
+    };
+  },
+  delete(id) {
+    return Item.destroy({ where: { id } });
   }
 };
-
-function toJSON(item) {
-  if (Array.isArray(item)) {
-    return item.map(toJSON);
-  }
-
-  return item.get({ plain: true });
-}

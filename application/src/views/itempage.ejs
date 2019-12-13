@@ -1,23 +1,24 @@
 <!-- single item page -->
+<% title = item.title; jsFiles = []; cssFiles = []; %>
+
 <%include ./partials/header.ejs%>
 <%include ./partials/navbar.ejs%>
-<%const data = item%> 
 
 <div class="container mt-5">
   <div class="row">
     <!-- item container -->
     <div class="col-12 col-md-8">
-      <h2><%=data.title%> - $<%=data.price%></h2>
+      <h2><%=item.title%> - $<%=item.price%></h2>
       <div class="d-flex justify-content-center mb-3">
-        <img class="item-img" src = <%=data.photo%> alt="" />
+        <img class="item-img" src = <%=item.photo%> alt="" />
       </div>
-      
+
       <h3><strong>Item description:</strong></h3>
       <div class="item-description">
-        <p><%=data.description%></p>
+        <p><%=item.description%></p>
       </div>
       <div>
-        <p class = 'text-muted'><strong>Last updated:</strong> <%=data.updatedAt%></p>
+        <p class = 'text-muted'><strong>Last updated:</strong> <%=item.updatedAt%></p>
       </div>
     </div>
 
@@ -30,30 +31,34 @@
           style="max-width: 250px;"
           alt=""
         />
-        <p>Seller Bar</p>
+        <p><%=item.User.firstName%> <%=item.User.lastName%></p>
       </div>
+      <!-- Redirect to login if not logged in -->
       <div class="text-center">
-        <button class="btn btn-warning" data-toggle="modal" data-target="#contact-modal">Contact Seller</button>
+        <button class="btn btn-warning"
+                <% if (!user) { %>onclick="location.href='../login';" <% } %>
+                <% if (user) { %>data-toggle="modal" data-target="#contact-modal"<% } %>>Contact Seller</button>
       </div>
 
       <!-- Contact Modal -->
       <div class="modal fade" id="contact-modal" role="dialog">
         <div class="modal-dialog">
-          <form action="/contact?item=<%=data.title%>" method="post">
+          <form action="/contact?item=<%=item.title%>" method="post">
             <!-- Contact Modal content-->
             <div class="modal-content row">
               <div class="modal-header">
-                <h4 class="modal-title"><%=data.title%></h4>
+                <h4 class="modal-title"><%=item.title%></h4>
               </div>
                 <div class="modal-body row">
-                  <!--TODO: replace hardcoded values with user info once login is implemented -->
-                  <p class="col-md-10">Buyer <input name="from" readonly type="text" value="<%= "Buyer Foo" %>"></p>
-                  <p class="col-md-10">Seller <input name="to" readonly type="text" value="<%= "Seller Bar" %>"></p>
+                  <p class="col-md-10">Buyer <input name="from" readonly type="text" <% if (user) { %>value="<%= user.firstName %>"<% } %>></p>
+                  <p class="col-md-10">Seller <input name="to" readonly type="text" value="<%= item.User.firstName %>"></p>
 
                   <select name="contactLocation" class="float-left col-md-5">
                     <option>Library</option>
                     <option>Station Cafe</option>
                     <option>Thornton Hall</option>
+                    <option>Peet's Coffee</option>
+                    <option>Student Center</option>
                   </select>
 
                   <input name="contactTime" class="float-right col-md-5" type="text" placeholder="type in time to contact">

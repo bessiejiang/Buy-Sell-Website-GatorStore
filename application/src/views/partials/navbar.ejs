@@ -2,7 +2,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark navbar-background navbar-custom">
   <a class="navbar-brand" href="/">Gator Store</a>
-  
+
   <!-- hamburger dropdown when collapsed  -->
   <button
     class="navbar-toggler"
@@ -15,7 +15,7 @@
   >
     <span class="navbar-toggler-icon"></span>
   </button>
-  
+
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav w-100 justify-content-center">
 
@@ -28,7 +28,7 @@
           <select class="custom-select btn" name="category">
             <option value="">All</option>
             <% for (let category of categories) { %>
-            <option value="<%= category.id %>"<%= typeof query != 'undefined' && query.category == category.id ? ' selected' : '' %>><%= category.name %></option>
+            <option value="<%= category.id %>"<%= query.category == category.id ? ' selected' : '' %>><%= category.name %></option>
             <% } %>
           </select>
 
@@ -38,7 +38,7 @@
             placeholder="Go Find It!"
             maxlength="40"
             name="search"
-            <% if (typeof query != 'undefined' && query.search) { %>value="<%= query.search %>"<% } %>
+            <% if (query.search) { %>value="<%= query.search %>"<% } %>
           />
           <button
             class="btn btn-warning input-group-append"
@@ -50,8 +50,16 @@
         </div>
       </form>
 
-      <a class="nav-item nav-link ml-5" href="/signup">Sign Up </a>
-      <a class="nav-item nav-link" href="/login">Login</a>
+      <% if (user) { %>
+        <a class="nav-item nav-link ml-5" href="/dashboard"><%=user.firstName%>'s Dashboard</a>
+        <% if (user.role.split(',').includes('admin')) { %>
+          <a class="nav-item nav-link" href="/admin">Admin</a>
+        <% } %>
+        <a class="nav-item nav-link" href="/logout">Log Out</a>
+      <% } else { %>
+        <a class="nav-item nav-link ml-5" href="/signup">Sign Up</a>
+        <a class="nav-item nav-link" href="/login">Login</a>
+      <% } %>
     </div>
   </div>
 </nav>
