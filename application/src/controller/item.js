@@ -106,4 +106,5 @@ exports = module.exports = {
   delete(id) {
     return Item.destroy({ where: { id } });
   }
+
 };

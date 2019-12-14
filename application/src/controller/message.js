@@ -3,10 +3,7 @@ const { toJSON } = require("./_utils");
 const Op = Sequelize.Op;
 
 exports = module.exports = {
-  find({
-      from,
-      to
-       } = {}) {
+  find({from, to} = {}) {
     const or = [];
 
     if (from) {

@@ -20,7 +20,7 @@
     <div class="navbar-nav w-100 justify-content-center">
 
       <a class="nav-item nav-link" href="../about" target = "_blank">About </a>
-      <a class="nav-item nav-link mr-5" href="../postingRouter.js">Sell</a>
+      <a class="nav-item nav-link mr-5" href="/posting">Sell</a>
 
       <!-- form for the searchbar -->
       <form class="w-50" action="/results" method="get" id="search-form">
@@ -49,7 +49,6 @@
           </button>
         </div>
       </form>
-
       <% if (user) { %>
         <a class="nav-item nav-link ml-5" href="/dashboard"><%=user.firstName%>'s Dashboard</a>
         <% if (user.role.split(',').includes('admin')) { %>

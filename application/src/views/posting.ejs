@@ -16,10 +16,10 @@
      <a href="#">Link</a> -->
 </div>
 
-
 <h2>Post Items</h2>
 <div class="container">
-    <form action="/action_page.php">
+
+    <form action="/postItem" enctype="multipart/form-data" method="post">
         <div class="row">
             <div class="col-25">
                 <label for="title">Title</label>
@@ -70,12 +70,13 @@
                 <label for="picture">Pictures:</label>
             </div>
             <div class="col-75">
-                <input type="file" name="picture" accept="image/*" multiple>
+                <input type="file" name="imageFile" multiple="multiple">
             </div>
         </div>
 
         <div class="row">
-            <a href="#" class="button">Cancel</a>
+<!--            go back to home page-->
+            <a href="/" class="button">Cancel</a>
             <input type="submit" value="Submit">
         </div>
     </form>
