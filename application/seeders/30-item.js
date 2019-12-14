@@ -144,6 +144,66 @@ module.exports = {
           approval: "approved",
           UserId: 1,
           CategoryId: 3
+        },
+        {
+          title: "Artist Teacher",
+          price: 35,
+          description:
+              "I can teach you water color painting, pencil sketching, sculpture and computer-aid 3D animation. Feel free to contact me",
+          photo: "/static/photos/artist_teacher.jpg",
+          approval: "approved",
+          UserId: 1,
+          CategoryId: 5
+        },
+        {
+          title: "Astronomy Teacher",
+          price: 35,
+          description:
+              "Do you want to explore the mystery of galaxy? Come to my class and I will guide you a fantastic trip to the milky way",
+          photo: "/static/photos/astronomy_teacher.jpg",
+          approval: "approved",
+          UserId: 1,
+          CategoryId: 5
+        },
+        {
+          title: "Math Teacher",
+          price: 35,
+          description:
+              "Are you still bothered with the difficult math problems? I can help you to fix it out and teach you how to cope with similar problems",
+          photo: "/static/photos/math_teacher.jpg",
+          approval: "approved",
+          UserId: 1,
+          CategoryId: 5
+        },
+        {
+          title: "Physics Teacher",
+          price: 35,
+          description:
+              "Interested in the nature of this world? Physics is the very point where you start know more about what is around you",
+          photo: "/static/photos/physics_teacher.jpg",
+          approval: "approved",
+          UserId: 1,
+          CategoryId: 5
+        },
+        {
+          title: "Coding Teacher",
+          price: 50,
+          description:
+              "I am an experienced coder and enrolled computer science student. Interested in developing your own website and start to make MONEY??? Come to my class and let me teach you how!",
+          photo: "/static/photos/coding_teacher.jpg",
+          approval: "approved",
+          UserId: 1,
+          CategoryId: 5
+        },
+        {
+          title: "Zoologist Teacher",
+          price: 10,
+          description:
+              "I am NOT a body artist. I am simply obsessed with the plants growing in wild. In my class, I can take you to see something you never see in the city. Let's follow the Tail of the Sun!!",
+          photo: "/static/photos/zoologist_teacher.jpg",
+          approval: "approved",
+          UserId: 1,
+          CategoryId: 5
         }
       ]),
       {}
