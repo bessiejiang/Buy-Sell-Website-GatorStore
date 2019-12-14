@@ -94,6 +94,56 @@ module.exports = {
           approval: "approved",
           UserId: 1,
           CategoryId: 2
+        },
+        {
+          title: "Algorithm Introduction Book",
+          price: 200,
+          description:
+              "Introduction to Algorithms. Chinese Version. Good book for CSC810.",
+          photo: "/static/photos/algorithmbook.jpg",
+          approval: "approved",
+          UserId: 1,
+          CategoryId: 2
+        },
+        {
+          title: "Office Chair",
+          price: 150,
+          description:
+              "Office chair in good condition. Pick up in person.",
+          photo: "/static/photos/chair.jpg",
+          approval: "approved",
+          UserId: 1,
+          CategoryId: 1
+        },
+        {
+          title: "Dinning Table",
+          price: 350,
+          description:
+              "Very large table with three other chairs in total for 350",
+          photo: "/static/photos/dinningtable.jpg",
+          approval: "approved",
+          UserId: 1,
+          CategoryId: 1
+        },
+        {
+          title: "Bread Maker",
+          price: 50,
+          description:
+              "I already have one bread maker, so I do not need this one. It is brand new",
+          photo: "/static/photos/breadmaker.jpg",
+          approval: "approved",
+          UserId: 1,
+          CategoryId: 3
+        },
+        {
+          title: "Water Boiler",
+          price: 60,
+          description:
+              "It is still functional after using for one year. Contact me if you want it",
+          photo: "/static/photos/waterboil.jpg",
+          approval: "approved",
+          UserId: 1,
+          CategoryId: 3
         }
       ]),
       {}
