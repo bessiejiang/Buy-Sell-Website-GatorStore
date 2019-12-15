@@ -105,6 +105,21 @@ exports = module.exports = {
   },
   delete(id) {
     return Item.destroy({ where: { id } });
+  },
+  create() {
+    return (req, res, next) => {
+      // console.log("innerl create:",req.body.title);
+      Item.create({
+        title: req.body.title,
+        price: parseFloat(req.body.price),
+        description: req.body.description,
+        photo:"/static/photos/" + req.file.originalname,
+        tag:req.body.category,
+        approval: "pending"
+      }).then(item => {
+        next();
+      });
+    };
   }
 
 };

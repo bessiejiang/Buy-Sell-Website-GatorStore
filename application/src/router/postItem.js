@@ -11,12 +11,13 @@ router.use(
     auth.restrict(),
     Item.middleware({ user: true, orderBy: "createdAt" }),
     upload.single('imageFile'),
+    Item.create(),
     function(req, res) {
         // console.log(req.body);
         const title=req.body.title;
         const price=req.body.price;
-        const category=req.body.category;
         const description=req.body.description;
+        const category=req.body.category;
         fs.rename(req.file.path, "src/static/photos/" + req.file.originalname, function(err) {
             if (err) {
                 throw err;
