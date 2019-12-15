@@ -27,7 +27,28 @@ router.get("/", Item.middleware({
   approvalStatus: "approved"
 }), function(req, res) {
   const allItem=res.locals.items.rows;
-  allItem.sort(lowToHigh);
+  let pick = mostRecent;
+
+  switch (req.query.sortBy) {
+    case "Most Recent":
+      pick = mostRecent;
+      break;
+    case "Oldest":
+      pick = oldest;
+      break;
+    case "Price:Low to High":
+      pick = lowToHigh;
+      break;
+    case "Price:High to Low":
+      pick = hiToLow;
+      break;
+    default:
+      break;
+  }
+
+
+  console.log(typeof(pick))
+  allItem.sort(pick);
   res.render("results.ejs");
 });
 
