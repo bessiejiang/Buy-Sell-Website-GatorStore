@@ -6,7 +6,6 @@ router.get("/", function(req, res) {
   if (req.user) {
     return res.redirect("/");
   }
-
   res.render("login.ejs");
 });
 

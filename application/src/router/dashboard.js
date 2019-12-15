@@ -4,7 +4,7 @@ const Message = require("../controller/message");
 const Item = require("../controller/item");
 const auth = require("../auth");
 
-router.get(
+router.use(
   "/",
   auth.restrict(),
   Message.middleware({ user: true }),

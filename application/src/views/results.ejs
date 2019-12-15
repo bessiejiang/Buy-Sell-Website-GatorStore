@@ -3,12 +3,32 @@
 
 <%include ./partials/header.ejs%>
 <%include ./partials/navbar.ejs%>
-
+<script language="javascript" type="text/javascript">
+    $(document).ready(function(){
+        $('#sortBy').change(function() {
+            switch (this.val) {
+                case "Most Recent":
+                    //need some code here
+                    break;
+                case "Oldest":
+                    //need some code here
+                    break;
+                case "Price: low to high":
+                    //need some code here
+                    break;
+                case "Price: high to low":
+                    //need some code here
+                    break;
+                default:
+                    break;
+            }
+        });
+    });
+</script>
 <div class="container-fluid">
-
     <div class="row">
         <div class="col-2 d-none d-lg-block side mt-2 mb-2">
-          <!-- in this column sub categories will be displayed. For example list of classes for books -->
+            <!-- in this column sub categories will be displayed. For example list of classes for books -->
             <div>
                 Sub Categories
             </div>
@@ -18,8 +38,7 @@
             <div class="row mt-5">
                 <div class="col-10">
                     <p>
-                        Showing <%=items.rows.length%> items out of
-                        <%=items.count%>
+                        Showing <%=items.rows.length%> items out of <%=items.rows.length%>
                     </p>
                 </div>
 
@@ -29,43 +48,34 @@
                     <select>
                         <option value="Most Recent">Most Recent</option>
                         <option value="Oldest">Oldest</option>
-                        <option value="Price: low to high"
-                            >Price: low to high</option
-                        >
-                        <option value="Price: high to low"
-                            >Price: high to low</option
-                        >
+                        <option value="Price: low to high">Price: low to high</option>
+                        <option value="Price: high to low">Price: high to low</option>
                     </select>
                 </div>
             </div>
 
             <div class="row">
-
                 <!-- items are displayed here -->
                 <%for(let item of items.rows){ %>
                 <div class="col-md-4 col-sm-6 col-12">
                     <div class="card rounded">
-                        <h4
-                            style="background: white;"
-                            class="position-absolute"
-                        >
+                        <h4 style="background: white;" class="position-absolute">
                             $<%=item.price%>
                         </h4>
-                        <div>
-                            <img
-                                src="<%=item.photo%>"
-                                class="img-fluid card-img-top"
-                            />
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title text-center">
-                                <p>
-                                    <a href="item/<%=item.id%>" target="_blank">
-                                        <%=item.title%></a
-                                    >
-                                </p>
-                            </h5>
-                        </div>
+                        <a href="item/<%=item.id%>" target="_blank">
+                            <div>
+                                <img src="<%=item.photo%>" class="img-fluid card-img-top" />
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title text-center">
+                                    <p>
+                                        <a href="item/<%=item.id%>" target="_blank">
+                                            <%=item.title%></a
+                                        >
+                                    </p>
+                                </h5>
+                            </div>
+                        </a>
                     </div>
                 </div>
                 <%}%>
