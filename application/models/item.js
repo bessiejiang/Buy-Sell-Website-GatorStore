@@ -25,7 +25,9 @@ module.exports = (sequelize, DataTypes) => {
       approval: {
         type: DataTypes.ENUM,
         values: ["pending", "approved", "rejected"]
-      }
+      },
+      UserId:  DataTypes.INTEGER,
+      CategoryId:  DataTypes.INTEGER,
     },
     {}
   );

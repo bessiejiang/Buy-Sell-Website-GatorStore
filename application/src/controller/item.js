@@ -108,14 +108,15 @@ exports = module.exports = {
   },
   create() {
     return (req, res, next) => {
-      // console.log("innerl create:",req.body.title);
       Item.create({
         title: req.body.title,
         price: parseFloat(req.body.price),
         description: req.body.description,
         photo:"/static/photos/" + req.file.originalname,
         tag:req.body.category,
-        approval: "pending"
+        approval: "pending",
+        UserId:res.locals.user.id,
+        CategoryId:parseInt(req.body.category)
       }).then(item => {
         next();
       });

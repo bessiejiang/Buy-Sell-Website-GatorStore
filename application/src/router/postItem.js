@@ -13,18 +13,17 @@ router.use(
     upload.single('imageFile'),
     Item.create(),
     function(req, res) {
-        // console.log(req.body);
-        const title=req.body.title;
-        const price=req.body.price;
-        const description=req.body.description;
-        const category=req.body.category;
+        // const title=req.body.title;
+        // const price=req.body.price;
+        // const description=req.body.description;
+        // const category=req.body.category;
         fs.rename(req.file.path, "src/static/photos/" + req.file.originalname, function(err) {
             if (err) {
                 throw err;
             }
         })
-        const picUrl="/static/photos/" + req.file.originalname;
-        console.log("picURL: ",picUrl);
+        // const picUrl="/static/photos/" + req.file.originalname;
+        // console.log("picURL: ",picUrl);
         res.redirect('/dashboard');
     }
 );
