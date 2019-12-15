@@ -105,5 +105,22 @@ exports = module.exports = {
   },
   delete(id) {
     return Item.destroy({ where: { id } });
+  },
+  create() {
+    return (req, res, next) => {
+      Item.create({
+        title: req.body.title,
+        price: parseFloat(req.body.price),
+        description: req.body.description,
+        photo:"/static/photos/" + req.file.originalname,
+        tag:req.body.category,
+        approval: "pending",
+        UserId:res.locals.user.id,
+        CategoryId:parseInt(req.body.category)
+      }).then(item => {
+        next();
+      });
+    };
   }
+
 };

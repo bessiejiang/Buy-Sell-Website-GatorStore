@@ -1,7 +1,11 @@
 const express = require("express");
 const router = express.Router();
-
-router.get("/", function(req, res) {
+// const Message = require("../controller/message");
+// const Item = require("../controller/item");
+const auth = require("../auth");
+router.get("/",
+    auth.restrict(),
+    function(req, res) {
     res.render("posting.ejs");
 });
 
