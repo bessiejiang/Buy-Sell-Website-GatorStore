@@ -1,7 +1,33 @@
 body {
-  margin: 0;
-  padding: 0;
+  position: relative;
+  padding-bottom: 100px;
+  min-height: 100vh;
   background-color:rgb(231, 229, 229);
+}
+
+/* Gator Store Text in login and signup */
+.gatorText{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  width: 100%;
+  height: 200px;
+}
+
+.gatorText h1{
+  font-size: 5rem;
+
+}
+
+
+.footer{
+  color: white;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  background-color: #660099;
 }
 
 .form-container{
@@ -10,9 +36,16 @@ body {
   justify-content: center;
 }
 
+/* login and signup form container */
 .login,.signup{
+  box-shadow:	
+    0pt 2px 5px rgba(105, 108, 109,  0.7),	
+    0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;  
+  background: rgb(247, 247, 247);
+  border-radius: 5px;
+  padding: 10px;
   margin: auto;
-  width: 35%;
+  width: 45%;
 }
 
 .jumbotron{
@@ -56,7 +89,7 @@ body {
 
 .results-container .card-img-top {
   width: 100%;
-  height: 20vw;
+  height: 15vw;
   object-fit: cover;
   border: black 1px solid;
 }

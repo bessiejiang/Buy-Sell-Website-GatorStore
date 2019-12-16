@@ -41,7 +41,7 @@
 
       <!-- items are displayed here -->
       <%for(let item of items.rows){ %>
-      <div class="col-md-4 col-sm-6 col-12">
+      <div class="col-md-3 col-sm-6 col-12">
         <div class="card rounded">
           <h4 style="background: white;" class="position-absolute">
             $<%=item.price%>
@@ -51,13 +51,13 @@
               <img src="<%=item.photo%>" class="img-fluid card-img-top" />
             </div>
             <div class="card-body">
-              <h3 class="card-title text-center">
+              <h4 class="card-title text-center">
                 <p>
                   <a href="item/<%=item.id%>" target="_blank">
                     <%=item.title%></a
                   >
                 </p>
-              </h3>
+              </h4>
             </div>
           </a>
         </div>
