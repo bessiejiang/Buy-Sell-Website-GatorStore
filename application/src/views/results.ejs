@@ -14,6 +14,27 @@
         </p>
       </div>
 
+    <div class="results-container col m-2">
+      <div class="row mt-5">
+        <div class="col-8">
+          <p>
+            Showing <%=items.rows.length%> items out of <%=items.rows.length%>
+          </p>
+        </div>
+        <div class="col-2">
+          <!-- action is not yet added-->
+          <form action="" method='GET'>
+            <label for="sortby">Filter by:</label>
+            <!-- on change is not yet added-->
+            <select name="filterBy" onchange="">
+              <option value="0-50">0-50</option>
+              <option value="50-100">50-100</option>
+              <option value="100-150">100-150</option>
+              <option value=">150">>150</option>
+            </select>
+          </form>
+        </div>
+
       <!-- drop down filter  -->
       <div class="col-2 text-right">
         <form action="/results" method="GET">
