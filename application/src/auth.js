@@ -1,3 +1,10 @@
+/*
+* File name: auth.js
+* Description: authentication
+* Author: Team-12
+* Submission: Fall-2019
+* Instructor: Dragutin Petkovic
+*/
 const argon2 = require("argon2");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;

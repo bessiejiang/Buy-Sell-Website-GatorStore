@@ -1,3 +1,10 @@
+/*
+* File name: server.js
+* Description: server
+* Author: Team-12
+* Submission: Fall-2019
+* Instructor: Dragutin Petkovic
+*/
 const bodyParser = require("body-parser");
 const consolidate = require("consolidate");
 const express = require("express");

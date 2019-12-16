@@ -1,3 +1,10 @@
+/*
+* File name: resultRouter.js
+* Description: router of result router and filtering logic
+* Author: Team-12
+* Submission: Fall-2019
+* Instructor: Dragutin Petkovic
+*/
 const express = require("express");
 const router = express.Router();
 const Item = require("../controller/item");
