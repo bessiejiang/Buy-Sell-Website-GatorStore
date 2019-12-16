@@ -1,18 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <script type="text/javascript" src="/static/lib/jquery.js"></script>
-    <script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js"></script>
-    <script type="text/javascript" src="/static/lib/bootstrap.js"></script>
-    <link rel="stylesheet" href="/static/lib/bootstrap.css" />
-    <link rel="stylesheet" href="static/styles/dashboard.css">
-    <title>Gator Store Admin Dashboard</title>
-</head>
+<% title = 'Admin Dashboard'; jsFiles = []; cssFiles = ['/static/styles/dashboard.css']; %>
 
-<body>
+<%include ./partials/header.ejs%>
+<%include ./partials/navbar.ejs%>
 
-<p>CSC648-848 Section 02 TEAM #12</p>
-<center><h1>Gator Store Admin Dashboard</h1></center>
+<center><h1>Admin Dashboard</h1></center>
 <hr>
 <br>
 
@@ -38,7 +29,7 @@
                 <td><%=item.price%></td>
                 <td><%=item.description%></td>
                 <td><img src="<%=item.photo%>" class="img-fluid card-img-top" style="width: 150px; height: 150px"/></td>
-                <td><button data-toggle="modal" data-target="#review-<%=item.id%>">Review</button></td>
+                <td><button class="btn btn-primary" data-toggle="modal" data-target="#review-<%=item.id%>">Review</button></td>
             </tr>
 
             <!-- Review Modal -->
@@ -50,11 +41,11 @@
                             <div class="modal-header">
                                 <h4 class="modal-title"><%=item.title%></h4>
                             </div>
-                            <div class="modal-body row">
+                            <!-- <div class="modal-body row">
                                 <textarea name="contactDetails" class="item-description col-md-12" type="text" placeholder="type in details"></textarea>
                                 <input style="display: none" name="from" readonly type="text" <% if (user) { %>value="<%= user.firstName %>"<% } %>></p>
                                 <input style="display: none" name="to" readonly type="text" value="<%= item.User.firstName %>"></p>
-                            </div>
+                            </div> -->
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                                 <button type="submit" name="reviewResult" value="rejected" class="btn btn-warning">Reject</button>
@@ -70,5 +61,4 @@
     <br><br>
 </div>
 
-</body>
-</html>
+<%include ./partials/footer.ejs%>
