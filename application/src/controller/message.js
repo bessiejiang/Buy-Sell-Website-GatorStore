@@ -5,6 +5,7 @@ const Op = Sequelize.Op;
 exports = module.exports = {
   find({from, to} = {}) {
     const or = [];
+    const order = [["item", "ASC"], ["createdAt", "ASC"]];
 
     if (from) {
       or.push({from: from});
@@ -17,7 +18,8 @@ exports = module.exports = {
     return Message.findAll({
       where: {
         [Op.or]: or
-      }
+      },
+      order: order
     }).then(messages => {
       return messages;
     });
