@@ -30,6 +30,12 @@ function hiToLow(a,b){
   return 0;
 }
 
+function priceFilter(arr,a,b){
+  return arr.filter(item=>{
+    return item.price>=a && item.price<=b 
+  })
+}
+
 router.get("/", Item.middleware({
   approvalStatus: "approved"
 }), function(req, res) {
@@ -38,24 +44,38 @@ router.get("/", Item.middleware({
 
   switch (req.query.sortBy) {
     case "Most Recent":
-      pick = mostRecent;
+      allItem.sort(mostRecent)
       break;
     case "Oldest":
-      pick = oldest;
+      allItem.sort(oldest)
       break;
     case "Price:Low to High":
-      pick = lowToHigh;
+      allItem.sort(lowToHigh)
       break;
     case "Price:High to Low":
-      pick = hiToLow;
+      allItem.sort(hiToLow)
       break;
     default:
       break;
   }
 
+  switch (req.query.filterBy) {
+    case "0-50":
+      res.locals.items.rows = priceFilter(allItem,0,50)
+      break;
+    case "51-100":
+      res.locals.items.rows= priceFilter(allItem,51,100)
+      break;
+    case "101-150":
+      res.locals.items.rows = priceFilter(allItem,101,150)
+      break;
+    case ">150":
+      res.locals.items.rows = priceFilter(allItem,151,999999)
+      break;
+    default:
+      break;
+  }
 
-  console.log(typeof(pick))
-  allItem.sort(pick);
   res.render("results.ejs");
 });
 
