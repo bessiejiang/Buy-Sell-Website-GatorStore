@@ -1,4 +1,4 @@
-const { Category, User, Item } = require("../models");
+const { Category, Message, User, Item } = require("../models");
 
 module.exports = {
   /**
@@ -14,6 +14,7 @@ module.exports = {
     );
     await queryInterface.createTable(User.tableName, User.tableAttributes);
     await queryInterface.createTable(Item.tableName, Item.tableAttributes);
+    await queryInterface.createTable(Message.tableName, Message.tableAttributes);
   },
 
   /**
@@ -23,6 +24,7 @@ module.exports = {
     // Order of these matter, be careful
     // This should be opposite the order above
 
+    await queryInterface.dropTable(Message.tableName);
     await queryInterface.dropTable(Item.tableName);
     await queryInterface.dropTable(User.tableName);
     await queryInterface.dropTable(Category.tableName);
