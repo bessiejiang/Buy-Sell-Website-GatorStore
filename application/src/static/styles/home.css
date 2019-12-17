@@ -10,20 +10,19 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 30px;
   width: 100%;
   height: 200px;
 }
 
 .gatorText h1{
-  font-size: 5rem;
+  font-size: 4.5rem;
 
 }
-
 
 .footer{
   color: white;
   position: absolute;
+  margin-top: 30px;
   bottom: 0;
   width: 100%;
   height: 100px;
@@ -46,6 +45,7 @@ body {
   padding: 10px;
   margin: auto;
   width: 45%;
+  margin-bottom: 5rem;
 }
 
 .jumbotron{
