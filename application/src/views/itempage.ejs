@@ -36,24 +36,28 @@
       <!-- Redirect to login if not logged in -->
       <div class="text-center">
         <% if (!user || user.firstName!=item.User.firstName) { %>
-          <button class="btn btn-warning" 
-                  <% if (!user) { %>onclick="location.href='../login';" target="_blank" <% } %>
-                  <% if (user) { %>data-toggle="modal" data-target="#contact-modal"<% } %>>Contact Seller</button>
+          <button class="btn btn-warning"
+            <% if (!user) { %>onclick="location.href='/login?redirectTo='+encodeURIComponent(location.pathname);"<% } %>
+            <% if (user) { %>data-toggle="modal" data-target="#contact-modal"<% } %>
+          >Contact Seller</button>
         <% } %>
       </div>
 
       <!-- Contact Modal -->
       <div class="modal fade" id="contact-modal" role="dialog">
         <div class="modal-dialog">
-          <form action="/contact?item=<%=item.title%>" method="post">
+          <form action="/contact?item=<%=item.id%>" method="post">
             <!-- Contact Modal content-->
             <div class="modal-content row">
               <div class="modal-header">
                 <h4 class="modal-title"><%=item.title%></h4>
               </div>
                 <div class="modal-body row">
-                  <p class="col-md-10">Buyer <input name="from" readonly type="text" <% if (user) { %>value="<%= user.firstName %>"<% } %>></p>
-                  <p class="col-md-10">Seller <input name="to" readonly type="text" value="<%= item.User.firstName %>"></p>
+                  <p class="col-md-10">Buyer <input readonly type="text" <% if (user) { %>value="<%= user.firstName %>"<% } %>></p>
+                  <p class="col-md-10">Seller <input readonly type="text" value="<%= item.User.firstName %>"></p>
+
+                  <input type="hidden" name="from" <% if (user) { %>value="<%= user.id %>"<% } %>>
+                  <input type="hidden" name="to" value="<%= item.User.id %>">
 
                   <select name="contactLocation" class="float-left col-md-5">
                     <option>Library</option>
