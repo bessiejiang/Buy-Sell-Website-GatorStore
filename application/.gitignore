@@ -2,4 +2,4 @@
 ansible.retry
 node_modules
 db-export.json
-src/static/photos
+
