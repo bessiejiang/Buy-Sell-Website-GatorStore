@@ -1,28 +1,31 @@
-const { Message, Sequelize } = require("../../models");
+const { Message, Item, User, Sequelize } = require("../../models");
+// const User = require("../controller/user");
 const { toJSON } = require("./_utils");
 const Op = Sequelize.Op;
 
 exports = module.exports = {
-  find({from, to} = {}) {
+  find({ from, to } = {}) {
     const or = [];
-    const order = [["item", "ASC"], ["createdAt", "ASC"]];
+    const order = [
+      ["ItemId", "ASC"],
+      ["createdAt", "ASC"]
+    ];
 
     if (from) {
-      or.push({from: from});
+      or.push({ FromId: from });
     }
 
     if (to) {
-      or.push({to: to});
+      or.push({ ToId: to });
     }
 
     return Message.findAll({
       where: {
         [Op.or]: or
       },
-      order: order
-    }).then(messages => {
-      return messages;
-    });
+      order: order,
+      include: [Item, { model: User, as: "From" }, { model: User, as: "To" }]
+    }).then(toJSON);
   },
   middleware(options) {
     return (req, res, next) => {
@@ -30,29 +33,39 @@ exports = module.exports = {
       Object.assign(options, req.query);
 
       if (options.user && req.user) {
-        // TODO use id instead of name
-        options.from = req.user.firstName;
-        options.to = req.user.firstName
+        options.from = req.user.id;
+        options.to = req.user.id;
       }
 
-      exports.find(options).then(messages => {
-        res.locals.messages = toJSON(messages);
-        next();
-      });
+      exports
+        .find(options)
+        .then(messages => {
+          res.locals.messages = messages;
+          next();
+        })
+        .catch(e => {
+          console.log(e);
+          next(e);
+        });
     };
   },
   create() {
     return (req, res, next) => {
       Message.create({
-        from: req.body.from,
-        to: req.body.to,
-        item: req.query.item, // record item name
-        message: req.body.reviewResult + " " + req.body.contactDetails,
+        FromId: req.body.from,
+        ToId: req.body.to,
+        ItemId: req.query.item,
+        message: req.body.contactDetails,
         dealLocation: req.body.contactLocation,
         dealTime: req.body.contactTime
-      }).then(item => {
-        next();
-      });
+      })
+        .then(item => {
+          next();
+        })
+        .catch(e => {
+          console.log(e);
+          next(e);
+        });
     };
   }
 };

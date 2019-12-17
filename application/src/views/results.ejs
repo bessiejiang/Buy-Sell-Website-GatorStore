@@ -1,6 +1,6 @@
 <!-- results page for searching -->
-<% title = 'Search'; jsFiles = []; cssFiles = []; %> 
-<%include ./partials/header.ejs%> 
+<% title = 'Search'; jsFiles = []; cssFiles = []; %>
+<%include ./partials/header.ejs%>
 <%include ./partials/navbar.ejs%>
 
 <div class="container-fluid">
@@ -17,7 +17,7 @@
 
       <!-- drop down filter  -->
       <div class="col-2 text-right">
-        
+
         <form action="/results" method="GET">
           <label for="sortby">Sort by:</label>
           <select name="sortBy" onchange="this.form.submit()">
@@ -29,7 +29,7 @@
             <option value="Price:High to Low">Price: High to Low</option>
           </select>
         </form>
-                
+
         <!-- action is not yet added-->
         <form action="/results" method="GET">
           <label for="sortby">Filter price by:</label>
