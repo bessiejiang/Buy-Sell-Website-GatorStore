@@ -1,0 +1,15 @@
+<!-- results page for searching -->
+<% title = 'Not Found'; jsFiles = []; cssFiles = []; %>
+
+<%include ./partials/header.ejs%>
+<%include ./partials/navbar.ejs%>
+
+<div class="container mt-5">
+  <div class="alert alert-warning">
+    <h1>Error loading page</h1>
+    <p>Head back <a href="/" class="alert-link">home</a>.</p>
+    <pre><%= error.message %></pre>
+  </div>
+</div>
+
+<%include ./partials/footer.ejs%>
