@@ -16,34 +16,34 @@ h2{
 }
 
 input[type=text], textarea {
- padding: 12px;
- border: 1px solid #ccc;
- border-radius: 4px;
- resize: vertical;
-}
+   padding: 12px;
+   border: 1px solid #ccc;
+   border-radius: 4px;
+   resize: vertical;
+ }
 
-select{
-padding: 16px;
-width: 100px;
-position: relative;
-font-family: Arial;
-font-size: 18px;
-top: 10px;
-}
+ select{
+  padding: 16px;
+  width: 100px;
+  position: relative;
+  font-family: Arial;
+  font-size: 18px;
+  top: 10px;
+ }
 
-input[type=file]{
- position: relative;
- top: 10px;
- font-size: 15px;
-}
+ input[type=file]{
+  position: relative;
+  top: 10px;
+  font-size: 15px;
+ }
+ 
+ label {
+   padding: 12px 12px 25px 70px;
+   display: inline-block;
+   font-size: 20px;
+ }
 
-label {
-  padding: 12px 12px 25px 70px;
-  display: inline-block;
-  font-size: 20px;
-}
-
-.button{
+ .button{
    background-color: #595c5a;
    color: white;
    padding: 10px 15px;
@@ -55,13 +55,13 @@ label {
    font-size: 16px;
    margin: 20px 2px;
    cursor: pointer;
-}
+ }
 
-.button:hover {
+ .button:hover {
    background-color: #333634;
-}
-
-input[type=submit]{
+ }
+ 
+ input[type=submit]{
    background-color: #55af5b;
    color: white;
    padding: 12px 20px;
@@ -72,37 +72,37 @@ input[type=submit]{
    margin: 20px 2px;
    position: relative;
    left: 65%;
-}
+ }
 
-input[type=submit]:hover {
+ input[type=submit]:hover {
    background-color: #3e9143;
-}
+ }
  
-.container {
+ .container {
    border-radius: 20px;
    background-color: #f2f2f2;
    padding: 50px 200px;
    margin: 30px;
-}
+ }
  
-.col-25 {
+ .col-25 {
    float: left;
    width: 25%;
    margin-top: 6px;
-}
+ }
  
-.col-75 {
+ .col-75 {
    float: left;
    width: 75%;
    margin-top: 6px;
-}
+ }
 
-.row:after {
+ .row:after {
    content: "";
    display: table;
    clear: both;
-}
+ }
 
-p{
+ p{
    color: rgb(194, 47, 47);
-}
+ }
