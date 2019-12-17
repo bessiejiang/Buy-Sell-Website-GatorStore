@@ -1,66 +1,85 @@
 <!-- results page for searching -->
-<% title = 'Search'; jsFiles = []; cssFiles = []; %> <%include
-./partials/header.ejs%> <%include ./partials/navbar.ejs%>
+<% title = 'Search'; jsFiles = []; cssFiles = []; %> 
+<%include ./partials/header.ejs%> 
+<%include ./partials/navbar.ejs%>
 
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-2 d-none d-lg-block side mt-2 mb-2">
-      <!-- in this column sub categories will be displayed. For example list of classes for books -->
-      <div>
-        Sub Categories
+  <div class="results-container col m-2">
+    <div class="row mt-5">
+      <div class="col-10">
+        <p>
+          <strong
+            >Showing <%=items.rows.length%> items out of
+            <%=items.rows.length%></strong
+          >
+        </p>
+      </div>
+
+      <!-- drop down filter  -->
+      <div class="col-2 text-right">
+        
+        <form action="/results" method="GET">
+          <label for="sortby">Sort by:</label>
+          <select name="sortBy" onchange="this.form.submit()">
+            <%let sortBy = query.sortBy || "Most Recent";%>
+            <option value=""><%=sortBy%></option>
+            <option value="Most Recent">Most Recent</option>
+            <option value="Oldest">Oldest</option>
+            <option value="Price:Low to High">Price: Low to High</option>
+            <option value="Price:High to Low">Price: High to Low</option>
+          </select>
+        </form>
+                
+        <!-- action is not yet added-->
+        <form action="/results" method="GET">
+          <label for="sortby">Filter price by:</label>
+          <!-- on change is not yet added-->
+          <select name="filterBy" onchange="this.form.submit()">
+            <%let filterBy = query.filterBy || "0-50";%>
+            <option value=""><%=filterBy%></option>
+            <option value="0-50">0-50</option>
+            <option value="51-100">51-100</option>
+            <option value="101-150">101-150</option>
+            <option value=">150">>150</option>
+          </select>
+        </form>
+
       </div>
     </div>
 
-    <div class="results-container col m-2">
-      <div class="row mt-5">
-        <div class="col-10">
-          <p>
-            Showing <%=items.rows.length%> items out of <%=items.rows.length%>
-          </p>
-        </div>
+    <div class="container-fluid row">
+      <!-- if there arent any results -->
+      <%if(items.rows.length==0){%>
+      <div>
+        <h2>No results...</h2>
+        <small>Check the category or modify your keyword.</small>
+      </div>
+      <%}%>
 
-        <!-- drop down filter (not implemented yet) -->
-        <div class="col-2 text-right">
-          <form action="/results" method='GET'>
-            <label for="sortby">Sort by:</label>
-            <select name="sortBy" onchange="this.form.submit()">
-              <% let sortBy = query.sortBy || "Most Recent"  %>
-              <option value="Most Recent"><%=sortBy%></option>
-              <option value="Most Recent">Most Recent</option>
-              <option value="Oldest">Oldest</option>
-              <option value="Price:Low to High">Price: Low to High</option>
-              <option value="Price:High to Low">Price: High to Low</option>
-            </select>
-          </form>
+      <!-- items are displayed here -->
+      <%for(let item of items.rows){ %>
+      <div class="col-md-3 col-sm-6 col-12">
+        <div class="card rounded">
+          <h4 style="background: white;" class="position-absolute">
+            $<%=item.price%>
+          </h4>
+          <a href="item/<%=item.id%>" target="_blank">
+            <div>
+              <img src="<%=item.photo%>" class="img-fluid card-img-top" />
+            </div>
+            <div class="card-body">
+              <h4 class="card-title text-center">
+                <p>
+                  <a href="item/<%=item.id%>" target="_blank">
+                    <%=item.title%></a
+                  >
+                </p>
+              </h4>
+            </div>
+          </a>
         </div>
       </div>
-
-      <div class="row">
-        <!-- items are displayed here -->
-        <%for(let item of items.rows){ %>
-        <div class="col-md-4 col-sm-6 col-12">
-          <div class="card rounded">
-            <h4 style="background: white;" class="position-absolute">
-              $<%=item.price%>
-            </h4>
-            <a href="item/<%=item.id%>" target="_blank">
-              <div>
-                <img src="<%=item.photo%>" class="img-fluid card-img-top" />
-              </div>
-              <div class="card-body">
-                <h5 class="card-title text-center">
-                  <p>
-                    <a href="item/<%=item.id%>" target="_blank">
-                      <%=item.title%></a
-                    >
-                  </p>
-                </h5>
-              </div>
-            </a>
-          </div>
-        </div>
-        <%}%>
-      </div>
+      <%}%>
     </div>
   </div>
 </div>
