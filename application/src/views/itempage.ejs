@@ -27,7 +27,7 @@
       <h5>Seller:</h5>
       <div class="seller-image text-center">
         <img
-          src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png" <!--this is hard coded -->
+          src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
           style="max-width: 250px;"
           alt=""
         />
@@ -36,8 +36,8 @@
       <!-- Redirect to login if not logged in -->
       <div class="text-center">
         <% if (!user || user.firstName!=item.User.firstName) { %>
-          <button class="btn btn-warning"
-                  <% if (!user) { %>onclick="location.href='../login';" <% } %>
+          <button class="btn btn-warning" 
+                  <% if (!user) { %>onclick="location.href='../login';" target="_blank" <% } %>
                   <% if (user) { %>data-toggle="modal" data-target="#contact-modal"<% } %>>Contact Seller</button>
         <% } %>
       </div>
