@@ -13,6 +13,11 @@ router.get("/", function(req, res) {
   if (req.user) {
     return res.redirect("/");
   }
+
+  if (req.query.redirectTo) {
+    req.session.redirectTo = req.query.redirectTo;
+  }
+
   res.render("login.ejs");
 });
 

@@ -12,25 +12,26 @@
  */
 
 module.exports = (sequelize, DataTypes) => {
-    // The name should always be singular (ie. Model not Models)
-    // Available DataTypes: https://sequelize.org/master/manual/data-types.html
-    const Message = sequelize.define(
-        "Message",
-        {
-            from: DataTypes.TEXT,
-            to: DataTypes.TEXT,
-            item: DataTypes.TEXT,
-            message: DataTypes.TEXT,
-            dealLocation: DataTypes.TEXT,
-            dealTime: DataTypes.TEXT
-        },
-        {}
-    );
+  // The name should always be singular (ie. Model not Models)
+  // Available DataTypes: https://sequelize.org/master/manual/data-types.html
+  const Message = sequelize.define(
+    "Message",
+    {
+      message: DataTypes.TEXT,
+      dealLocation: DataTypes.TEXT,
+      dealTime: DataTypes.TEXT
+    },
+    {}
+  );
 
-    Message.associate = function(models) {
-        // Associations can be defined here
-        // See https://sequelize.org/master/manual/associations.html
-    };
+  Message.associate = function(models) {
+    // Associations can be defined here
+    // See https://sequelize.org/master/manual/associations.html
 
-    return Message;
+    models.Message.belongsTo(models.User, { as: "From" }); // Adds FromId
+    models.Message.belongsTo(models.User, { as: "To" }); // Adds ToId
+    models.Message.belongsTo(models.Item); // Adds ItemId
+  };
+
+  return Message;
 };
