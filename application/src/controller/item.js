@@ -1,4 +1,4 @@
-const { Item, Category, User, Sequelize } = require("../../models");
+const { Item, Category, User, Message, Sequelize } = require("../../models");
 const { toJSON } = require("./_utils");
 const Op = Sequelize.Op;
 
@@ -104,7 +104,9 @@ exports = module.exports = {
     };
   },
   delete(id) {
-    return Item.destroy({ where: { id } });
+    return Message.destroy({ where: { ItemId: id } }).then(() => {
+      return Item.destroy({ where: { id } });
+    });
   },
   create() {
     return (req, res, next) => {
@@ -112,15 +114,14 @@ exports = module.exports = {
         title: req.body.title,
         price: parseFloat(req.body.price),
         description: req.body.description,
-        photo:"/static/photos/" + req.file.originalname,
-        tag:req.body.category,
+        photo: "/static/photos/" + req.file.originalname,
+        tag: req.body.category,
         approval: "pending",
-        UserId:res.locals.user.id,
-        CategoryId:parseInt(req.body.category)
+        UserId: res.locals.user.id,
+        CategoryId: parseInt(req.body.category)
       }).then(item => {
         next();
       });
     };
   }
-
 };
