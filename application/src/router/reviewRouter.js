@@ -14,7 +14,6 @@ const Message = require("../controller/message");
 router.post("/",
     auth.restrict(),
     Item.updateApproval(),
-    Message.create(),
     function(req, res) {
     res.redirect('back'); // refresh after updating item and sending message
 });
