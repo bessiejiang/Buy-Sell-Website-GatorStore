@@ -12,9 +12,9 @@
     <h3 class="my-3">Recently posted items:</h3>
     <div class="slideshow-container">
       <div class="container">
-      <% for (let i = 0; i < items.rows.length; i++) { %>
+      <% for (let i = 0; i < (items.rows.length < 4 ? 1 : items.rows.length); i++) { %>
         <div class="mySlides slide-fade row">
-        <% for (let j = 0; j < 4; j++) { %>
+        <% for (let j = 0; j < (items.rows.length < 4 ? items.rows.length : 4); j++) { %>
           <% let item = items.rows[(i + j) % items.rows.length]; %>
           <div class="col-3">
             <a href="/item/<%= item.id %>"><img src="<%= item.photo %>" alt="<%= item.title %>" class="w-100"></a>
