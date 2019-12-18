@@ -1,10 +1,10 @@
 /*
-* File name: server.js
-* Description: server
-* Author: Team-12
-* Submission: Fall-2019
-* Instructor: Dragutin Petkovic
-*/
+ * File name: server.js
+ * Description: server
+ * Author: Team-12
+ * Submission: Fall-2019
+ * Instructor: Dragutin Petkovic
+ */
 const bodyParser = require("body-parser");
 const consolidate = require("consolidate");
 const express = require("express");
@@ -31,8 +31,8 @@ const aboutRouter = require("./router/about");
 const contactRouter = require("./router/contactRouter");
 const reviewRouter = require("./router/reviewRouter");
 const adminRouter = require("./router/adminRouter");
-const postItemROuter=require("./router/postItem");
-app.use(morgan('dev'));
+const postItemROuter = require("./router/postItem");
+app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/static", express.static(path.join(__dirname, "static")));
 
@@ -89,7 +89,7 @@ app.use("/about", aboutRouter);
 app.use("/contact", contactRouter);
 app.use("/review", reviewRouter);
 app.use("/admin", adminRouter);
-app.use("/postItem", postItemROuter)
+app.use("/postItem", postItemROuter);
 
 // 404 page for all routes that make it pase everything else
 app.use((req, res, next) => {
@@ -98,5 +98,5 @@ app.use((req, res, next) => {
 
 // 500 page for anyhing that errors
 app.use((err, req, res, next) => {
-  res.render("500.ejs", { error: err });
+  res.render("500.ejs", Object.assign(res.locals, { error: err }));
 });
