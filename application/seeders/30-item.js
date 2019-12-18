@@ -99,7 +99,7 @@ module.exports = {
           title: "Algorithm Introduction Book",
           price: 200,
           description:
-              "Introduction to Algorithms. Chinese Version. Good book for CSC810.",
+            "Introduction to Algorithms. Chinese Version. Good book for CSC810.",
           photo: "/static/photos/algorithmbook.jpg",
           approval: "approved",
           UserId: 1,
@@ -108,8 +108,7 @@ module.exports = {
         {
           title: "Office Chair",
           price: 150,
-          description:
-              "Office chair in good condition. Pick up in person.",
+          description: "Office chair in good condition. Pick up in person.",
           photo: "/static/photos/chair.jpg",
           approval: "approved",
           UserId: 1,
@@ -119,7 +118,7 @@ module.exports = {
           title: "Dinning Table",
           price: 350,
           description:
-              "Very large table with three other chairs in total for 350",
+            "Very large table with three other chairs in total for 350",
           photo: "/static/photos/dinningtable.jpg",
           approval: "approved",
           UserId: 1,
@@ -129,7 +128,7 @@ module.exports = {
           title: "Bread Maker",
           price: 50,
           description:
-              "I already have one bread maker, so I do not need this one. It is brand new",
+            "I already have one bread maker, so I do not need this one. It is brand new",
           photo: "/static/photos/breadmaker.jpg",
           approval: "approved",
           UserId: 1,
@@ -139,7 +138,7 @@ module.exports = {
           title: "Water Boiler",
           price: 60,
           description:
-              "It is still functional after using for one year. Contact me if you want it",
+            "It is still functional after using for one year. Contact me if you want it",
           photo: "/static/photos/waterboil.jpg",
           approval: "approved",
           UserId: 1,
@@ -149,7 +148,7 @@ module.exports = {
           title: "Artist Teacher",
           price: 35,
           description:
-              "I can teach you water color painting, pencil sketching, sculpture and computer-aid 3D animation. Feel free to contact me",
+            "I can teach you water color painting, pencil sketching, sculpture and computer-aid 3D animation. Feel free to contact me",
           photo: "/static/photos/artist_teacher.jpg",
           approval: "approved",
           UserId: 1,
@@ -159,7 +158,7 @@ module.exports = {
           title: "Astronomy Teacher",
           price: 35,
           description:
-              "Do you want to explore the mystery of galaxy? Come to my class and I will guide you a fantastic trip to the milky way",
+            "Do you want to explore the mystery of galaxy? Come to my class and I will guide you a fantastic trip to the milky way",
           photo: "/static/photos/astronomy_teacher.jpg",
           approval: "approved",
           UserId: 1,
@@ -169,7 +168,7 @@ module.exports = {
           title: "Math Teacher",
           price: 35,
           description:
-              "Are you still bothered with the difficult math problems? I can help you to fix it out and teach you how to cope with similar problems",
+            "Are you still bothered with the difficult math problems? I can help you to fix it out and teach you how to cope with similar problems",
           photo: "/static/photos/math_teacher.jpg",
           approval: "approved",
           UserId: 1,
@@ -179,7 +178,7 @@ module.exports = {
           title: "Physics Teacher",
           price: 35,
           description:
-              "Interested in the nature of this world? Physics is the very point where you start know more about what is around you",
+            "Interested in the nature of this world? Physics is the very point where you start know more about what is around you",
           photo: "/static/photos/physics_teacher.jpg",
           approval: "approved",
           UserId: 1,
@@ -189,7 +188,7 @@ module.exports = {
           title: "Coding Teacher",
           price: 50,
           description:
-              "I am an experienced coder and enrolled computer science student. Interested in developing your own website and start to make MONEY??? Come to my class and let me teach you how!",
+            "I am an experienced coder and enrolled computer science student. Interested in developing your own website and start to make MONEY??? Come to my class and let me teach you how!",
           photo: "/static/photos/coding_teacher.jpg",
           approval: "approved",
           UserId: 1,
@@ -199,11 +198,58 @@ module.exports = {
           title: "Zoologist Teacher",
           price: 10,
           description:
-              "I am NOT a body artist. I am simply obsessed with the plants growing in wild. In my class, I can take you to see something you never see in the city. Let's follow the Tail of the Sun!!",
+            "I am NOT a body artist. I am simply obsessed with the plants growing in wild. In my class, I can take you to see something you never see in the city. Let's follow the Tail of the Sun!!",
           photo: "/static/photos/zoologist_teacher.jpg",
           approval: "approved",
           UserId: 1,
           CategoryId: 5
+        },
+        {
+          title: "The Last Panda - George Schaller",
+          price: 10,
+          description:
+            "Selling book in good condition, so pencil marks or bend pages",
+          photo: "/static/photos/the-last-panda.jpg",
+          approval: "approved",
+          UserId: 1,
+          CategoryId: 2
+        },
+        {
+          title: "Small black table",
+          price: 15,
+          description:
+            "Table is sturdy and has held up well. Great for next to a couch. I am moving and everything must go.",
+          photo: "/static/photos/small-table.jpg",
+          approval: "pending",
+          UserId: 1,
+          CategoryId: 1
+        },
+        {
+          title: "Plastic white chair",
+          price: 15,
+          description: "Chair can go well with a small desk",
+          photo: "/static/photos/white-chair.jpg",
+          approval: "pending",
+          UserId: 1,
+          CategoryId: 1
+        },
+        {
+          title: "PS4",
+          price: 300,
+          description: "Used PS4 with controller and cables. Good condition, lightly used. Price negotialble",
+          photo: "/static/photos/ps4.jpg",
+          approval: "approved",
+          UserId: 1,
+          CategoryId: 3
+        },
+        {
+          title: "Saving the World by James Patterson",
+          price: 10,
+          description: "Book was used for one of my classes and I no longer need it",
+          photo: "/static/photos/white-chair.jpg",
+          approval: "approved",
+          UserId: 1,
+          CategoryId: 2
         }
       ]),
       {}
@@ -235,7 +281,8 @@ function setDefaults(items) {
 
   for (const item of items) {
     item.id = id++;
-    item.createdAt = now;
+    // Created at is set to go back in increments of 1 hour
+    item.createdAt = new Date(now - 60 * 60 * 1000 * (item.id - 1));
     item.updatedAt = now;
   }
 

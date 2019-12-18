@@ -12,10 +12,11 @@
     <h3 class="my-3">Recently posted items:</h3>
     <div class="slideshow-container">
       <div class="container">
-      <% for (let i = 0; i < (items.rows.length < 4 ? 1 : items.rows.length); i++) { %>
+      <% let approved = items.rows.filter(item => item.approval === 'approved'); %>
+      <% for (let i = 0; i < (approved.length < 4 ? 1 : approved.length); i++) { %>
         <div class="mySlides slide-fade row">
-        <% for (let j = 0; j < (items.rows.length < 4 ? items.rows.length : 4); j++) { %>
-          <% let item = items.rows[(i + j) % items.rows.length]; %>
+        <% for (let j = 0; j < (approved.length < 4 ? approved.length : 4); j++) { %>
+          <% let item = approved[(i + j) % approved.length]; %>
           <div class="col-3">
             <a href="/item/<%= item.id %>"><img src="<%= item.photo %>" alt="<%= item.title %>" class="w-100"></a>
           </div>
@@ -144,7 +145,11 @@
                 'fa-times-circle text-danger'
               %>" title="<%= item.approval %>" aria-hidden="true"></i>
             </td>
-            <td><a href="/item/<%= item.id %>" class="btn btn-primary">View</a></td>
+            <td>
+            <% if (item.approval === 'approved') { %>
+              <a href="/item/<%= item.id %>" class="btn btn-primary">View</a>
+            <% } %>
+            </td>
             <td><form action="/item/<%= item.id %>/delete" method="post"><button type="submit" class="btn btn-danger">Delete</button></form></td>
           </tr>
         <% } %>
