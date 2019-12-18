@@ -89,4 +89,14 @@ app.use("/about", aboutRouter);
 app.use("/contact", contactRouter);
 app.use("/review", reviewRouter);
 app.use("/admin", adminRouter);
-app.use("/postItem",postItemROuter)
+app.use("/postItem", postItemROuter)
+
+// 404 page for all routes that make it pase everything else
+app.use((req, res, next) => {
+  res.render("404.ejs");
+});
+
+// 500 page for anyhing that errors
+app.use((err, req, res, next) => {
+  res.render("500.ejs", { error: err });
+});
